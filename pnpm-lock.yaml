@@ -94,6 +94,10 @@ importers:
     publishDirectory: dist
 
   packages/sdk:
+    dependencies:
+      '@onyx/environment':
+        specifier: workspace:*
+        version: link:../environment/dist
     devDependencies:
       '@onyx/abis':
         specifier: workspace:*

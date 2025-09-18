@@ -1,19 +1,15 @@
-import { AssetType, type PrimitiveAsset } from "./assets.js";
-import { PriceFeedType } from "./price-feeds.js";
-import type { Address } from "./types.js";
+import type { Address } from "viem";
 
 export enum Network {
   ARBITRUM = 42161,
   BASE = 8453,
   ETHEREUM = 1,
-  POLYGON = 137,
 }
 
 export enum NetworkSlug {
   ARBITRUM = "arbitrum",
   BASE = "base",
   ETHEREUM = "ethereum",
-  POLYGON = "polygon",
 }
 
 export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.ARBITRUM
@@ -22,9 +18,7 @@ export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.A
     ? NetworkSlug.BASE
     : TNetwork extends Network.ETHEREUM
       ? NetworkSlug.ETHEREUM
-      : TNetwork extends Network.POLYGON
-        ? NetworkSlug.POLYGON
-        : never;
+      : never;
 
 export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug extends NetworkSlug.ARBITRUM
   ? Network.ARBITRUM
@@ -32,9 +26,7 @@ export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug exten
     ? Network.BASE
     : TNetworkSlug extends NetworkSlug.ETHEREUM
       ? Network.ETHEREUM
-      : TNetworkSlug extends NetworkSlug.POLYGON
-        ? Network.POLYGON
-        : never;
+      : never;
 
 export function getNetwork<TNetwork extends Network = Network>(network: TNetwork): NetworkDefinition<TNetwork>;
 export function getNetwork<TNetworkSlug extends NetworkSlug = NetworkSlug>(
@@ -54,24 +46,30 @@ export function getNetwork(networkOrSlug: Network | NetworkSlug): NetworkDefinit
   throw new Error(`Invalid network ${networkOrSlug}`);
 }
 
-export function isNetworkIdentifier(value: any): value is Network | NetworkSlug {
+export function isNetworkIdentifier(value: unknown): value is Network | NetworkSlug {
   return isSupportedNetwork(Number(value)) || isSupportedNetworkSlug(value);
 }
 
-export function isSupportedNetworkSlug(value: any): value is NetworkSlug {
-  return typeof value === "string" && Object.values<any>(NetworkSlug).includes(value);
+export function isSupportedNetworkSlug(value: unknown): value is NetworkSlug {
+  return typeof value === "string" && Object.values<unknown>(NetworkSlug).includes(value);
 }
 
-export function isSupportedNetwork(value: any): value is Network {
+export function isSupportedNetwork(value: unknown): value is Network {
   const number = Number(value);
 
-  return !Number.isNaN(number) && Object.values<any>(Network).includes(number);
+  return !Number.isNaN(number) && Object.values<unknown>(Network).includes(number);
 }
 
 export interface NetworkDefinition<TNetwork extends Network = Network> {
   readonly currency: {
     readonly wrapper: Address;
-    readonly nativeToken: PrimitiveAsset;
+    readonly nativeToken: {
+      id: Address;
+      name: string;
+      symbol: string;
+      decimals: number;
+      network: Network;
+    };
   };
   readonly explorer: {
     readonly label: string;
@@ -80,7 +78,6 @@ export interface NetworkDefinition<TNetwork extends Network = Network> {
   readonly id: TNetwork;
   readonly slug: SlugByNetwork<TNetwork>;
   readonly label: string;
-  readonly rpc: string;
 }
 
 export const slugByNetwork: {
@@ -89,7 +86,6 @@ export const slugByNetwork: {
   [Network.ARBITRUM]: NetworkSlug.ARBITRUM,
   [Network.BASE]: NetworkSlug.BASE,
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM,
-  [Network.POLYGON]: NetworkSlug.POLYGON,
 };
 
 export const networkBySlug: {
@@ -98,7 +94,6 @@ export const networkBySlug: {
   [NetworkSlug.ARBITRUM]: Network.ARBITRUM,
   [NetworkSlug.BASE]: Network.BASE,
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM,
-  [NetworkSlug.POLYGON]: Network.POLYGON,
 };
 
 const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
@@ -109,13 +104,7 @@ const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
       name: "Ether",
       symbol: "ETH",
       decimals: 18,
-      type: AssetType.PRIMITIVE,
-      releases: [],
       network: Network.ARBITRUM,
-      registered: false,
-      priceFeed: {
-        type: PriceFeedType.NONE,
-      },
     },
   },
   explorer: {
@@ -124,9 +113,8 @@ const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
   },
   id: Network.ARBITRUM,
   label: "Arbitrum",
-  rpc: "https://arb1.arbitrum.io/rpc",
   slug: NetworkSlug.ARBITRUM,
-};
+} as const;
 
 const base: NetworkDefinition<Network.BASE> = {
   currency: {
@@ -136,13 +124,7 @@ const base: NetworkDefinition<Network.BASE> = {
       name: "Ether",
       symbol: "ETH",
       decimals: 18,
-      type: AssetType.PRIMITIVE,
-      releases: [],
       network: Network.BASE,
-      registered: false,
-      priceFeed: {
-        type: PriceFeedType.NONE,
-      },
     },
   },
   explorer: {
@@ -151,7 +133,6 @@ const base: NetworkDefinition<Network.BASE> = {
   },
   id: Network.BASE,
   label: "Base",
-  rpc: "https://mainnet.base.org",
   slug: NetworkSlug.BASE,
 };
 
@@ -163,13 +144,7 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
       name: "Ether",
       symbol: "ETH",
       decimals: 18,
-      type: AssetType.PRIMITIVE,
-      releases: [],
       network: Network.ETHEREUM,
-      registered: false,
-      priceFeed: {
-        type: PriceFeedType.NONE,
-      },
     },
   },
   explorer: {
@@ -178,35 +153,7 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   },
   id: Network.ETHEREUM,
   label: "Ethereum",
-  rpc: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
   slug: NetworkSlug.ETHEREUM,
-};
-
-const polygon: NetworkDefinition<Network.POLYGON> = {
-  currency: {
-    wrapper: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-    nativeToken: {
-      id: "0x0000000000000000000000000000000000001010",
-      name: "Polygon Ecosystem Token",
-      symbol: "POL",
-      decimals: 18,
-      type: AssetType.PRIMITIVE,
-      releases: [],
-      network: Network.POLYGON,
-      registered: false,
-      priceFeed: {
-        type: PriceFeedType.NONE,
-      },
-    },
-  },
-  explorer: {
-    label: "Polygonscan",
-    url: "https://polygonscan.com",
-  },
-  id: Network.POLYGON,
-  label: "Polygon",
-  rpc: "https://polygon-rpc.com",
-  slug: NetworkSlug.POLYGON,
 };
 
 export const networks: {
@@ -215,5 +162,4 @@ export const networks: {
   [Network.ARBITRUM]: arbitrum,
   [Network.BASE]: base,
   [Network.ETHEREUM]: mainnet,
-  [Network.POLYGON]: polygon,
 };

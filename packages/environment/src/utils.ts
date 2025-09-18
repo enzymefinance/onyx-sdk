@@ -1,13 +1,13 @@
+import type { Address } from "viem";
 import { zeroAddress } from "viem";
 
 import { deployments } from "./deployments/all.js";
 import type { Network, NetworkSlug } from "./networks.js";
 import { getNetwork, isNetworkIdentifier } from "./networks.js";
 import type { Deployment, DeploymentDefinition } from "./releases.js";
-import { Kind, isDeployment } from "./releases.js";
-import type { Address } from "./types.js";
+import { isDeployment, Kind } from "./releases.js";
 
-export function isHexString(value: any, length?: number): boolean {
+export function isHexString(value: unknown, length?: number): boolean {
   if (typeof value !== "string" || !/^0x[0-9A-Fa-f]*$/.test(value)) {
     return false;
   }
@@ -19,11 +19,11 @@ export function isHexString(value: any, length?: number): boolean {
   return true;
 }
 
-export function isAddress(value: any): value is Address {
-  return isHexString(value) && /^0x[0-9a-f]{40}$/.test(value);
+export function isAddress(value: unknown): value is Address {
+  return isHexString(value) && /^0x[0-9a-f]{40}$/.test(value as string);
 }
 
-export function isNonZeroAddress(value: any): value is Address {
+export function isNonZeroAddress(value: unknown): value is Address {
   return isHexString(value) && value !== zeroAddress;
 }
 

@@ -4,5 +4,9 @@
     { "path": "./packages/abis" },
     { "path": "./packages/environment" },
     { "path": "./packages/sdk" }
-  ]
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "tsBuildInfoFile": ".tsbuildinfo/root.tsbuildinfo"
+  }
 }
