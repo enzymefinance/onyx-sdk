@@ -1,0 +1,35 @@
+{
+  "name": "root",
+  "private": true,
+  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971",
+  "scripts": {
+    "codegen": "pnpm run --recursive codegen",
+    "build": "tsc --build tsconfig.build.json && pnpm run --recursive --filter \"./packages/*\" build",
+    "release": "pnpm build && changeset publish",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "tsc --build tsconfig.json",
+    "format": "biome format --write . && biome check --write --unsafe .",
+    "lint": "biome check ."
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-export-namespace-from": "^7.24.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.8",
+    "@biomejs/biome": "2.2.4",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.7",
+    "@types/node": "^22.5.1",
+    "babel-plugin-annotate-pure-calls": "^0.4.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@changesets/assemble-release-plan": "patches/@changesets__assemble-release-plan.patch"
+    }
+  }
+}

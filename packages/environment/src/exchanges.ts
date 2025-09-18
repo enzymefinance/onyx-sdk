@@ -1,0 +1,7 @@
+export enum Exchange {
+  ONE_INCH_V5 = "ONE_INCH_V5",
+  PARASWAP_V5 = "PARASWAP_V5",
+  PARASWAP_V6 = "PARASWAP_V6",
+  UNISWAP_V2 = "UNISWAP_V2",
+  UNISWAP_V3 = "UNISWAP_V3",
+}
