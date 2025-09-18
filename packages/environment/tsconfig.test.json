@@ -6,9 +6,6 @@
       "path": "tsconfig.src.json"
     },
     {
-      "path": "../sdk/tsconfig.src.json"
-    },
-    {
       "path": "../abis/tsconfig.src.json"
     }
   ],
