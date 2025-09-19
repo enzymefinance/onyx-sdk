@@ -1,7 +1,7 @@
 {
   "name": "@onyx/sdk",
-  "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "1.2.21",
+  "description": "Onyx is an Ethereum-based protocol for decentralized on-chain asset management.",
+  "version": "1.0.0",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -27,13 +27,12 @@
   "peerDependencies": {
     "@onyx/abis": "workspace:*",
     "@onyx/environment": "workspace:*",
-    "decimal.js": "^10.4.3",
     "viem": "^2.37.5"
   },
   "devDependencies": {
     "@onyx/abis": "workspace:*",
-    "@viem/anvil": "^0.0.10",
-    "decimal.js": "^10.4.3",
-    "viem": "^2.37.5"
+    "@onyx/environment": "workspace:*",
+    "viem": "^2.37.5",
+    "typescript": "^5.8.3"
   }
 }

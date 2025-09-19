@@ -1,7 +1,7 @@
 {
   "name": "@onyx/abis",
-  "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "1.2.7",
+  "description": "Onyx is an Ethereum-based protocol for decentralized on-chain asset management.",
+  "version": "1.0.0",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -24,9 +24,7 @@
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
-  "effect": {
-    "publicModules": [
-      "abis/*.ts"
-    ]
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }
