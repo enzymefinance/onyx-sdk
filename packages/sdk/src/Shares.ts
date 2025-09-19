@@ -34,6 +34,25 @@ export function deployShares(args: DeploySharesProxyParams) {
   });
 }
 
+// Ownership
+
+export function transferOwnership(args: { sharesAddress: Address; newOwner: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: SharesAbi,
+    functionName: "transferOwnership",
+    args: [args.newOwner],
+    address: args.sharesAddress,
+  });
+}
+
+export function acceptOwnership(args: { sharesAddress: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: SharesAbi,
+    functionName: "acceptOwnership",
+    address: args.sharesAddress,
+  });
+}
+
 // Contract admins
 
 export function addAdmin(args: { sharesAddress: Address; admin: Address }) {
@@ -174,6 +193,34 @@ export function withdrawAssetTo(args: { sharesAddress: Address; assetAddress: Ad
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
+
+export function owner(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    sharesAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: SharesAbi,
+    functionName: "owner",
+    address: args.sharesAddress,
+  });
+}
+
+export function pendingOwner(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    sharesAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: SharesAbi,
+    functionName: "pendingOwner",
+    address: args.sharesAddress,
+  });
+}
 
 export function sharePrice(
   client: Client,
