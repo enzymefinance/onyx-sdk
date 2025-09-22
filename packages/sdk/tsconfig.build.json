@@ -2,7 +2,10 @@
   "extends": "./tsconfig.src.json",
   "references": [
     {
-      "path": "../abis"
+      "path": "../abis/tsconfig.build.json"
+    },
+    {
+      "path": "../environment/tsconfig.build.json"
     }
   ],
   "compilerOptions": {

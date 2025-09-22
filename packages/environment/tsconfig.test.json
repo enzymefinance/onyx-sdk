@@ -4,9 +4,6 @@
   "references": [
     {
       "path": "tsconfig.src.json"
-    },
-    {
-      "path": "../abis/tsconfig.src.json"
     }
   ],
   "compilerOptions": {

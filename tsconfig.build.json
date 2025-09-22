@@ -5,13 +5,10 @@
       "path": "packages/abis/tsconfig.build.json"
     },
     {
-      "path": "packages/sdk/tsconfig.build.json"
-    },
-    {
-      "path": "packages/api/tsconfig.build.json"
-    },
-    {
       "path": "packages/environment/tsconfig.build.json"
+    },
+    {
+      "path": "packages/sdk/tsconfig.build.json"
     }
   ]
 }
