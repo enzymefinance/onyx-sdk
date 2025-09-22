@@ -1,7 +1,7 @@
 {
   "name": "@onyx/abis",
   "description": "Onyx is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
   "publishConfig": {
     "access": "public",

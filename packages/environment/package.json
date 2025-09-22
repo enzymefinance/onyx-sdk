@@ -1,6 +1,6 @@
 {
   "name": "@onyx/environment",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Onyx is an protocol for decentralized on-chain asset management.",
   "type": "module",
   "publishConfig": {
