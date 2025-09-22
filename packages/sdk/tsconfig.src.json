@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../abis"
+    },
+    {
+      "path": "../environment"
+    }
+  ],
+  "compilerOptions": {
+    "tsBuildInfoFile": ".tsbuildinfo/src.tsbuildinfo",
+    "rootDir": "src",
+    "outDir": "build/src",
+    "noEmit": false
+  }
+}

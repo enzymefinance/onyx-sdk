@@ -1,0 +1,195 @@
+export const LinearCreditDebtTrackerAbi = [
+  { type: "constructor", inputs: [], stateMutability: "nonpayable" },
+  {
+    type: "function",
+    name: "addItem",
+    inputs: [
+      { name: "_totalValue", type: "int128", internalType: "int128" },
+      { name: "_start", type: "uint40", internalType: "uint40" },
+      { name: "_duration", type: "uint32", internalType: "uint32" },
+      { name: "_description", type: "string", internalType: "string" },
+    ],
+    outputs: [{ name: "id_", type: "uint24", internalType: "uint24" }],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcItemValue",
+    inputs: [{ name: "_id", type: "uint24", internalType: "uint24" }],
+    outputs: [{ name: "value_", type: "int256", internalType: "int256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getItem",
+    inputs: [{ name: "_id", type: "uint24", internalType: "uint24" }],
+    outputs: [
+      {
+        name: "item_",
+        type: "tuple",
+        internalType: "struct LinearCreditDebtTracker.Item",
+        components: [
+          {
+            name: "totalValue",
+            type: "int128",
+            internalType: "int128",
+          },
+          {
+            name: "settledValue",
+            type: "int128",
+            internalType: "int128",
+          },
+          { name: "id", type: "uint24", internalType: "uint24" },
+          { name: "index", type: "uint24", internalType: "uint24" },
+          { name: "start", type: "uint40", internalType: "uint40" },
+          { name: "duration", type: "uint32", internalType: "uint32" },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getItemIds",
+    inputs: [],
+    outputs: [{ name: "ids_", type: "uint24[]", internalType: "uint24[]" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getItemsCount",
+    inputs: [],
+    outputs: [{ name: "count_", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getLastItemId",
+    inputs: [],
+    outputs: [{ name: "id_", type: "uint24", internalType: "uint24" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getPositionValue",
+    inputs: [],
+    outputs: [{ name: "value_", type: "int256", internalType: "int256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "removeItem",
+    inputs: [{ name: "_id", type: "uint24", internalType: "uint24" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "updateSettledValue",
+    inputs: [
+      { name: "_id", type: "uint24", internalType: "uint24" },
+      { name: "_totalSettled", type: "int128", internalType: "int128" },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "ItemAdded",
+    inputs: [
+      {
+        name: "id",
+        type: "uint24",
+        indexed: false,
+        internalType: "uint24",
+      },
+      {
+        name: "totalValue",
+        type: "int128",
+        indexed: false,
+        internalType: "int128",
+      },
+      {
+        name: "start",
+        type: "uint40",
+        indexed: false,
+        internalType: "uint40",
+      },
+      {
+        name: "duration",
+        type: "uint32",
+        indexed: false,
+        internalType: "uint32",
+      },
+      {
+        name: "description",
+        type: "string",
+        indexed: false,
+        internalType: "string",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ItemRemoved",
+    inputs: [
+      {
+        name: "id",
+        type: "uint24",
+        indexed: false,
+        internalType: "uint24",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ItemTotalSettledUpdated",
+    inputs: [
+      {
+        name: "id",
+        type: "uint24",
+        indexed: false,
+        internalType: "uint24",
+      },
+      {
+        name: "totalSettled",
+        type: "int128",
+        indexed: false,
+        internalType: "int128",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "error",
+    name: "ComponentHelpersMixin__OnlyAdminOrOwner__Unauthorized",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "ComponentHelpersMixin__OnlyShares__Unauthorized",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "LinearCreditDebtTracker__AddItem__EmptyTotalValue",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "LinearCreditDebtTracker__RemoveItem__DoesNotExist",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "LinearCreditDebtTracker__UpdateSettledValue__DoesNotExist",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "StorageHelpersLib__VerifyErc7201Location__Mismatch",
+    inputs: [],
+  },
+] as const;
