@@ -35,12 +35,8 @@
     "incremental": true,
     "removeComments": false,
     "paths": {
-      "@enzymefinance/onyx-environment": [
-        "./packages/environment/src/index.ts"
-      ],
-      "@enzymefinance/onyx-environment/test": [
-        "./packages/environment/test/setup.ts"
-      ],
+      "@enzymefinance/onyx-environment": ["./packages/environment/src/index.ts"],
+      "@enzymefinance/onyx-environment/test": ["./packages/environment/test/setup.ts"],
       "@enzymefinance/onyx-environment/*": ["./packages/environment/src/*.ts"],
       "@enzymefinance/onyx-sdk": ["./packages/sdk/src/index.ts"],
       "@enzymefinance/onyx-sdk/test": ["./packages/sdk/test/setup.ts"],
