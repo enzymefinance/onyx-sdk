@@ -1,15 +1,15 @@
-import type { Address } from "viem";
-
 export enum Network {
   ARBITRUM = 42161,
   BASE = 8453,
   ETHEREUM = 1,
+  PLUME = 98866,
 }
 
 export enum NetworkSlug {
   ARBITRUM = "arbitrum",
   BASE = "base",
   ETHEREUM = "ethereum",
+  PLUME = "plume",
 }
 
 export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.ARBITRUM
@@ -18,7 +18,9 @@ export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.A
     ? NetworkSlug.BASE
     : TNetwork extends Network.ETHEREUM
       ? NetworkSlug.ETHEREUM
-      : never;
+      : TNetwork extends Network.PLUME
+        ? NetworkSlug.PLUME
+        : never;
 
 export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug extends NetworkSlug.ARBITRUM
   ? Network.ARBITRUM
@@ -26,7 +28,9 @@ export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug exten
     ? Network.BASE
     : TNetworkSlug extends NetworkSlug.ETHEREUM
       ? Network.ETHEREUM
-      : never;
+      : TNetworkSlug extends NetworkSlug.PLUME
+        ? Network.PLUME
+        : never;
 
 export function getNetwork<TNetwork extends Network = Network>(network: TNetwork): NetworkDefinition<TNetwork>;
 export function getNetwork<TNetworkSlug extends NetworkSlug = NetworkSlug>(
@@ -62,9 +66,7 @@ export function isSupportedNetwork(value: unknown): value is Network {
 
 export interface NetworkDefinition<TNetwork extends Network = Network> {
   readonly currency: {
-    readonly wrapper: Address;
     readonly nativeToken: {
-      id: Address;
       name: string;
       symbol: string;
       decimals: number;
@@ -86,6 +88,7 @@ export const slugByNetwork: {
   [Network.ARBITRUM]: NetworkSlug.ARBITRUM,
   [Network.BASE]: NetworkSlug.BASE,
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM,
+  [Network.PLUME]: NetworkSlug.PLUME,
 };
 
 export const networkBySlug: {
@@ -94,13 +97,12 @@ export const networkBySlug: {
   [NetworkSlug.ARBITRUM]: Network.ARBITRUM,
   [NetworkSlug.BASE]: Network.BASE,
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM,
+  [NetworkSlug.PLUME]: Network.PLUME,
 };
 
 const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
   currency: {
-    wrapper: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     nativeToken: {
-      id: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       name: "Ether",
       symbol: "ETH",
       decimals: 18,
@@ -118,9 +120,7 @@ const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
 
 const base: NetworkDefinition<Network.BASE> = {
   currency: {
-    wrapper: "0x4200000000000000000000000000000000000006",
     nativeToken: {
-      id: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       name: "Ether",
       symbol: "ETH",
       decimals: 18,
@@ -138,9 +138,7 @@ const base: NetworkDefinition<Network.BASE> = {
 
 const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   currency: {
-    wrapper: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     nativeToken: {
-      id: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       name: "Ether",
       symbol: "ETH",
       decimals: 18,
@@ -156,10 +154,29 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   slug: NetworkSlug.ETHEREUM,
 };
 
+const plume: NetworkDefinition<Network.PLUME> = {
+  currency: {
+    nativeToken: {
+      name: "Plume Token",
+      symbol: "PLUME",
+      decimals: 18,
+      network: Network.PLUME,
+    },
+  },
+  explorer: {
+    label: "Plume Explorer",
+    url: "https://explorer.plume.org/",
+  },
+  id: Network.PLUME,
+  label: "Plume",
+  slug: NetworkSlug.PLUME,
+};
+
 export const networks: {
   readonly [TNetwork in Network]: NetworkDefinition<TNetwork>;
 } = {
   [Network.ARBITRUM]: arbitrum,
   [Network.BASE]: base,
   [Network.ETHEREUM]: mainnet,
+  [Network.PLUME]: plume,
 };

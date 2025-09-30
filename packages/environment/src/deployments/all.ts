@@ -9,11 +9,13 @@ import { isNonZeroAddress } from "../utils.js";
 import arbitrum from "./arbitrum.js";
 import base from "./base.js";
 import ethereum from "./ethereum.js";
+import plume from "./plume.js";
 
 export const deployments = {
   [Deployment.ARBITRUM]: arbitrum,
   [Deployment.BASE]: base,
   [Deployment.ETHEREUM]: ethereum,
+  [Deployment.PLUME]: plume,
 } as const;
 
 export function getEnvironmentGroup(deployment: Deployment) {

@@ -87,6 +87,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
   public static isDeploymentArbitrum = Environment.createIsDeployment(Deployment.ARBITRUM);
   public static isDeploymentBase = Environment.createIsDeployment(Deployment.BASE);
   public static isDeploymentEthereum = Environment.createIsDeployment(Deployment.ETHEREUM);
+  public static isDeploymentPlume = Environment.createIsDeployment(Deployment.PLUME);
   public static isDeployment<TDeployment extends Deployment>(
     deployment: TDeployment,
     environment: Environment,

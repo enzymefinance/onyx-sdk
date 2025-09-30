@@ -12,6 +12,7 @@ export enum Deployment {
   ARBITRUM = "arbitrum",
   BASE = "base",
   ETHEREUM = "ethereum",
+  PLUME = "plume",
 }
 
 export type DeploymentNetwork<TDeployment extends Deployment> = TDeployment extends Deployment.ARBITRUM
@@ -20,7 +21,9 @@ export type DeploymentNetwork<TDeployment extends Deployment> = TDeployment exte
     ? Network.BASE
     : TDeployment extends Deployment.ETHEREUM
       ? Network.ETHEREUM
-      : never;
+      : TDeployment extends Deployment.PLUME
+        ? Network.PLUME
+        : never;
 
 export function isDeployment(value: unknown): value is Deployment {
   return typeof value === "string" && Object.values<unknown>(Deployment).includes(value);
@@ -116,5 +119,8 @@ export const releases = {
   },
   [Deployment.ETHEREUM]: {
     [Version.ONE]: `${Deployment.ETHEREUM}.${Version.ONE}`,
+  },
+  [Deployment.PLUME]: {
+    [Version.ONE]: `${Deployment.PLUME}.${Version.ONE}`,
   },
 } as const;
