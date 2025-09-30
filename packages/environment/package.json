@@ -1,6 +1,6 @@
 {
   "name": "@enzymefinance/onyx-environment",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Onyx is an protocol for decentralized on-chain asset management.",
   "type": "module",
   "publishConfig": {
@@ -9,10 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/enzymefinance/onyx-sdk.git",
+    "url": "https://github.com/enzymefinance/onyx-environment.git",
     "directory": "packages/environment"
   },
   "license": "BUSL-1.1",
+  "bugs": {
+    "url": "https://github.com/enzymefinance/onyx-environment/issues"
+  },
+  "homepage": "https://github.com/enzymefinance/onyx-environment",
   "scripts": {
     "build": "pnpm build-esm && pnpm build-annotate && pnpm build-cjs && build-utils pack-v2",
     "build-prepare": "build-utils prepare-v2",
