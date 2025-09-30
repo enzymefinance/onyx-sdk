@@ -1,4 +1,4 @@
-import { AccountERC20TrackerAbi } from "@onyx/abis";
+import { AccountERC20TrackerAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils";

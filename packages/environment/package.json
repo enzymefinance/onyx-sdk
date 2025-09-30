@@ -1,5 +1,5 @@
 {
-  "name": "@onyx/environment",
+  "name": "@enzymefinance/onyx-environment",
   "version": "0.0.0",
   "description": "Onyx is an protocol for decentralized on-chain asset management.",
   "type": "module",

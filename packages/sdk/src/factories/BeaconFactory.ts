@@ -1,4 +1,4 @@
-import { BeaconFactoryAbi } from "@onyx/abis";
+import { BeaconFactoryAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Hex } from "viem";
 import { Viem } from "../Utils.js";
 

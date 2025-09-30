@@ -35,14 +35,18 @@
     "incremental": true,
     "removeComments": false,
     "paths": {
-      "@onyx/environment": ["./packages/environment/src/index.ts"],
-      "@onyx/environment/test": ["./packages/environment/test/setup.ts"],
-      "@onyx/environment/*": ["./packages/environment/src/*.ts"],
-      "@onyx/sdk": ["./packages/sdk/src/index.ts"],
-      "@onyx/sdk/test": ["./packages/sdk/test/setup.ts"],
-      "@onyx/sdk/*": ["./packages/sdk/src/*.ts"],
-      "@onyx/abis": ["./packages/abis/src/index.ts"],
-      "@onyx/abis/*": ["./packages/abis/src/abis/*.ts"]
+      "@enzymefinance/onyx-environment": [
+        "./packages/environment/src/index.ts"
+      ],
+      "@enzymefinance/onyx-environment/test": [
+        "./packages/environment/test/setup.ts"
+      ],
+      "@enzymefinance/onyx-environment/*": ["./packages/environment/src/*.ts"],
+      "@enzymefinance/onyx-sdk": ["./packages/sdk/src/index.ts"],
+      "@enzymefinance/onyx-sdk/test": ["./packages/sdk/test/setup.ts"],
+      "@enzymefinance/onyx-sdk/*": ["./packages/sdk/src/*.ts"],
+      "@enzymefinance/onyx-abis": ["./packages/abis/src/index.ts"],
+      "@enzymefinance/onyx-abis/*": ["./packages/abis/src/abis/*.ts"]
     }
   }
 }

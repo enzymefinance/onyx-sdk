@@ -2,7 +2,7 @@
 // TRANSACTIONS
 //--------------------------------------------------------------------------------------------
 
-import { GlobalAbi } from "@onyx/abis";
+import { GlobalAbi } from "@enzymefinance/onyx-abis";
 import { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "./Utils";

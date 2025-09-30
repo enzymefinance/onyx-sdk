@@ -1,6 +1,6 @@
 export const a = 1;
 
-import { ERC7540LikeDepositQueueAbi } from "@onyx/abis";
+import { ERC7540LikeDepositQueueAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client, Hex } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils";

@@ -1,6 +1,6 @@
-import { SharesAbi } from "@onyx/abis";
-import type { ValueAssetType } from "@onyx/environment";
-import { encodeValueAsset } from "@onyx/environment";
+import { SharesAbi } from "@enzymefinance/onyx-abis";
+import type { ValueAssetType } from "@enzymefinance/onyx-environment";
+import { encodeValueAsset } from "@enzymefinance/onyx-environment";
 import type { Address, Client, Hex } from "viem";
 import { encodeFunctionData } from "viem";
 import { readContract } from "viem/actions";

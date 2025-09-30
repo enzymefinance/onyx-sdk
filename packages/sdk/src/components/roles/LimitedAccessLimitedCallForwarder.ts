@@ -1,4 +1,4 @@
-import { LimitedAccessLimitedCallForwarderAbi } from "@onyx/abis";
+import { LimitedAccessLimitedCallForwarderAbi } from "@enzymefinance/onyx-abis";
 import { Address, Client, Hex } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils";
