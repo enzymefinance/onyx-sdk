@@ -1,5 +1,15 @@
 # @enzymefinance/onyx-sdk
 
+## 0.0.4
+
+### Patch Changes
+
+- [#10](https://github.com/enzymefinance/onyx-sdk/pull/10) [`683d62b`](https://github.com/enzymefinance/onyx-sdk/commit/683d62b8d244cee778324216b40ec386d47f2376) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Change repo url
+
+- Updated dependencies [[`683d62b`](https://github.com/enzymefinance/onyx-sdk/commit/683d62b8d244cee778324216b40ec386d47f2376)]:
+  - @enzymefinance/onyx-environment@0.0.5
+  - @enzymefinance/onyx-abis@0.0.5
+
 ## 0.0.3
 
 ### Patch Changes
