@@ -1,7 +1,7 @@
 ---
-"@enzymefinance/onyx-environment": minor
-"@enzymefinance/onyx-abis": minor
-"@enzymefinance/onyx-sdk": minor
+"@enzymefinance/onyx-environment": patch
+"@enzymefinance/onyx-abis": patch
+"@enzymefinance/onyx-sdk": patch
 ---
 
 Initial release
