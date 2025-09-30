@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 0.0.5
+
+### Patch Changes
+
+- [#10](https://github.com/enzymefinance/onyx-sdk/pull/10) [`683d62b`](https://github.com/enzymefinance/onyx-sdk/commit/683d62b8d244cee778324216b40ec386d47f2376) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Change repo url
+
 ## 0.0.4
 
 ### Patch Changes
