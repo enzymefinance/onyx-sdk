@@ -1,0 +1,30 @@
+{
+  "name": "@enzymefinance/onyx-abis",
+  "description": "Onyx is an Ethereum-based protocol for decentralized on-chain asset management.",
+  "version": "0.0.2",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enzymefinance/onyx-abis.git",
+    "directory": "packages/abis"
+  },
+  "license": "BUSL-1.1",
+  "bugs": {
+    "url": "https://github.com/enzymefinance/onyx-abis/issues"
+  },
+  "homepage": "https://github.com/enzymefinance/onyx-abis",
+  "scripts": {
+    "build": "pnpm build-esm && pnpm build-annotate && pnpm build-cjs && build-utils pack-v2",
+    "build-prepare": "build-utils prepare-v2",
+    "build-esm": "tsc -b tsconfig.build.json",
+    "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
+    "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

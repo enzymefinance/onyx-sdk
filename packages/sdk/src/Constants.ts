@@ -1,0 +1,11 @@
+export const SHARES_DECIMALS = 18;
+export const SHARES_UNIT = 10n ** BigInt(SHARES_DECIMALS);
+export const VALUE_ASSET_DECIMALS = 18;
+export const VALUE_ASSET_UNIT = 10n ** BigInt(VALUE_ASSET_DECIMALS);
+export const ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+export const ONE_HOUR_IN_SECONDS = 60n * 60n;
+export const ONE_DAY_IN_SECONDS = ONE_HOUR_IN_SECONDS * 24n;
+export const ONE_WEEK_IN_SECONDS = ONE_DAY_IN_SECONDS * 7n;
+export const ONE_YEAR_IN_SECONDS = (ONE_DAY_IN_SECONDS * 36525n) / 100n;
+export const ONE_PERCENT_IN_BPS = 100n;
+export const ONE_HUNDRED_PERCENT_IN_BPS = 10_000n;
