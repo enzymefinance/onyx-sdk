@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 5
     permissions:
       id-token: write
-      contents: write
+      contents: read
       pull-requests: write
     steps:
       - name: Clone repository
@@ -37,5 +37,3 @@ jobs:
           title: "chore: publish package(s)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
