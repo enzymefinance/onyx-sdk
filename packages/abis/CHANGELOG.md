@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-abis
 
+## 0.0.4
+
+### Patch Changes
+
+- [#7](https://github.com/enzymefinance/onyx-sdk/pull/7) [`e4a75f3`](https://github.com/enzymefinance/onyx-sdk/commit/e4a75f39c73df3a0c345ca454898724e4b9f7c70) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Publish patch
+
 ## 0.0.3
 
 ### Patch Changes
