@@ -33,6 +33,8 @@ The Onyx SDK supports the following networks:
 - **Base** (Chain ID: 8453)
 - **Plume** (Chain ID: 98866)
 
+📋 **[View all contract addresses →](./CONTRACT_ADDRESSES.md)**
+
 ## Quick Start
 
 ### 1. Set up a Viem Client
@@ -76,6 +78,8 @@ const environment = environmentGroup.getEnvironment();
 
 // Access deployed contract addresses
 const globalAddress = environment.contracts.global.address;
+
+// See CONTRACT_ADDRESSES.md for all available addresses
 ```
 
 ### 3. Basic Asset Operations
