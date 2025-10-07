@@ -24,3 +24,6 @@ coverage/
 
 # Ignore dependencies
 node_modules/
+
+# Ignore gitbook
+!.gitbook.yaml
