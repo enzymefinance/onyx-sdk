@@ -147,7 +147,7 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   },
   explorer: {
     label: "Etherscan",
-    url: "https://etherscan.io",
+    url: "https://etherscan.io/",
   },
   id: Network.ETHEREUM,
   label: "Ethereum",

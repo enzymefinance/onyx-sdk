@@ -1,5 +1,5 @@
 import { LimitedAccessLimitedCallForwarderAbi } from "@enzymefinance/onyx-abis";
-import { Address, Client, Hex } from "viem";
+import { Address, Client, encodeAbiParameters, getAbiItem, Hex } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils";
 
@@ -43,7 +43,7 @@ export function removeCall(args: { forwarderAddress: Address; target: Address; s
   });
 }
 
-export function executeCall(args: {
+export function executeCalls(args: {
   forwarderAddress: Address;
   calls: { target: Address; data: Hex; value: bigint }[];
 }) {
@@ -53,6 +53,15 @@ export function executeCall(args: {
     address: args.forwarderAddress,
     args: [args.calls],
   });
+}
+
+export function encodeAbiItemExecuteCalls(calls: { target: Address; data: Hex; value: bigint }[]) {
+  const abiItem = getAbiItem({
+    abi: LimitedAccessLimitedCallForwarderAbi,
+    name: "executeCalls",
+  });
+
+  return encodeAbiParameters(abiItem.inputs, [calls]);
 }
 
 //--------------------------------------------------------------------------------------------
