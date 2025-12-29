@@ -1,6 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "enzymefinance/onyx-sdk" }],
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "enzymefinance/onyx-sdk" }
+  ],
   "commit": false,
   "fixed": [],
   "linked": [],
@@ -10,5 +13,6 @@
   "snapshot": {
     "useCalculatedVersion": false,
     "prereleaseTemplate": "{tag}-{commit}"
-  }
+  },
+  "ignore": ["@enzymefinance/onyx-sdk"]
 }
