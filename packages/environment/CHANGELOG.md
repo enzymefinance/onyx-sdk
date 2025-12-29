@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 0.1.0
+
+### Minor Changes
+
+- [#14](https://github.com/enzymefinance/onyx-sdk/pull/14) [`57512bb`](https://github.com/enzymefinance/onyx-sdk/commit/57512bb688c75efad04328528efe34cc1f50178f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add nav update helpers & new value assets
+
 ## 0.0.5
 
 ### Patch Changes
