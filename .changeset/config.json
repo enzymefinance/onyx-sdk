@@ -10,5 +10,6 @@
   "snapshot": {
     "useCalculatedVersion": false,
     "prereleaseTemplate": "{tag}-{commit}"
-  }
+  },
+  "ignore": ["@enzymefinance/onyx-sdk"]
 }
