@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-sdk
 
+## 1.1.0
+
+### Minor Changes
+
+- [#22](https://github.com/enzymefinance/onyx-sdk/pull/22) [`c30e890`](https://github.com/enzymefinance/onyx-sdk/commit/c30e890b18ca79ca40a9a0cfdf6378cc71d29d9e) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Export limit access forwarder
+
 ## 1.0.0
 
 ### Minor Changes
