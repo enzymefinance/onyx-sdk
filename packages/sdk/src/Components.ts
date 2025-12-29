@@ -5,5 +5,6 @@ export * as ERC7540LikeDepositQueue from "./components/issuance/ERC7540LikeDepos
 export * as ERC7540LikeRedeemQueue from "./components/issuance/ERC7540LikeRedeemQueue.js";
 export * as AccountERC20Tracker from "./components/position-trackers/AccountERC20Tracker";
 export * as LinearCreditDebtTracker from "./components/position-trackers/LinearCreditDebtTracker";
+export * as LimitedAccessLimitedCallForwarder from "./components/roles/LimitedAccessLimitedCallForwarder";
 export * as ValuationHandler from "./components/value/ValuationHandler.js";
 export * as Shares from "./Shares";
