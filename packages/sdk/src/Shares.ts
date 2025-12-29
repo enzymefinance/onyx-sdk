@@ -2,7 +2,7 @@ import { SharesAbi } from "@enzymefinance/onyx-abis";
 import type { ValueAssetType } from "@enzymefinance/onyx-environment";
 import { encodeValueAsset } from "@enzymefinance/onyx-environment";
 import type { Address, Client, Hex } from "viem";
-import { encodeFunctionData } from "viem";
+import { decodeFunctionResult, encodeFunctionData } from "viem";
 import { readContract } from "viem/actions";
 import { deployProxy } from "./factories/BeaconFactory";
 import { Viem } from "./Utils";
@@ -96,6 +96,15 @@ export function setFeeHandler(args: { sharesAddress: Address; feeHandlerAddress:
 }
 
 // Shares Issuance
+
+export function mintFor(args: { sharesAddress: Address; to: Address; amount: bigint }) {
+  return new Viem.PopulatedTransaction({
+    abi: SharesAbi,
+    functionName: "mintFor",
+    args: [args.to, args.amount],
+    address: args.sharesAddress,
+  });
+}
 
 export function addDepositHandler(args: { sharesAddress: Address; depositHandlerAddress: Address }) {
   return new Viem.PopulatedTransaction({
@@ -275,6 +284,36 @@ export function getValueAsset(
     abi: SharesAbi,
     functionName: "getValueAsset",
     address: args.sharesAddress,
+  });
+}
+
+export function getValuationHandler(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    sharesAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: SharesAbi,
+    functionName: "getValuationHandler",
+    address: args.sharesAddress,
+  });
+}
+
+export function encodeGetValuationHandler() {
+  return encodeFunctionData({
+    abi: SharesAbi,
+    functionName: "getValuationHandler",
+    args: [],
+  });
+}
+
+export function decodeGetValuationHandler(data: Hex) {
+  return decodeFunctionResult({
+    abi: SharesAbi,
+    functionName: "getValuationHandler",
+    data,
   });
 }
 

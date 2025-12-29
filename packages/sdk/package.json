@@ -27,12 +27,12 @@
   "peerDependencies": {
     "@enzymefinance/onyx-abis": "workspace:*",
     "@enzymefinance/onyx-environment": "workspace:*",
-    "viem": "^2.37.5"
+    "viem": "^2.40.3"
   },
   "devDependencies": {
     "@enzymefinance/onyx-abis": "workspace:*",
     "@enzymefinance/onyx-environment": "workspace:*",
-    "viem": "^2.37.5",
+    "viem": "^2.40.3",
     "typescript": "^5.8.3"
   }
 }
