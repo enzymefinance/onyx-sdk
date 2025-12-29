@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-abis
 
+## 1.0.0
+
+### Major Changes
+
+- [#18](https://github.com/enzymefinance/onyx-sdk/pull/18) [`d73da17`](https://github.com/enzymefinance/onyx-sdk/commit/d73da17c516bab70c1a6b24eb160317e7697076e) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Make main release of packages
+
 ## 0.0.5
 
 ### Patch Changes
