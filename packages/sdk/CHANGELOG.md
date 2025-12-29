@@ -1,5 +1,13 @@
 # @enzymefinance/onyx-sdk
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`d73da17`](https://github.com/enzymefinance/onyx-sdk/commit/d73da17c516bab70c1a6b24eb160317e7697076e)]:
+  - @enzymefinance/onyx-abis@1.0.0
+  - @enzymefinance/onyx-environment@1.0.0
+
 ## 1.0.0
 
 ### Minor Changes
