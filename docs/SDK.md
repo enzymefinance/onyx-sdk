@@ -1,4 +1,4 @@
-# SDK
+# Overview
 
 The Onyx SDK is a TypeScript library for interacting with the Enzyme Onyx protocol - an Ethereum-based platform for decentralized on-chain asset management. This SDK provides a comprehensive set of tools for building applications that manage digital assets, create investment funds, and implement sophisticated DeFi strategies.
 
