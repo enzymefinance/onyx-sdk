@@ -42,7 +42,7 @@ Your App
 | Ethereum Mainnet | 1        |
 | Arbitrum One     | 42161    |
 | Base             | 8453     |
-| Plume Mainnet    | 98865    |
+| Plume Mainnet    | 98866    |
 
 ---
 
