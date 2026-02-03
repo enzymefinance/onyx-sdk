@@ -33,6 +33,8 @@ The Onyx SDK supports the following networks:
 - **Base** (Chain ID: 8453)
 - **Plume** (Chain ID: 98866)
 
+For deployed contract addresses on each network, see [Contract Addresses](https://docs.enzyme.finance/onyx-protocol/contract-addresses).
+
 ## Quick Start
 
 ### 1. Set up a Viem Client
