@@ -55,12 +55,3 @@ Your App
 ## What's the rate limit?
 
 The API is rate-limited at approximately **100 requests per minute** per IP address.
-
----
-
-## Getting Help
-
-1. **API docs:** [api.onyx.enzyme.finance/reference](https://api.onyx.enzyme.finance/reference)
-2. **SDK docs:** [SDK](SDK.md)
-3. **Discord:** [Enzyme Finance Discord](https://discord.gg/enzyme)
-4. **GitHub:** [github.com/enzymefinance](https://github.com/enzymefinance)
