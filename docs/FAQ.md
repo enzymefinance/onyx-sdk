@@ -11,7 +11,7 @@ Common questions about the Enzyme Onyx SDK and API.
 | **Read Data**       | Indexed, cached, fast (~10s cache)     | Direct RPC, real-time but slower     |
 | **Write Data**      | Not supported                          | Full transaction support             |
 | **Historical Data** | Time-series financials, past deposits  | Current state only                   |
-| **Rate Limits**     | ~100 RPM per IP                        | RPC provider limits                  |
+| **Rate Limits**     | Per IP (capacity reviewed regularly)   | RPC provider limits                  |
 | **Authentication**  | None required                          | Wallet signature for writes          |
 | **Use Case**        | Dashboards, analytics, read-heavy apps | Deposits, redemptions, admin actions |
 | **Dependencies**    | None (REST/fetch)                      | viem, wallet provider, RPC           |
@@ -54,4 +54,4 @@ Your App
 
 ## What's the rate limit?
 
-The API is rate-limited at approximately **100 requests per minute** per IP address.
+The API is rate-limited per IP address. Capacity is reviewed regularly.
