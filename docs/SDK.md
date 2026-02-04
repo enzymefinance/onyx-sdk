@@ -243,13 +243,6 @@ const [balance1, balance2, allowance] = await Promise.all([
 ]);
 ```
 
-## Support
-
-If you encounter issues or have questions:
-
-1. Check the [GitHub Issues](https://github.com/enzymefinance/onyx-sdk/issues)
-2. Start a [Discussion on GitHub](https://github.com/enzymefinance/onyx-sdk/discussions)
-
 ---
 
 _This SDK is under active development. APIs may change between versions. Always check the changelog before upgrading._
