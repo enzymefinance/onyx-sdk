@@ -7,11 +7,6 @@ The Onyx SDK is a TypeScript library for interacting with the Enzyme Onyx protoc
 Install the Onyx SDK and its peer dependencies using your preferred package manager:
 
 ```bash
-# npm
-npm install @enzymefinance/onyx-sdk
-npm install @enzymefinance/onyx-environment @enzymefinance/onyx-abis viem
-
-# pnpm
 pnpm add @enzymefinance/onyx-sdk
 pnpm add @enzymefinance/onyx-environment @enzymefinance/onyx-abis viem
 ```
