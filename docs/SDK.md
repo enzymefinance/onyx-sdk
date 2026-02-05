@@ -64,6 +64,8 @@ const walletClient = createWalletClient({
 These are the primary actions for building depositor-facing interfaces (subscriptions and redemptions).
 
 > **Note**: The addresses required below (deposit queue, redeem queue, shares contract) can be retrieved from the [Onyx API](https://api.onyx.enzyme.finance/reference) or your vault's configuration. Similarly, after submitting a deposit or redemption request, you can retrieve your request ID either by parsing the transaction receipt events (shown below) or by querying the API for your pending requests.
+>
+> **Controller vs Owner**: In deposit/redeem requests, `controller` is the address authorized to cancel the request, while `owner` is the address that will receive the shares (for deposits) or redeemed assets (for redemptions). These can be the same address.
 
 ### Approve Tokens
 
@@ -114,6 +116,10 @@ const logs = parseEventLogs({
   logs: receipt.logs,
   eventName: "DepositRequest",
 });
+
+if (logs.length === 0) {
+  throw new Error("DepositRequest event not found");
+}
 const requestId = logs[0].args.requestId;
 ```
 
@@ -153,9 +159,9 @@ import { ERC7540LikeRedeemQueueAbi } from "@enzymefinance/onyx-abis";
 
 const redeemTransaction = Components.ERC7540LikeRedeemQueue.requestRedeem({
   queueAddress: "0x...", // Redeem queue address
-  shares: 1000000000000000000n, // Amount of shares to redeem
-  controller: "0x...",
-  owner: "0x...",
+  amount: 1000000000000000000n, // Amount of shares to redeem
+  controller: "0x...", // Address that can cancel the request
+  owner: "0x...", // Address that will receive the redeemed assets
 });
 
 const hash = await walletClient.writeContract(redeemTransaction);
@@ -167,6 +173,10 @@ const logs = parseEventLogs({
   logs: receipt.logs,
   eventName: "RedeemRequest",
 });
+
+if (logs.length === 0) {
+  throw new Error("RedeemRequest event not found");
+}
 const requestId = logs[0].args.requestId;
 ```
 
@@ -303,19 +313,21 @@ Control who can deposit:
 // Add address to allowlist
 const addTransaction = Components.ERC7540LikeDepositQueue.addAllowedController({
   queueAddress: "0x...",
-  controller: "0x...",
+  allowedControllerAddress: "0x...",
 });
 
 // Remove address from allowlist
 const removeTransaction = Components.ERC7540LikeDepositQueue.removeAllowedController({
   queueAddress: "0x...",
-  controller: "0x...",
+  allowedControllerAddress: "0x...",
 });
 
 // Set deposit restriction mode
+// 0 = None (anyone can deposit)
+// 1 = ControllerAllowlist (only allowlisted addresses can deposit)
 const restrictionTransaction = Components.ERC7540LikeDepositQueue.setDepositRestriction({
   queueAddress: "0x...",
-  restriction: 1, // 0 = None, 1 = ControllerAllowlist
+  depositRestriction: 1,
 });
 ```
 
