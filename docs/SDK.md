@@ -40,7 +40,7 @@ For deployed contract addresses on each network, see [Contract Addresses](https:
 Set up a Viem client to interact with the blockchain:
 
 ```typescript
-import { createPublicClient, createWalletClient, http } from "viem";
+import { createPublicClient, createWalletClient, http, parseEventLogs } from "viem";
 import { mainnet } from "viem/chains";
 import { privateKeyToAccount } from "viem/accounts";
 
