@@ -125,7 +125,6 @@ Cancel a pending deposit request:
 const cancelTransaction = Components.ERC7540LikeDepositQueue.cancelDeposit({
   queueAddress: "0x...",
   requestId: 1n, // ID of the deposit request
-  controller: "0x...",
 });
 
 const hash = await walletClient.writeContract(cancelTransaction);
@@ -179,7 +178,6 @@ Cancel a pending redemption request:
 const cancelTransaction = Components.ERC7540LikeRedeemQueue.cancelRedeem({
   queueAddress: "0x...",
   requestId: 1n,
-  controller: "0x...",
 });
 
 const hash = await walletClient.writeContract(cancelTransaction);
@@ -214,7 +212,7 @@ const balance = await Asset.getBalanceOf(publicClient, {
 
 // Get current share price
 const sharePrice = await Shares.sharePrice(publicClient, {
-  shares: "0x...", // Shares contract address
+  sharesAddress: "0x...", // Shares contract address
 });
 
 // Get total supply
@@ -279,7 +277,7 @@ Set up fund fees:
 ```typescript
 // Set entrance fee
 const entranceFeeTransaction = Components.FeeHandler.setEntranceFee({
-  feeHandler: "0x...",
+  feeHandlerAddress: "0x...",
   feeBps: 50, // 0.5%
   recipient: "0x...",
 });
@@ -327,9 +325,15 @@ Update asset prices and share value:
 
 ```typescript
 const updateTransaction = Components.ValuationHandler.setAssetRatesThenUpdateShareValue({
-  valuationHandler: "0x...",
-  assets: ["0x..."], // Asset addresses
-  rates: [1000000n], // Prices in value asset terms
+  valuationHandlerAddress: "0x...",
+  assetRateInput: [
+    {
+      asset: "0x...", // Asset address
+      rate: 1000000n, // Price in value asset terms
+      expiry: Math.floor(Date.now() / 1000) + 3600, // Rate expiry timestamp
+    },
+  ],
+  untrackedPositionsValue: 0n, // Value of any untracked positions
 });
 
 const hash = await walletClient.writeContract(updateTransaction);
@@ -389,7 +393,7 @@ const [balance, allowance, sharePrice] = await Promise.all([
     spender: "0x...",
     asset: "0x...",
   }),
-  Shares.sharePrice(publicClient, { shares: "0x..." }),
+  Shares.sharePrice(publicClient, { sharesAddress: "0x..." }),
 ]);
 ```
 
