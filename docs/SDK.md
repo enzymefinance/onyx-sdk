@@ -89,6 +89,9 @@ const approveTransaction = Asset.approve({
 });
 
 const hash = await walletClient.writeContract(approveTransaction);
+
+// Wait for approval to be confirmed before depositing
+await publicClient.waitForTransactionReceipt({ hash });
 ```
 
 ### Request Deposit
@@ -98,7 +101,6 @@ Submit a deposit request to the queue:
 ```typescript
 import * as Components from "@enzymefinance/onyx-sdk/Components";
 import { ERC7540LikeDepositQueueAbi } from "@enzymefinance/onyx-abis";
-import { parseEventLogs } from "viem";
 
 const depositTransaction = Components.ERC7540LikeDepositQueue.requestDeposit({
   queueAddress: "0x...", // Deposit queue address
@@ -323,11 +325,10 @@ const removeTransaction = Components.ERC7540LikeDepositQueue.removeAllowedContro
 });
 
 // Set deposit restriction mode
-// 0 = None (anyone can deposit)
-// 1 = ControllerAllowlist (only allowlisted addresses can deposit)
+const { DepositRestriction } = Components.ERC7540LikeDepositQueue;
 const restrictionTransaction = Components.ERC7540LikeDepositQueue.setDepositRestriction({
   queueAddress: "0x...",
-  depositRestriction: 1,
+  depositRestriction: DepositRestriction.ControllerAllowlist, // or DepositRestriction.None
 });
 ```
 
