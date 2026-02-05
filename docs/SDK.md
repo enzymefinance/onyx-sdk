@@ -9,10 +9,11 @@ Install the Onyx SDK and its peer dependencies using your preferred package mana
 ```bash
 # npm
 npm install @enzymefinance/onyx-sdk
-
-# Install peer dependencies
 npm install @enzymefinance/onyx-environment @enzymefinance/onyx-abis viem
 
+# pnpm
+pnpm add @enzymefinance/onyx-sdk
+pnpm add @enzymefinance/onyx-environment @enzymefinance/onyx-abis viem
 ```
 
 > **Note**: `@enzymefinance/onyx-environment`, `@enzymefinance/onyx-abis`, and `viem` are peer dependencies that must be installed alongside the main SDK package.
@@ -127,7 +128,9 @@ const requestId = logs[0].args.requestId;
 
 ### Cancel Deposit
 
-Cancel a pending deposit request:
+Cancel a pending deposit request.
+
+> **Note**: A pending deposit request can only be cancelled after the queue's minimum request duration has elapsed. The contract stores a `canCancelTime` for each request; calling `cancelDeposit` before that time reverts with `MinRequestDurationNotElapsed`. Check whether a request is cancellable by fetching it with `getDepositRequest` and comparing `canCancelTime` to the current block timestamp.
 
 ```typescript
 const cancelTransaction = Components.ERC7540LikeDepositQueue.cancelDeposit({
@@ -184,7 +187,9 @@ const requestId = logs[0].args.requestId;
 
 ### Cancel Redemption
 
-Cancel a pending redemption request:
+Cancel a pending redemption request.
+
+> **Note**: A pending redemption request can only be cancelled after the queue's minimum request duration has elapsed. The contract stores a `canCancelTime` for each request; calling `cancelRedeem` before that time reverts with `MinRequestDurationNotElapsed`. Check whether a request is cancellable by fetching it with `getRedeemRequest` and comparing `canCancelTime` to the current block timestamp.
 
 ```typescript
 const cancelTransaction = Components.ERC7540LikeRedeemQueue.cancelRedeem({
