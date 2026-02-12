@@ -2,7 +2,7 @@ import { Version } from "../contracts.js";
 import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
-export default defineDeployment<Deployment.PLUME>({
+export default defineDeployment<typeof Deployment.PLUME>({
   inception: 28447435,
   kind: Kind.LIVE,
   label: "Plume",
@@ -12,10 +12,10 @@ export default defineDeployment<Deployment.PLUME>({
       contracts: {
         AccountERC20Tracker: "0x0ea28be6ffc57e0f95a489e03e935a23a0a98654",
         AccountERC20TrackerFactory: "0x0ebe720b5af7c15be21536f6f43b75328e8356e0",
-        ContinuousFlatRateManagementFeeTracker: "0x6fcad999f8ea426049f957295e9845948dcd5dac",
         ContinuousFlatRateManagementFeeTrackerFactory: "0x3e957d8ea89244627342b94280b98e2ccc3a700d",
-        ContinuousFlatRatePerformanceFeeTracker: "0x95d54d79ab21a54a49a336aeac617fd6a8e6d228",
+        ContinuousFlatRateManagementFeeTracker: "0x6fcad999f8ea426049f957295e9845948dcd5dac",
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x82de34583a276e777287b7bb165df6ab7eaa0ce4",
+        ContinuousFlatRatePerformanceFeeTracker: "0xf8b959f0f38002dc4799fc8c2f243d736ca4dac5",
         ERC7540LikeDepositQueue: "0xbc3f5cb6b3e53207c3e3cda592985c70b2aeba5c",
         ERC7540LikeDepositQueueFactory: "0x6e29f4a4b2ab5c9c17ddcb4b0a7eaad40dc13101",
         ERC7540LikeRedeemQueue: "0x9dd862aacaca03437cc9128d1be638d6688847f1",

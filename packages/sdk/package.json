@@ -25,13 +25,13 @@
     "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps"
   },
   "peerDependencies": {
-    "@enzymefinance/onyx-abis": "workspace:*",
-    "@enzymefinance/onyx-environment": "workspace:*",
+    "@enzymefinance/onyx-abis": "workspace:^1.0.0",
+    "@enzymefinance/onyx-environment": "workspace:^1.0.0",
     "viem": "^2.40.3"
   },
   "devDependencies": {
-    "@enzymefinance/onyx-abis": "workspace:*",
-    "@enzymefinance/onyx-environment": "workspace:*",
+    "@enzymefinance/onyx-abis": "workspace:^1.0.0",
+    "@enzymefinance/onyx-environment": "workspace:^1.0.0",
     "viem": "^2.40.3",
     "typescript": "^5.8.3"
   }
