@@ -8,24 +8,29 @@ export enum Status {
   DEPRECATED = "deprecated",
 }
 
-export enum Deployment {
-  ARBITRUM = "arbitrum",
-  BASE = "base",
-  ETHEREUM = "ethereum",
-  PLUME = "plume",
-}
+export const Deployment = {
+  ARBITRUM: "arbitrum",
+  BASE: "base",
+  ETHEREUM: "ethereum",
+  PLUME: "plume",
+  TESTNET: "testnet",
+} as const;
 
-export type DeploymentNetwork<TDeployment extends Deployment> = TDeployment extends Deployment.ARBITRUM
+export type DeploymentType = (typeof Deployment)[keyof typeof Deployment];
+
+export type DeploymentNetwork<TDeployment extends DeploymentType> = TDeployment extends typeof Deployment.ARBITRUM
   ? Network.ARBITRUM
-  : TDeployment extends Deployment.BASE
+  : TDeployment extends typeof Deployment.BASE
     ? Network.BASE
-    : TDeployment extends Deployment.ETHEREUM
+    : TDeployment extends typeof Deployment.ETHEREUM
       ? Network.ETHEREUM
-      : TDeployment extends Deployment.PLUME
+      : TDeployment extends typeof Deployment.PLUME
         ? Network.PLUME
-        : never;
+        : TDeployment extends typeof Deployment.TESTNET
+          ? Network.BASE
+          : never;
 
-export function isDeployment(value: unknown): value is Deployment {
+export function isDeployment(value: unknown): value is DeploymentType {
   return typeof value === "string" && Object.values<unknown>(Deployment).includes(value);
 }
 
@@ -41,7 +46,7 @@ export function isRelease(value: unknown): value is Release {
   return false;
 }
 
-export interface ReleaseDefinition<TVersion extends Version, TDeployment extends Deployment> {
+export interface ReleaseDefinition<TVersion extends Version, TDeployment extends DeploymentType> {
   /**
    * The unique release identifier.
    */
@@ -73,7 +78,7 @@ export enum Kind {
   LIVE = "live",
 }
 
-export interface DeploymentDefinition<TDeployment extends Deployment> {
+export interface DeploymentDefinition<TDeployment extends DeploymentType> {
   /**
    * The unique deployment identifier.
    */
@@ -102,13 +107,13 @@ export interface DeploymentDefinition<TDeployment extends Deployment> {
   }>;
 }
 
-export function defineDeployment<TDeployment extends Deployment>(deployment: DeploymentDefinition<TDeployment>) {
+export function defineDeployment<TDeployment extends DeploymentType>(deployment: DeploymentDefinition<TDeployment>) {
   return deployment;
 }
 
 export type Release = {
-  [TDeployment in Deployment]: (typeof releases)[TDeployment][keyof (typeof releases)[TDeployment]];
-}[Deployment];
+  [TDeployment in DeploymentType]: (typeof releases)[TDeployment][keyof (typeof releases)[TDeployment]];
+}[DeploymentType];
 
 export const releases = {
   [Deployment.ARBITRUM]: {
@@ -122,5 +127,8 @@ export const releases = {
   },
   [Deployment.PLUME]: {
     [Version.ONE]: `${Deployment.PLUME}.${Version.ONE}`,
+  },
+  [Deployment.TESTNET]: {
+    [Version.ONE]: `${Deployment.TESTNET}.${Version.ONE}`,
   },
 } as const;

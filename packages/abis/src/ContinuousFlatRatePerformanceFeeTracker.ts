@@ -2,9 +2,33 @@ export const ContinuousFlatRatePerformanceFeeTrackerAbi = [
   { type: "constructor", inputs: [], stateMutability: "nonpayable" },
   {
     type: "function",
+    name: "adjustHighWaterMark",
+    inputs: [
+      { name: "_hwm", type: "uint256", internalType: "uint256" },
+      { name: "_timestamp", type: "uint256", internalType: "uint256" },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
     name: "getHighWaterMark",
     inputs: [],
     outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getHighWaterMarkTimestamp",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getHurdleRate",
+    inputs: [],
+    outputs: [{ name: "", type: "int16", internalType: "int16" }],
     stateMutability: "view",
   },
   {
@@ -14,10 +38,11 @@ export const ContinuousFlatRatePerformanceFeeTrackerAbi = [
     outputs: [{ name: "", type: "uint16", internalType: "uint16" }],
     stateMutability: "view",
   },
+  { type: "function", name: "resetHighWaterMark", inputs: [], outputs: [], stateMutability: "nonpayable" },
   {
     type: "function",
-    name: "resetHighWaterMark",
-    inputs: [],
+    name: "setHurdleRate",
+    inputs: [{ name: "_hurdleRate", type: "int16", internalType: "int16" }],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -37,58 +62,53 @@ export const ContinuousFlatRatePerformanceFeeTrackerAbi = [
   },
   {
     type: "event",
-    name: "HighWaterMarkUpdated",
+    name: "HighWaterMarkAdjusted",
     inputs: [
-      {
-        name: "highWaterMark",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256",
-      },
+      { name: "highWaterMark", type: "uint256", indexed: false, internalType: "uint256" },
+      { name: "timestamp", type: "uint256", indexed: false, internalType: "uint256" },
     ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "HighWaterMarkUpdated",
+    inputs: [{ name: "highWaterMark", type: "uint256", indexed: false, internalType: "uint256" }],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "HurdleRateSet",
+    inputs: [{ name: "hurdleRate", type: "int16", indexed: false, internalType: "int16" }],
     anonymous: false,
   },
   {
     type: "event",
     name: "RateSet",
-    inputs: [
-      {
-        name: "rate",
-        type: "uint16",
-        indexed: false,
-        internalType: "uint16",
-      },
-    ],
+    inputs: [{ name: "rate", type: "uint16", indexed: false, internalType: "uint16" }],
     anonymous: false,
   },
   {
     type: "event",
     name: "Settled",
-    inputs: [
-      {
-        name: "valueDue",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256",
-      },
-    ],
+    inputs: [{ name: "valueDue", type: "uint256", indexed: false, internalType: "uint256" }],
     anonymous: false,
   },
+  { type: "error", name: "ComponentHelpersMixin__OnlyAdminOrOwner__Unauthorized", inputs: [] },
+  { type: "error", name: "ComponentHelpersMixin__OnlyShares__Unauthorized", inputs: [] },
   {
     type: "error",
-    name: "ComponentHelpersMixin__OnlyAdminOrOwner__Unauthorized",
+    name: "ContinuousFlatRatePerformanceFeeTracker__AdjustHighWaterMark__HighWaterMarkIsZero",
     inputs: [],
   },
   {
     type: "error",
-    name: "ComponentHelpersMixin__OnlyShares__Unauthorized",
+    name: "ContinuousFlatRatePerformanceFeeTracker__AdjustHighWaterMark__TimestampInFuture",
     inputs: [],
   },
-  {
-    type: "error",
-    name: "ContinuousFlatRatePerformanceFeeTracker__SetRate__ExceedsMax",
-    inputs: [],
-  },
+  { type: "error", name: "ContinuousFlatRatePerformanceFeeTracker__AdjustHighWaterMark__TimestampIsZero", inputs: [] },
+  { type: "error", name: "ContinuousFlatRatePerformanceFeeTracker__CalcHurdleAdjustedHwm__NoHurdleRate", inputs: [] },
+  { type: "error", name: "ContinuousFlatRatePerformanceFeeTracker__SetHurdleRate__LessThanMin", inputs: [] },
+  { type: "error", name: "ContinuousFlatRatePerformanceFeeTracker__SetRate__ExceedsMax", inputs: [] },
   {
     type: "error",
     name: "ContinuousFlatRatePerformanceFeeTracker__SettlePerformanceFee__HighWaterMarkNotInitialized",
@@ -96,9 +116,10 @@ export const ContinuousFlatRatePerformanceFeeTrackerAbi = [
   },
   {
     type: "error",
-    name: "FeeTrackerHelpersMixin__OnlyFeeHandler__Unauthorized",
+    name: "ContinuousFlatRatePerformanceFeeTracker__SettlePerformanceFee__HighWaterMarkTimestampIsZero",
     inputs: [],
   },
+  { type: "error", name: "FeeTrackerHelpersMixin__OnlyFeeHandler__Unauthorized", inputs: [] },
   {
     type: "error",
     name: "SafeCastOverflowedUintDowncast",
@@ -107,9 +128,5 @@ export const ContinuousFlatRatePerformanceFeeTrackerAbi = [
       { name: "value", type: "uint256", internalType: "uint256" },
     ],
   },
-  {
-    type: "error",
-    name: "StorageHelpersLib__VerifyErc7201Location__Mismatch",
-    inputs: [],
-  },
+  { type: "error", name: "StorageHelpersLib__VerifyErc7201Location__Mismatch", inputs: [] },
 ] as const;

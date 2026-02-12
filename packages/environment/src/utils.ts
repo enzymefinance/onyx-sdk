@@ -4,7 +4,7 @@ import { zeroAddress } from "viem";
 import { deployments } from "./deployments/all.js";
 import type { Network, NetworkSlug } from "./networks.js";
 import { getNetwork, isNetworkIdentifier } from "./networks.js";
-import type { Deployment, DeploymentDefinition } from "./releases.js";
+import type { DeploymentDefinition, DeploymentType } from "./releases.js";
 import { isDeployment, Kind } from "./releases.js";
 
 export function isHexString(value: unknown, length?: number): boolean {
@@ -37,18 +37,18 @@ export function toAddress(value: string): Address {
   throw new Error("Invalid address");
 }
 
-export function getDeployment<TDeployment extends Deployment>(
+export function getDeployment<TDeployment extends DeploymentType>(
   deployment: TDeployment,
 ): DeploymentDefinition<TDeployment>;
-export function getDeployment(network: Network | NetworkSlug): DeploymentDefinition<Deployment>;
-export function getDeployment<TDeployment extends Deployment>(
+export function getDeployment(network: Network | NetworkSlug): DeploymentDefinition<DeploymentType>;
+export function getDeployment<TDeployment extends DeploymentType>(
   deployment: TDeployment,
 ): DeploymentDefinition<TDeployment>;
 export function getDeployment(
-  deploymentOrNetwork: Deployment | Network | NetworkSlug,
-): DeploymentDefinition<Deployment>;
+  deploymentOrNetwork: DeploymentType | Network | NetworkSlug,
+): DeploymentDefinition<DeploymentType>;
 
-export function getDeployment(deploymentOrNetwork: Deployment | Network | NetworkSlug) {
+export function getDeployment(deploymentOrNetwork: DeploymentType | Network | NetworkSlug) {
   if (isDeployment(deploymentOrNetwork)) {
     return deployments[deploymentOrNetwork];
   }

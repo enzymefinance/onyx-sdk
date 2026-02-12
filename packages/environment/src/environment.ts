@@ -4,10 +4,10 @@ import { isVersion, Version } from "./contracts.js";
 import type { NetworkDefinition } from "./networks.js";
 import { getNetwork } from "./networks.js";
 import type { DeploymentDefinition, DeploymentNetwork, ReleaseDefinition } from "./releases.js";
-import { Deployment } from "./releases.js";
+import { Deployment, type DeploymentType } from "./releases.js";
 import { isNonZeroAddress } from "./utils.js";
 
-export class EnvironmentGroup<TDeployment extends Deployment = Deployment> {
+export class EnvironmentGroup<TDeployment extends DeploymentType = DeploymentType> {
   public readonly network: NetworkDefinition<DeploymentNetwork<TDeployment>>;
   private environments: Partial<{
     [TVersion in Version]: Environment<TVersion, TDeployment>;
@@ -62,7 +62,7 @@ export class EnvironmentGroup<TDeployment extends Deployment = Deployment> {
   }
 }
 
-export class Environment<TVersion extends Version = Version, TDeployment extends Deployment = Deployment> {
+export class Environment<TVersion extends Version = Version, TDeployment extends DeploymentType = DeploymentType> {
   public readonly network: NetworkDefinition<DeploymentNetwork<TDeployment>>;
   public readonly release: ReleaseDefinition<TVersion, TDeployment>;
   public readonly contracts: VersionContracts<TVersion>;
@@ -79,7 +79,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     return environment.release.version === version;
   }
 
-  private static createIsDeployment<TDeployment extends Deployment>(deployment: TDeployment) {
+  private static createIsDeployment<TDeployment extends DeploymentType>(deployment: TDeployment) {
     return (environment: Environment): environment is Environment<Version, TDeployment> =>
       environment.deployment.slug === deployment;
   }
@@ -88,7 +88,8 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
   public static isDeploymentBase = Environment.createIsDeployment(Deployment.BASE);
   public static isDeploymentEthereum = Environment.createIsDeployment(Deployment.ETHEREUM);
   public static isDeploymentPlume = Environment.createIsDeployment(Deployment.PLUME);
-  public static isDeployment<TDeployment extends Deployment>(
+  public static isDeploymentTestnet = Environment.createIsDeployment(Deployment.TESTNET);
+  public static isDeployment<TDeployment extends DeploymentType>(
     deployment: TDeployment,
     environment: Environment,
   ): environment is Environment<Version, TDeployment> {
