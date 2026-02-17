@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 1.1.0
+
+### Minor Changes
+
+- [#26](https://github.com/enzymefinance/onyx-sdk/pull/26) [`e8f1bdf`](https://github.com/enzymefinance/onyx-sdk/commit/e8f1bdf864736f4a16045a06a2c1dbdf690e8f0a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add hurdle rate, shares utils, and testnet
+
 ## 1.0.0
 
 ### Major Changes
