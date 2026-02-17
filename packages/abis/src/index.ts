@@ -9,5 +9,6 @@ export * from "./FeeHandler.js";
 export * from "./Global.js";
 export * from "./LimitedAccessLimitedCallForwarder.js";
 export * from "./LinearCreditDebtTracker.js";
+export * from "./PushSplitFactory.js";
 export * from "./Shares.js";
 export * from "./ValuationHandler.js";

@@ -2,7 +2,7 @@ import { Version } from "../contracts.js";
 import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
-export default defineDeployment<Deployment.ARBITRUM>({
+export default defineDeployment<typeof Deployment.ARBITRUM>({
   inception: 377255746,
   kind: Kind.LIVE,
   label: "Arbitrum",
@@ -15,7 +15,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         ContinuousFlatRateManagementFeeTrackerFactory: "0x280c921c34598c83d8ad2dd21f7176c593342dd7",
         ContinuousFlatRateManagementFeeTracker: "0x921986e7fc0988eeae2b758e4a6874d49f91e71f",
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x73673ad39e391e708f8944608b03af8970c0343b",
-        ContinuousFlatRatePerformanceFeeTracker: "0xbc0d2902a3be461222c3f52973aa34a206ff02d8",
+        ContinuousFlatRatePerformanceFeeTracker: "0x67dd39db68618e32b801654006f133b6ead7116b",
         ERC7540LikeDepositQueueFactory: "0xdeabb9d2f30bec34ba75543656e4d197d06a51dc",
         ERC7540LikeDepositQueue: "0x27e5589d0406f7a9eb03a597c95132bf2c82f461",
         ERC7540LikeRedeemQueueFactory: "0xc4cbc4f610e59a98e2f3d18950add0054e6c74bb",

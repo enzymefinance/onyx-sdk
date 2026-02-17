@@ -26,6 +26,24 @@ export function resetHighWaterMark(args: { tracker: Address }) {
   });
 }
 
+export function setHurdleRate(args: { tracker: Address; hurdleRate: number }) {
+  return new Viem.PopulatedTransaction({
+    abi: ContinuousFlatRatePerformanceFeeTrackerAbi,
+    functionName: "setHurdleRate",
+    address: args.tracker,
+    args: [args.hurdleRate],
+  });
+}
+
+export function adjustHighWaterMark(args: { tracker: Address; highWaterMark: bigint; timestamp: bigint }) {
+  return new Viem.PopulatedTransaction({
+    abi: ContinuousFlatRatePerformanceFeeTrackerAbi,
+    functionName: "adjustHighWaterMark",
+    address: args.tracker,
+    args: [args.highWaterMark, args.timestamp],
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
@@ -53,6 +71,34 @@ export function getHighWaterMark(
     ...Viem.extractBlockParameters(args),
     abi: ContinuousFlatRatePerformanceFeeTrackerAbi,
     functionName: "getHighWaterMark",
+    address: args.tracker,
+  });
+}
+
+export function getHighWaterMarkTimestamp(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    tracker: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ContinuousFlatRatePerformanceFeeTrackerAbi,
+    functionName: "getHighWaterMarkTimestamp",
+    address: args.tracker,
+  });
+}
+
+export function getHurdleRate(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    tracker: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ContinuousFlatRatePerformanceFeeTrackerAbi,
+    functionName: "getHurdleRate",
     address: args.tracker,
   });
 }

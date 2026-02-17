@@ -2,7 +2,7 @@ import { Version } from "../contracts.js";
 import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
-export default defineDeployment<Deployment.BASE>({
+export default defineDeployment<typeof Deployment.BASE>({
   inception: 35306000,
   kind: Kind.LIVE,
   label: "Base",
@@ -15,7 +15,7 @@ export default defineDeployment<Deployment.BASE>({
         ContinuousFlatRateManagementFeeTrackerFactory: "0x93b7537ed9ecfb7bd0b7f4d0252d768c465c1975",
         ContinuousFlatRateManagementFeeTracker: "0x86132f3c9a40e4cf26cd59a47e5f1c726acb5ea8",
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x35755ca143ba395689f5da3d22f415fc07a62dd2",
-        ContinuousFlatRatePerformanceFeeTracker: "0x6617e04d4cb9e342513124b197b2d584d21f9a4f",
+        ContinuousFlatRatePerformanceFeeTracker: "0x9fc697499b31b9fdae9e873db693ec730a58ac67",
         ERC7540LikeDepositQueueFactory: "0xdefad5119f7b8ef754ccb11a4cf4956a3ec3d643",
         ERC7540LikeDepositQueue: "0x8a757022c40bc2f35ff88a0d6b34ff23dd04ab1a",
         ERC7540LikeRedeemQueueFactory: "0x5be587a9572f29c22bd921fc708043aa5e934b9d",
