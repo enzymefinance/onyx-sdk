@@ -34,7 +34,7 @@ jobs:
       - name: Manage changesets
         uses: changesets/action@v1
         with:
-          version: pnpm changeset version && pnpm install --no-frozen-lockfile
+          version: pnpm ci:version
           publish: pnpm release
           commit: "chore: publish package(s)"
           title: "chore: publish package(s)"
