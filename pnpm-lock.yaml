@@ -71,10 +71,10 @@ importers:
   packages/sdk:
     devDependencies:
       '@enzymefinance/onyx-abis':
-        specifier: workspace:^1.0.0
+        specifier: workspace:^1.1.0
         version: link:../abis/dist
       '@enzymefinance/onyx-environment':
-        specifier: workspace:^1.0.0
+        specifier: workspace:^1.1.0
         version: link:../environment/dist
       typescript:
         specifier: ^5.8.3
