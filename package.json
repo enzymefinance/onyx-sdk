@@ -10,7 +10,8 @@
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --build tsconfig.json",
     "format": "biome format --write . && biome check --write --unsafe .",
-    "lint": "biome check ."
+    "lint": "biome check .",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",
