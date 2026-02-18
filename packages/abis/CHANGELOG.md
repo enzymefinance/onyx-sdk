@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-abis
 
+## 1.1.0
+
+### Minor Changes
+
+- [#28](https://github.com/enzymefinance/onyx-sdk/pull/28) [`faa89c7`](https://github.com/enzymefinance/onyx-sdk/commit/faa89c7d3838c2f28417c6e5ce67079d9a37689c) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add hurdle rate, shares utils, and testnet
+
 ## 1.0.0
 
 ### Major Changes
