@@ -66,7 +66,7 @@ export interface ReleaseDefinition<TVersion extends Version, TDeployment extends
   /**
    * Mapping of contract names and their addresses within this release.
    */
-  readonly contracts: VersionContracts<TVersion>;
+  readonly contracts: VersionContracts<TVersion, TDeployment>;
   /**
    * The release status (pending, deprecated or live).
    */
