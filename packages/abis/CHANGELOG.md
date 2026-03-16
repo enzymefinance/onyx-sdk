@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-abis
 
+## 1.2.0
+
+### Minor Changes
+
+- [#34](https://github.com/enzymefinance/onyx-sdk/pull/34) [`ec684c9`](https://github.com/enzymefinance/onyx-sdk/commit/ec684c9f82e1f1ed5a4a958f7b0038bbda88a627) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add CRE workflow consumer abi
+
 ## 1.1.0
 
 ### Minor Changes
