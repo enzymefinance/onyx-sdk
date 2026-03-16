@@ -1,4 +1,5 @@
 import type { Address } from "viem";
+import { Deployment, type DeploymentType } from "./releases";
 
 export enum Version {
   ONE = "one",
@@ -8,9 +9,10 @@ export function isVersion(version: unknown): version is Version {
   return typeof version === "string" && Object.values<unknown>(Version).includes(version);
 }
 
-export type VersionContracts<TVersion extends Version> = TVersion extends Version.ONE ? VersionOneContracts : never;
-
-export type Contracts = VersionOneContracts;
+export type VersionContracts<
+  TVersion extends Version,
+  TDeployment extends DeploymentType,
+> = TVersion extends Version.ONE ? VersionOneContracts<TDeployment> : never;
 
 export interface CommonContracts {
   readonly AccountERC20TrackerFactory: Address;
@@ -37,4 +39,20 @@ export interface CommonContracts {
   readonly ValuationHandler: Address;
 }
 
-export interface VersionOneContracts extends CommonContracts {}
+type CreWorkflowConsumerContracts = {
+  readonly CreWorkflowConsumerFactory: Address;
+  readonly CreWorkflowConsumer: Address;
+};
+
+type DeploymentContractsMap = {
+  [Deployment.ETHEREUM]: CreWorkflowConsumerContracts;
+  [Deployment.BASE]: CreWorkflowConsumerContracts;
+  [Deployment.TESTNET]: CreWorkflowConsumerContracts;
+  [Deployment.ARBITRUM]: CreWorkflowConsumerContracts;
+  [Deployment.PLUME]: Record<never, never>;
+};
+
+export type DeploymentContracts<TDeployment extends DeploymentType> = DeploymentContractsMap[TDeployment];
+
+export type VersionOneContracts<TDeployment extends DeploymentType> = CommonContracts &
+  DeploymentContracts<TDeployment>;

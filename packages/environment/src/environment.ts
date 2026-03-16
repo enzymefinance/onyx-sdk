@@ -38,9 +38,9 @@ export class EnvironmentGroup<TDeployment extends DeploymentType = DeploymentTyp
     return release.version;
   }
 
-  public getEnvironment<TVersion extends Version>(version: TVersion): Environment<TVersion>;
-  public getEnvironment(address: Address): Environment;
-  public getEnvironment(versionOrAddress: Address | Version): Environment;
+  public getEnvironment<TVersion extends Version>(version: TVersion): Environment<TVersion, TDeployment>;
+  public getEnvironment(address: Address): Environment<Version, TDeployment>;
+  public getEnvironment(versionOrAddress: Address | Version): Environment<Version, TDeployment>;
   public getEnvironment(versionOrAddress: Address | Version) {
     const version = isVersion(versionOrAddress) ? versionOrAddress : this.getVersion(versionOrAddress);
 
@@ -65,7 +65,7 @@ export class EnvironmentGroup<TDeployment extends DeploymentType = DeploymentTyp
 export class Environment<TVersion extends Version = Version, TDeployment extends DeploymentType = DeploymentType> {
   public readonly network: NetworkDefinition<DeploymentNetwork<TDeployment>>;
   public readonly release: ReleaseDefinition<TVersion, TDeployment>;
-  public readonly contracts: VersionContracts<TVersion>;
+  public readonly contracts: VersionContracts<TVersion, TDeployment>;
 
   private static createIsVersion<TVersion extends Version>(version: TVersion) {
     return (environment: Environment): environment is Environment<TVersion> => environment.release.version === version;
@@ -113,16 +113,17 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     this.network = getNetwork(network);
   }
 
-  public hasContract(name: keyof VersionContracts<TVersion>) {
+  public hasContract(name: keyof VersionContracts<TVersion, TDeployment>) {
     return isNonZeroAddress(this.contracts[name]);
   }
 
-  public getContract(name: keyof VersionContracts<TVersion>) {
+  public getContract(name: keyof VersionContracts<TVersion, TDeployment>): Address {
     if (!this.hasContract(name)) {
       throw new Error(`Missing contract ${String(name)}`);
     }
 
-    return this.contracts[name];
+    // biome-ignore lint/suspicious/noExplicitAny: all contract fields are Address but TS can't prove it with generic DeploymentContracts
+    return this.contracts[name] as any;
   }
 
   public toJSON() {
