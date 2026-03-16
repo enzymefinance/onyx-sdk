@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 1.2.0
+
+### Minor Changes
+
+- [#32](https://github.com/enzymefinance/onyx-sdk/pull/32) [`bdc3bf3`](https://github.com/enzymefinance/onyx-sdk/commit/bdc3bf3c02846e6246467c8ffa486078ade8fe5a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add CRE workflow addresses
+
 ## 1.1.0
 
 ### Minor Changes
