@@ -16,6 +16,8 @@ export default defineDeployment<typeof Deployment.TESTNET>({
         ContinuousFlatRateManagementFeeTracker: "0x7f95a241709f643c1a46c8d743a2d28d4b72acb7",
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x57a469eb614bc8a7e8439b213d1bf81934b0d05a",
         ContinuousFlatRatePerformanceFeeTracker: "0x09e8374b867ae7f014b2d57775f79a98e090ed9e",
+        CreWorkflowConsumerFactory: "0xc87c19eb2acb99a3a78f4726df0b1e037173d0f3",
+        CreWorkflowConsumer: "0xf9e654426991972c1c521393b3ab35b90e759fdf",
         ERC7540LikeDepositQueueFactory: "0x39e97a433d40f634bc5e6ad9a7e65e7e2a1c8f93",
         ERC7540LikeDepositQueue: "0xdf83545246da00537e867b4ac8057c5bace99d42",
         ERC7540LikeRedeemQueueFactory: "0x207c7b4d1280675f017df7b71c74bf7b8767d5fa",
