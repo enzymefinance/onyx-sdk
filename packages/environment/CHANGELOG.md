@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 2.0.0
+
+### Major Changes
+
+- [#35](https://github.com/enzymefinance/onyx-sdk/pull/35) [`38049f0`](https://github.com/enzymefinance/onyx-sdk/commit/38049f03337334c50d6cfb24914d4dd762e92b10) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add sync handler, allowlsit, update async queue, add megaeth, and use sepolia for testnet
+
 ## 1.2.0
 
 ### Minor Changes
