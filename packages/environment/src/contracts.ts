@@ -33,8 +33,14 @@ export interface CommonContracts {
   readonly LimitedAccessLimitedCallForwarder: Address;
   readonly LinearCreditDebtTrackerFactory: Address;
   readonly LinearCreditDebtTracker: Address;
+  readonly OwnableAddressListFactory: Address;
+  readonly OwnableAddressList: Address;
   readonly SharesFactory: Address;
   readonly Shares: Address;
+  readonly SharesOwnedAddressListFactory: Address;
+  readonly SharesOwnedAddressList: Address;
+  readonly SyncDepositHandlerFactory: Address;
+  readonly SyncDepositHandler: Address;
   readonly ValuationHandlerFactory: Address;
   readonly ValuationHandler: Address;
 }
@@ -47,6 +53,7 @@ type CreWorkflowConsumerContracts = {
 type DeploymentContractsMap = {
   [Deployment.ETHEREUM]: CreWorkflowConsumerContracts;
   [Deployment.BASE]: CreWorkflowConsumerContracts;
+  [Deployment.MEGAETH]: CreWorkflowConsumerContracts;
   [Deployment.TESTNET]: CreWorkflowConsumerContracts;
   [Deployment.ARBITRUM]: CreWorkflowConsumerContracts;
   [Deployment.PLUME]: Record<never, never>;

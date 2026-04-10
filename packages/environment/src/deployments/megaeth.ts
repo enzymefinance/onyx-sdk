@@ -1,0 +1,52 @@
+import { Version } from "../contracts.js";
+import { Network } from "../networks.js";
+import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
+
+export default defineDeployment<typeof Deployment.MEGAETH>({
+  inception: 12251855,
+  kind: Kind.LIVE,
+  label: "MegaETH",
+  network: Network.MEGAETH,
+  releases: {
+    [Version.ONE]: {
+      contracts: {
+        AccountERC20TrackerFactory: "0xb134cadf80738f321e497e1f0301b2d1959fd060",
+        AccountERC20Tracker: "0x87db8e815f9bde3b5b686e3e892faf0e86481c44",
+        ContinuousFlatRateManagementFeeTrackerFactory: "0x0d252fd6838bd92c024e2086364fbc830ec252ce",
+        ContinuousFlatRateManagementFeeTracker: "0xbe579b9515fac20cecb307d4f51e0ad83839cd11",
+        ContinuousFlatRatePerformanceFeeTrackerFactory: "0x648bf367a28a7fc3af2ccd676108cd386015258d",
+        ContinuousFlatRatePerformanceFeeTracker: "0x83e249d603459d2a926ee85d8ba8d0aeabe101f2",
+        CreWorkflowConsumerFactory: "0x3569297fe3dd2715e67c44b9e8320e06e8ff35cf",
+        CreWorkflowConsumer: "0xcccee3084d491efb3fbc107bb28ed0316cebff11",
+        ERC7540LikeDepositQueueFactory: "0xb12effc2e47397c8561f73713c8ae1bd27078dde",
+        ERC7540LikeDepositQueue: "0x474c8d4a0e53b7235c6f8fc27c9b6406a32dd0b1",
+        ERC7540LikeRedeemQueueFactory: "0x31329024f1a3e4a4b3336e0b1dfa74cc3fec633e",
+        ERC7540LikeRedeemQueue: "0x06ebb3ed77dda3d7c11a3b1d7e1df9b2bf8258c2",
+        FeeHandlerFactory: "0x8ddf1f3f0c13e099378b2b6f73cdb8f61526ed6f",
+        FeeHandler: "0x205e9b8450610ef81b1d67a4e9e153ef8a76e7ff",
+        Global: "0xe9cfe0f99b8a01fd80f110da4d8f08f6bf3dd6a6",
+        GlobalProxy: "0x6ddbbcc38bea7d514f3112c5aa7d99b34b432ed8",
+        LimitedAccessLimitedCallForwarderFactory: "0xa0ed89af63367ddc8e1dd6b992f20d1214ccb51c",
+        LimitedAccessLimitedCallForwarder: "0x8f96e9bfa455af4f6f4ee81d0dad40ed90e1fd55",
+        LinearCreditDebtTrackerFactory: "0x3982e1cc26b99310747df54f445063745c54a324",
+        LinearCreditDebtTracker: "0x1453e5a5c029cdd91f584c603818baf2ab4ce663",
+        OwnableAddressListFactory: "0xbb4ff351877639c3a6ae24d97975202e5ffb8670",
+        OwnableAddressList: "0x592a4935f7b8e95b513eafb9f87a380e0d9314e4",
+        SharesFactory: "0x6cef034c88339da1a94145592f32d44592a1b100",
+        Shares: "0xd2bdd90629351cc1cd4427917ae23f97fd9d9933",
+        SharesOwnedAddressListFactory: "0xb7460593bd222e24a2bf4393aa6416bd373995e0",
+        SharesOwnedAddressList: "0x4baf8282571febdfd8768b475551ec14e144edb3",
+        SyncDepositHandlerFactory: "0x03f7f3b8da875881206655d8099b9dacf721f1ef",
+        SyncDepositHandler: "0xf78130afeda6d9df3394b34d36239aec7fae48d9",
+        ValuationHandlerFactory: "0xd7b0610db501b15bfb9b7ddad8b3869de262a327",
+        ValuationHandler: "0xdfd3c9210b1dba7c94fecb65e23c944012ad365b",
+      },
+      inception: 12251855,
+      network: Network.MEGAETH,
+      slug: `${Deployment.MEGAETH}.${Version.ONE}`,
+      status: Status.LIVE,
+      version: Version.ONE,
+    },
+  },
+  slug: Deployment.MEGAETH,
+});

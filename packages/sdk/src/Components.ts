@@ -3,6 +3,7 @@ export * as ContinuousFlatRatePerformanceFeeTracker from "./components/fees/Cont
 export * as FeeHandler from "./components/fees/FeeHandler";
 export * as ERC7540LikeDepositQueue from "./components/issuance/ERC7540LikeDepositQueue.js";
 export * as ERC7540LikeRedeemQueue from "./components/issuance/ERC7540LikeRedeemQueue.js";
+export * as SyncDepositHandler from "./components/issuance/SyncDepositHandler.js";
 export * as AccountERC20Tracker from "./components/position-trackers/AccountERC20Tracker";
 export * as LinearCreditDebtTracker from "./components/position-trackers/LinearCreditDebtTracker";
 export * as LimitedAccessLimitedCallForwarder from "./components/roles/LimitedAccessLimitedCallForwarder";

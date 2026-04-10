@@ -2,7 +2,7 @@ export const ERC7540LikeDepositQueueAbi = [
   { type: "constructor", inputs: [], stateMutability: "nonpayable" },
   {
     type: "function",
-    name: "addAllowedController",
+    name: "addDepositControllerToInternalAllowlist",
     inputs: [{ name: "_controller", type: "address", internalType: "address" }],
     outputs: [],
     stateMutability: "nonpayable",
@@ -33,6 +33,19 @@ export const ERC7540LikeDepositQueueAbi = [
     ],
     outputs: [],
     stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getDepositControllerExternalAllowlist",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "contract IAddressList",
+      },
+    ],
+    stateMutability: "view",
   },
   {
     type: "function",
@@ -93,14 +106,14 @@ export const ERC7540LikeDepositQueueAbi = [
   },
   {
     type: "function",
-    name: "isInAllowedControllerList",
+    name: "isInDepositControllerInternalAllowlist",
     inputs: [{ name: "_who", type: "address", internalType: "address" }],
     outputs: [{ name: "", type: "bool", internalType: "bool" }],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "removeAllowedController",
+    name: "removeDepositControllerFromInternalAllowlist",
     inputs: [{ name: "_controller", type: "address", internalType: "address" }],
     outputs: [],
     stateMutability: "nonpayable",
@@ -132,6 +145,13 @@ export const ERC7540LikeDepositQueueAbi = [
     type: "function",
     name: "setAsset",
     inputs: [{ name: "_asset", type: "address", internalType: "address" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setDepositControllerExternalAllowlist",
+    inputs: [{ name: "_allowlist", type: "address", internalType: "address" }],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -234,6 +254,19 @@ export const ERC7540LikeDepositQueueAbi = [
         type: "uint256",
         indexed: false,
         internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DepositControllerExternalAllowlistSet",
+    inputs: [
+      {
+        name: "allowlist",
+        type: "address",
+        indexed: false,
+        internalType: "address",
       },
     ],
     anonymous: false,

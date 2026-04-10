@@ -2,14 +2,18 @@ export enum Network {
   ARBITRUM = 42161,
   BASE = 8453,
   ETHEREUM = 1,
+  MEGAETH = 4326,
   PLUME = 98866,
+  SEPOLIA = 11155111,
 }
 
 export enum NetworkSlug {
   ARBITRUM = "arbitrum",
   BASE = "base",
   ETHEREUM = "ethereum",
+  MEGAETH = "megaeth",
   PLUME = "plume",
+  SEPOLIA = "sepolia",
 }
 
 export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.ARBITRUM
@@ -18,9 +22,13 @@ export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.A
     ? NetworkSlug.BASE
     : TNetwork extends Network.ETHEREUM
       ? NetworkSlug.ETHEREUM
-      : TNetwork extends Network.PLUME
-        ? NetworkSlug.PLUME
-        : never;
+      : TNetwork extends Network.MEGAETH
+        ? NetworkSlug.MEGAETH
+        : TNetwork extends Network.PLUME
+          ? NetworkSlug.PLUME
+          : TNetwork extends Network.SEPOLIA
+            ? NetworkSlug.SEPOLIA
+            : never;
 
 export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug extends NetworkSlug.ARBITRUM
   ? Network.ARBITRUM
@@ -28,9 +36,13 @@ export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug exten
     ? Network.BASE
     : TNetworkSlug extends NetworkSlug.ETHEREUM
       ? Network.ETHEREUM
-      : TNetworkSlug extends NetworkSlug.PLUME
-        ? Network.PLUME
-        : never;
+      : TNetworkSlug extends NetworkSlug.MEGAETH
+        ? Network.MEGAETH
+        : TNetworkSlug extends NetworkSlug.PLUME
+          ? Network.PLUME
+          : TNetworkSlug extends NetworkSlug.SEPOLIA
+            ? Network.SEPOLIA
+            : never;
 
 export function getNetwork<TNetwork extends Network = Network>(network: TNetwork): NetworkDefinition<TNetwork>;
 export function getNetwork<TNetworkSlug extends NetworkSlug = NetworkSlug>(
@@ -88,7 +100,9 @@ export const slugByNetwork: {
   [Network.ARBITRUM]: NetworkSlug.ARBITRUM,
   [Network.BASE]: NetworkSlug.BASE,
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM,
+  [Network.MEGAETH]: NetworkSlug.MEGAETH,
   [Network.PLUME]: NetworkSlug.PLUME,
+  [Network.SEPOLIA]: NetworkSlug.SEPOLIA,
 };
 
 export const networkBySlug: {
@@ -97,7 +111,9 @@ export const networkBySlug: {
   [NetworkSlug.ARBITRUM]: Network.ARBITRUM,
   [NetworkSlug.BASE]: Network.BASE,
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM,
+  [NetworkSlug.MEGAETH]: Network.MEGAETH,
   [NetworkSlug.PLUME]: Network.PLUME,
+  [NetworkSlug.SEPOLIA]: Network.SEPOLIA,
 };
 
 const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
@@ -136,6 +152,24 @@ const base: NetworkDefinition<Network.BASE> = {
   slug: NetworkSlug.BASE,
 };
 
+const megaeth: NetworkDefinition<Network.MEGAETH> = {
+  currency: {
+    nativeToken: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+      network: Network.MEGAETH,
+    },
+  },
+  explorer: {
+    label: "Blockscout",
+    url: "https://megaeth.blockscout.com/",
+  },
+  id: Network.MEGAETH,
+  label: "MegaETH",
+  slug: NetworkSlug.MEGAETH,
+};
+
 const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   currency: {
     nativeToken: {
@@ -152,6 +186,24 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   id: Network.ETHEREUM,
   label: "Ethereum",
   slug: NetworkSlug.ETHEREUM,
+};
+
+const sepolia: NetworkDefinition<Network.SEPOLIA> = {
+  currency: {
+    nativeToken: {
+      name: "Sepolia Ether",
+      symbol: "ETH",
+      decimals: 18,
+      network: Network.SEPOLIA,
+    },
+  },
+  explorer: {
+    label: "Sepolia Etherscan",
+    url: "https://sepolia.etherscan.io/",
+  },
+  id: Network.SEPOLIA,
+  label: "Sepolia",
+  slug: NetworkSlug.SEPOLIA,
 };
 
 const plume: NetworkDefinition<Network.PLUME> = {
@@ -178,5 +230,7 @@ export const networks: {
   [Network.ARBITRUM]: arbitrum,
   [Network.BASE]: base,
   [Network.ETHEREUM]: mainnet,
+  [Network.MEGAETH]: megaeth,
   [Network.PLUME]: plume,
+  [Network.SEPOLIA]: sepolia,
 };
