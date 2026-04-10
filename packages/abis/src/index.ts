@@ -3,6 +3,7 @@ export * from "./BeaconFactory.js";
 export * from "./ComponentBeaconFactory.js";
 export * from "./ContinuousFlatRateManagementFeeTracker.js";
 export * from "./ContinuousFlatRatePerformanceFeeTracker.js";
+export * from "./CreWorkflowConsumer.js";
 export * from "./ERC7540LikeDepositQueue.js";
 export * from "./ERC7540LikeRedeemQueue.js";
 export * from "./FeeHandler.js";
