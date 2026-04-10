@@ -1,5 +1,3 @@
-export const a = 1;
-
 import { ERC7540LikeDepositQueueAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client, Hex } from "viem";
 import { readContract } from "viem/actions";
@@ -75,19 +73,25 @@ export function executeDepositRequests(args: { queueAddress: Address; requestIds
 
 // Shares holding
 
-export function addAllowedController(args: { queueAddress: Address; allowedControllerAddress: Address }) {
+export function addDepositControllerToInternalAllowlist(args: {
+  queueAddress: Address;
+  allowedControllerAddress: Address;
+}) {
   return new Viem.PopulatedTransaction({
     abi: ERC7540LikeDepositQueueAbi,
-    functionName: "addAllowedController",
+    functionName: "addDepositControllerToInternalAllowlist",
     args: [args.allowedControllerAddress],
     address: args.queueAddress,
   });
 }
 
-export function removeAllowedController(args: { queueAddress: Address; allowedControllerAddress: Address }) {
+export function removeDepositControllerFromInternalAllowlist(args: {
+  queueAddress: Address;
+  allowedControllerAddress: Address;
+}) {
   return new Viem.PopulatedTransaction({
     abi: ERC7540LikeDepositQueueAbi,
-    functionName: "removeAllowedController",
+    functionName: "removeDepositControllerFromInternalAllowlist",
     args: [args.allowedControllerAddress],
     address: args.queueAddress,
   });
@@ -184,7 +188,7 @@ export function getDepositRestriction(
   });
 }
 
-export function isInAllowedControllerList(
+export function isInDepositControllerInternalAllowlist(
   client: Client,
   args: Viem.ContractCallParameters<{
     queueAddress: Address;
@@ -194,7 +198,7 @@ export function isInAllowedControllerList(
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: ERC7540LikeDepositQueueAbi,
-    functionName: "isInAllowedControllerList",
+    functionName: "isInDepositControllerInternalAllowlist",
     address: args.queueAddress,
     args: [args.controllerAddress],
   });
