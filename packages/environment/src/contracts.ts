@@ -54,7 +54,7 @@ type DeploymentContractsMap = {
   [Deployment.ETHEREUM]: CreWorkflowConsumerContracts;
   [Deployment.BASE]: CreWorkflowConsumerContracts;
   [Deployment.MEGAETH]: CreWorkflowConsumerContracts;
-  [Deployment.TESTNET]: CreWorkflowConsumerContracts;
+  [Deployment.SEPOLIA]: CreWorkflowConsumerContracts;
   [Deployment.ARBITRUM]: CreWorkflowConsumerContracts;
   [Deployment.PLUME]: Record<never, never>;
 };

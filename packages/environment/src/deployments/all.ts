@@ -11,7 +11,7 @@ import base from "./base.js";
 import ethereum from "./ethereum.js";
 import megaeth from "./megaeth.js";
 import plume from "./plume.js";
-import testnet from "./testnet.js";
+import sepolia from "./sepolia.js";
 
 export const deployments = {
   [Deployment.ARBITRUM]: arbitrum,
@@ -19,7 +19,7 @@ export const deployments = {
   [Deployment.ETHEREUM]: ethereum,
   [Deployment.MEGAETH]: megaeth,
   [Deployment.PLUME]: plume,
-  [Deployment.TESTNET]: testnet,
+  [Deployment.SEPOLIA]: sepolia,
 } as const;
 
 export function getEnvironmentGroup(deployment: DeploymentType) {

@@ -14,7 +14,7 @@ export const Deployment = {
   ETHEREUM: "ethereum",
   MEGAETH: "megaeth",
   PLUME: "plume",
-  TESTNET: "testnet",
+  SEPOLIA: "sepolia",
 } as const;
 
 export type DeploymentType = (typeof Deployment)[keyof typeof Deployment];
@@ -29,7 +29,7 @@ export type DeploymentNetwork<TDeployment extends DeploymentType> = TDeployment 
         ? Network.MEGAETH
         : TDeployment extends typeof Deployment.PLUME
           ? Network.PLUME
-          : TDeployment extends typeof Deployment.TESTNET
+          : TDeployment extends typeof Deployment.SEPOLIA
             ? Network.SEPOLIA
             : never;
 
@@ -134,7 +134,7 @@ export const releases = {
   [Deployment.PLUME]: {
     [Version.ONE]: `${Deployment.PLUME}.${Version.ONE}`,
   },
-  [Deployment.TESTNET]: {
-    [Version.ONE]: `${Deployment.TESTNET}.${Version.ONE}`,
+  [Deployment.SEPOLIA]: {
+    [Version.ONE]: `${Deployment.SEPOLIA}.${Version.ONE}`,
   },
 } as const;
