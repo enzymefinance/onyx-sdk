@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 3.0.0
+
+### Major Changes
+
+- [#37](https://github.com/enzymefinance/onyx-sdk/pull/37) [`8e484a8`](https://github.com/enzymefinance/onyx-sdk/commit/8e484a8013eeba849183c044f7bc6d2c6f603be4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Rename tesnet deployment to sepolia
+
 ## 2.0.0
 
 ### Major Changes
