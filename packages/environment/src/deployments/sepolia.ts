@@ -2,10 +2,10 @@ import { Version } from "../contracts.js";
 import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
-export default defineDeployment<typeof Deployment.TESTNET>({
+export default defineDeployment<typeof Deployment.SEPOLIA>({
   inception: 10567287,
   kind: Kind.TEST,
-  label: "Testnet",
+  label: "Sepolia Testnet",
   network: Network.SEPOLIA,
   releases: {
     [Version.ONE]: {
@@ -43,10 +43,10 @@ export default defineDeployment<typeof Deployment.TESTNET>({
       },
       inception: 10567287,
       network: Network.SEPOLIA,
-      slug: `${Deployment.TESTNET}.${Version.ONE}`,
+      slug: `${Deployment.SEPOLIA}.${Version.ONE}`,
       status: Status.LIVE,
       version: Version.ONE,
     },
   },
-  slug: Deployment.TESTNET,
+  slug: Deployment.SEPOLIA,
 });
