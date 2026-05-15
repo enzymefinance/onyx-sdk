@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 3.1.0
+
+### Minor Changes
+
+- [#39](https://github.com/enzymefinance/onyx-sdk/pull/39) [`5a139a4`](https://github.com/enzymefinance/onyx-sdk/commit/5a139a498b0ca0f3d59350fd1d66b32764609eca) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Shares Transfer Validator, Shares Deployer, CCIP contracts, GRT Value asset
+
 ## 3.0.0
 
 ### Major Changes
