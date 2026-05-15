@@ -1,5 +1,13 @@
 import { LimitedAccessLimitedCallForwarderAbi } from "@enzymefinance/onyx-abis";
-import { type Address, type Client, encodeAbiParameters, getAbiItem, type Hex } from "viem";
+import {
+  type Abi,
+  type Address,
+  type Client,
+  encodeAbiParameters,
+  encodeFunctionData,
+  getAbiItem,
+  type Hex,
+} from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils";
 
@@ -52,6 +60,14 @@ export function executeCalls(args: {
     functionName: "executeCalls",
     address: args.forwarderAddress,
     args: [args.calls],
+  });
+}
+
+export function wrapTransaction(args: { forwarderAddress: Address; tx: Viem.PopulatedTransaction<Abi> }) {
+  const callData = encodeFunctionData(args.tx.params);
+  return executeCalls({
+    forwarderAddress: args.forwarderAddress,
+    calls: [{ target: args.tx.params.address, data: callData, value: args.tx.params.value ?? 0n }],
   });
 }
 

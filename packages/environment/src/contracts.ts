@@ -17,6 +17,8 @@ export type VersionContracts<
 export interface CommonContracts {
   readonly AccountERC20TrackerFactory: Address;
   readonly AccountERC20Tracker: Address;
+  readonly AddressListsSharesTransferValidatorFactory: Address;
+  readonly AddressListsSharesTransferValidator: Address;
   readonly ContinuousFlatRateManagementFeeTrackerFactory: Address;
   readonly ContinuousFlatRateManagementFeeTracker: Address;
   readonly ContinuousFlatRatePerformanceFeeTrackerFactory: Address;
@@ -37,6 +39,7 @@ export interface CommonContracts {
   readonly OwnableAddressList: Address;
   readonly SharesFactory: Address;
   readonly Shares: Address;
+  readonly SharesDeployer: Address;
   readonly SharesOwnedAddressListFactory: Address;
   readonly SharesOwnedAddressList: Address;
   readonly SyncDepositHandlerFactory: Address;
@@ -50,13 +53,20 @@ type CreWorkflowConsumerContracts = {
   readonly CreWorkflowConsumer: Address;
 };
 
+type CCIPContracts = {
+  readonly DepositorWallet: Address;
+  readonly DepositorWalletFactory: Address;
+  readonly WalletsManagerFactory: Address;
+  readonly WalletsManager: Address;
+};
+
 type DeploymentContractsMap = {
-  [Deployment.ETHEREUM]: CreWorkflowConsumerContracts;
-  [Deployment.BASE]: CreWorkflowConsumerContracts;
-  [Deployment.MEGAETH]: CreWorkflowConsumerContracts;
-  [Deployment.SEPOLIA]: CreWorkflowConsumerContracts;
-  [Deployment.ARBITRUM]: CreWorkflowConsumerContracts;
-  [Deployment.PLUME]: Record<never, never>;
+  [Deployment.ETHEREUM]: CreWorkflowConsumerContracts & CCIPContracts;
+  [Deployment.BASE]: CreWorkflowConsumerContracts & CCIPContracts;
+  [Deployment.MEGAETH]: CreWorkflowConsumerContracts & CCIPContracts;
+  [Deployment.SEPOLIA]: CreWorkflowConsumerContracts & CCIPContracts;
+  [Deployment.ARBITRUM]: CreWorkflowConsumerContracts & CCIPContracts;
+  [Deployment.PLUME]: CCIPContracts;
 };
 
 export type DeploymentContracts<TDeployment extends DeploymentType> = DeploymentContractsMap[TDeployment];

@@ -33,6 +33,6 @@
     "@enzymefinance/onyx-abis": "workspace:^3.0.0",
     "@enzymefinance/onyx-environment": "workspace:^3.0.0",
     "viem": "^2.40.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }

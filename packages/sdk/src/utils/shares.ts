@@ -1,5 +1,5 @@
 import { SHARES_UNIT } from "../Constants";
 
-export function calculateNetAssetValue({ totalSupply, netShareValue }: { netShareValue: bigint; totalSupply: bigint }) {
-  return (netShareValue * totalSupply) / SHARES_UNIT;
+export function calculateNetAssetValue({ totalSupply, sharePrice }: { sharePrice: bigint; totalSupply: bigint }) {
+  return (sharePrice * totalSupply) / SHARES_UNIT;
 }
