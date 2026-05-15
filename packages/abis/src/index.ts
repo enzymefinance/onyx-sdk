@@ -12,5 +12,6 @@ export * from "./LimitedAccessLimitedCallForwarder.js";
 export * from "./LinearCreditDebtTracker.js";
 export * from "./PushSplitFactory.js";
 export * from "./Shares.js";
+export * from "./SharesDeployer.js";
 export * from "./SyncDepositHandler.js";
 export * from "./ValuationHandler.js";
