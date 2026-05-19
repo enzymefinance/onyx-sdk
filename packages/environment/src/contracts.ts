@@ -67,6 +67,7 @@ type DeploymentContractsMap = {
   [Deployment.SEPOLIA]: CreWorkflowConsumerContracts & CCIPContracts;
   [Deployment.ARBITRUM]: CreWorkflowConsumerContracts & CCIPContracts;
   [Deployment.PLUME]: CCIPContracts;
+  [Deployment.RAYLS]: Record<never, never>;
 };
 
 export type DeploymentContracts<TDeployment extends DeploymentType> = DeploymentContractsMap[TDeployment];

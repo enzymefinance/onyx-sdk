@@ -11,6 +11,7 @@ import base from "./base.js";
 import ethereum from "./ethereum.js";
 import megaeth from "./megaeth.js";
 import plume from "./plume.js";
+import rayls from "./rayls.js";
 import sepolia from "./sepolia.js";
 
 export const deployments = {
@@ -19,6 +20,7 @@ export const deployments = {
   [Deployment.ETHEREUM]: ethereum,
   [Deployment.MEGAETH]: megaeth,
   [Deployment.PLUME]: plume,
+  [Deployment.RAYLS]: rayls,
   [Deployment.SEPOLIA]: sepolia,
 } as const;
 

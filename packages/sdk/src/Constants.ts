@@ -9,4 +9,5 @@ export const ONE_WEEK_IN_SECONDS = ONE_DAY_IN_SECONDS * 7n;
 export const ONE_YEAR_IN_SECONDS = (ONE_DAY_IN_SECONDS * 36525n) / 100n;
 export const ONE_PERCENT_IN_BPS = 100n;
 export const ONE_HUNDRED_PERCENT_IN_BPS = 10_000n;
+export const FEE_RATE_DECIMALS = 16;
 export const DEFAULT_SHARE_PRICE = 10n ** 18n;
