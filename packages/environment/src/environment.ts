@@ -89,6 +89,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
   public static isDeploymentEthereum = Environment.createIsDeployment(Deployment.ETHEREUM);
   public static isDeploymentMegaeth = Environment.createIsDeployment(Deployment.MEGAETH);
   public static isDeploymentPlume = Environment.createIsDeployment(Deployment.PLUME);
+  public static isDeploymentRayls = Environment.createIsDeployment(Deployment.RAYLS);
   public static isDeploymentSepolia = Environment.createIsDeployment(Deployment.SEPOLIA);
   public static isDeployment<TDeployment extends DeploymentType>(
     deployment: TDeployment,

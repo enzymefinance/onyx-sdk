@@ -4,6 +4,7 @@ export enum Network {
   ETHEREUM = 1,
   MEGAETH = 4326,
   PLUME = 98866,
+  RAYLS = 72957,
   SEPOLIA = 11155111,
 }
 
@@ -13,6 +14,7 @@ export enum NetworkSlug {
   ETHEREUM = "ethereum",
   MEGAETH = "megaeth",
   PLUME = "plume",
+  RAYLS = "rayls",
   SEPOLIA = "sepolia",
 }
 
@@ -26,9 +28,11 @@ export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.A
         ? NetworkSlug.MEGAETH
         : TNetwork extends Network.PLUME
           ? NetworkSlug.PLUME
-          : TNetwork extends Network.SEPOLIA
-            ? NetworkSlug.SEPOLIA
-            : never;
+          : TNetwork extends Network.RAYLS
+            ? NetworkSlug.RAYLS
+            : TNetwork extends Network.SEPOLIA
+              ? NetworkSlug.SEPOLIA
+              : never;
 
 export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug extends NetworkSlug.ARBITRUM
   ? Network.ARBITRUM
@@ -40,9 +44,11 @@ export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug exten
         ? Network.MEGAETH
         : TNetworkSlug extends NetworkSlug.PLUME
           ? Network.PLUME
-          : TNetworkSlug extends NetworkSlug.SEPOLIA
-            ? Network.SEPOLIA
-            : never;
+          : TNetworkSlug extends NetworkSlug.RAYLS
+            ? Network.RAYLS
+            : TNetworkSlug extends NetworkSlug.SEPOLIA
+              ? Network.SEPOLIA
+              : never;
 
 export function getNetwork<TNetwork extends Network = Network>(network: TNetwork): NetworkDefinition<TNetwork>;
 export function getNetwork<TNetworkSlug extends NetworkSlug = NetworkSlug>(
@@ -102,6 +108,7 @@ export const slugByNetwork: {
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM,
   [Network.MEGAETH]: NetworkSlug.MEGAETH,
   [Network.PLUME]: NetworkSlug.PLUME,
+  [Network.RAYLS]: NetworkSlug.RAYLS,
   [Network.SEPOLIA]: NetworkSlug.SEPOLIA,
 };
 
@@ -113,6 +120,7 @@ export const networkBySlug: {
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM,
   [NetworkSlug.MEGAETH]: Network.MEGAETH,
   [NetworkSlug.PLUME]: Network.PLUME,
+  [NetworkSlug.RAYLS]: Network.RAYLS,
   [NetworkSlug.SEPOLIA]: Network.SEPOLIA,
 };
 
@@ -224,6 +232,24 @@ const plume: NetworkDefinition<Network.PLUME> = {
   slug: NetworkSlug.PLUME,
 };
 
+const rayls: NetworkDefinition<Network.RAYLS> = {
+  currency: {
+    nativeToken: {
+      name: "USD Rayls",
+      symbol: "USDr",
+      decimals: 18,
+      network: Network.RAYLS,
+    },
+  },
+  explorer: {
+    label: "Rayls Explorer",
+    url: "https://explorer.rayls.com/",
+  },
+  id: Network.RAYLS,
+  label: "Rayls",
+  slug: NetworkSlug.RAYLS,
+};
+
 export const networks: {
   readonly [TNetwork in Network]: NetworkDefinition<TNetwork>;
 } = {
@@ -232,5 +258,6 @@ export const networks: {
   [Network.ETHEREUM]: mainnet,
   [Network.MEGAETH]: megaeth,
   [Network.PLUME]: plume,
+  [Network.RAYLS]: rayls,
   [Network.SEPOLIA]: sepolia,
 };

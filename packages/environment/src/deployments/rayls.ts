@@ -1,0 +1,53 @@
+import { Version } from "../contracts.js";
+import { Network } from "../networks.js";
+import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
+
+export default defineDeployment<typeof Deployment.RAYLS>({
+  inception: 1142634,
+  kind: Kind.LIVE,
+  label: "Rayls",
+  network: Network.RAYLS,
+  releases: {
+    [Version.ONE]: {
+      contracts: {
+        AccountERC20Tracker: "0xa831a43f99af957bc27d03963958fd710dc1f50e",
+        AccountERC20TrackerFactory: "0xfc3f356217120318bd46c879b3a55c3135473752",
+        AddressListsSharesTransferValidator: "0x9f471f573414d9cacfe3a0127ad12f195504de7b",
+        AddressListsSharesTransferValidatorFactory: "0xb3646e9b6df463a2dc36de67ffd28cbab3f8a5cc",
+        ContinuousFlatRateManagementFeeTracker: "0xecdbcdb8dbf0ac54f47e41d3dd0c7dae07828aaa",
+        ContinuousFlatRateManagementFeeTrackerFactory: "0x50cd5deaa9252fc612c4582d2a1adb75da784cee",
+        ContinuousFlatRatePerformanceFeeTracker: "0x94f262802806be3646612d0705802710dd5b58df",
+        ContinuousFlatRatePerformanceFeeTrackerFactory: "0x4f062f93561b0019a0b1128c8e9478d26d1370ab",
+        ERC7540LikeDepositQueue: "0x889f2fcb6c12d836cb8f7567a1bdfa512fe9f647",
+        ERC7540LikeDepositQueueFactory: "0x2693c62beef1c5a4ac8d8caeef2fb0ec355a6845",
+        ERC7540LikeRedeemQueue: "0x70478df01108cb2fcb23463814e648363ce17720",
+        ERC7540LikeRedeemQueueFactory: "0x7babf9fbd5ea2f0be4f18e3b9f5ce97ee057c679",
+        FeeHandler: "0xb31c81fbf4471e07caac969364a4ca8050876753",
+        FeeHandlerFactory: "0xb47502f30315817d7c01fce163c0f1ea25715de2",
+        Global: "0x9177a3354ee50bffbcc42c4c6bac27ed63979097",
+        GlobalProxy: "0x472b61f148d4ba490b41b4529f00f9b6dd427afb",
+        LimitedAccessLimitedCallForwarder: "0xe6fcd515794b49e4f81fc96fb914dd37df4c58d6",
+        LimitedAccessLimitedCallForwarderFactory: "0x1379768658ad68a0c7fc5db966c76a195f0157ce",
+        LinearCreditDebtTracker: "0x42bc95f119fb08b9fc72262d255016fa5546caa4",
+        LinearCreditDebtTrackerFactory: "0x49aa3b8ccbf8525d8f065a83f1bc780f6779ab75",
+        OwnableAddressList: "0x6be76451c870294691cd14177a720a62c68ae99e",
+        OwnableAddressListFactory: "0x91e49f9a4b1efbb0a8448c5bfcb42b48740fb12b",
+        Shares: "0xb2316b7a1398c022f4f1fa44ef1a95256217d8fd",
+        SharesDeployer: "0x555945eb46c22fdd3ee616c2399ce9e663492313",
+        SharesFactory: "0x8dcc07926a6fb4ad719f4e089a5a7cdcecb5f4d6",
+        SharesOwnedAddressList: "0x34983a2d4fcbd4afc72c07e8e7d5e2c58bbd381a",
+        SharesOwnedAddressListFactory: "0x6ab3d13124ded464003867d0dfb5a9b4e25eb907",
+        SyncDepositHandler: "0x38c9f2870003d47f704e317c10f93ca1ddae67c1",
+        SyncDepositHandlerFactory: "0xde4a42052db0fb0e8935c9f3015b8cd56a3ddf43",
+        ValuationHandler: "0xb91cdfed18f6fa47222bc4594a73fed085013342",
+        ValuationHandlerFactory: "0xbf3411973f09c32e8c4e67d1345dddc5f9c7535a",
+      },
+      inception: 1142634,
+      network: Network.RAYLS,
+      slug: `${Deployment.RAYLS}.${Version.ONE}`,
+      status: Status.PENDING,
+      version: Version.ONE,
+    },
+  },
+  slug: Deployment.RAYLS,
+});

@@ -14,6 +14,7 @@ export const Deployment = {
   ETHEREUM: "ethereum",
   MEGAETH: "megaeth",
   PLUME: "plume",
+  RAYLS: "rayls",
   SEPOLIA: "sepolia",
 } as const;
 
@@ -29,9 +30,11 @@ export type DeploymentNetwork<TDeployment extends DeploymentType> = TDeployment 
         ? Network.MEGAETH
         : TDeployment extends typeof Deployment.PLUME
           ? Network.PLUME
-          : TDeployment extends typeof Deployment.SEPOLIA
-            ? Network.SEPOLIA
-            : never;
+          : TDeployment extends typeof Deployment.RAYLS
+            ? Network.RAYLS
+            : TDeployment extends typeof Deployment.SEPOLIA
+              ? Network.SEPOLIA
+              : never;
 
 export function isDeployment(value: unknown): value is DeploymentType {
   return typeof value === "string" && Object.values<unknown>(Deployment).includes(value);
@@ -133,6 +136,9 @@ export const releases = {
   },
   [Deployment.PLUME]: {
     [Version.ONE]: `${Deployment.PLUME}.${Version.ONE}`,
+  },
+  [Deployment.RAYLS]: {
+    [Version.ONE]: `${Deployment.RAYLS}.${Version.ONE}`,
   },
   [Deployment.SEPOLIA]: {
     [Version.ONE]: `${Deployment.SEPOLIA}.${Version.ONE}`,
