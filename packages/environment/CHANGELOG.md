@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 3.2.0
+
+### Minor Changes
+
+- [#44](https://github.com/enzymefinance/onyx-sdk/pull/44) [`0fa5c22`](https://github.com/enzymefinance/onyx-sdk/commit/0fa5c22c78816603b839aa501db3715b00d7dbd3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Rayls network
+
 ## 3.1.0
 
 ### Minor Changes
