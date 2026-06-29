@@ -4,8 +4,8 @@ import { zeroAddress } from "viem";
 import { deployments } from "./deployments/all.js";
 import type { Network, NetworkSlug } from "./networks.js";
 import { getNetwork, isNetworkIdentifier } from "./networks.js";
-import type { DeploymentDefinition, DeploymentType } from "./releases.js";
-import { isDeployment, Kind } from "./releases.js";
+import type { DeploymentDefinition, DeploymentType, DeploymentTypeWithRelease, ReleasesFields } from "./releases.js";
+import { Deployment, isDeployment, Kind } from "./releases.js";
 
 export function isHexString(value: unknown, length?: number): boolean {
   if (typeof value !== "string" || !/^0x[0-9A-Fa-f]*$/.test(value)) {
@@ -67,4 +67,32 @@ export function getDeployment(deploymentOrNetwork: DeploymentType | Network | Ne
   }
 
   throw new Error(`Unknown deployment or network ${deploymentOrNetwork}`);
+}
+
+export function getDeploymentByCcipSelector(
+  ccipChainSelector: bigint | string,
+): DeploymentDefinition<DeploymentType> | undefined {
+  const selector = typeof ccipChainSelector === "bigint" ? ccipChainSelector : BigInt(ccipChainSelector);
+  return Object.values(deployments).find(
+    (item) => item.slug !== Deployment.RAYLS && item.ccipChainSelector === selector,
+  );
+}
+
+/**
+ * Variant of {@link getDeployment} that only accepts deployment slugs known at compile time to
+ * have a contract release (i.e. excludes CCIP-only deployments such as Base Sepolia).
+ */
+export function getDeploymentWithRelease<TDeployment extends DeploymentTypeWithRelease>(
+  slug: TDeployment,
+): DeploymentDefinition<TDeployment> {
+  return deployments[slug] as unknown as DeploymentDefinition<TDeployment>;
+}
+
+/**
+ * Runtime type guard that narrows a {@link DeploymentDefinition} to one that has releases.
+ */
+export function hasReleases<TDeployment extends DeploymentType>(
+  deployment: DeploymentDefinition<TDeployment>,
+): deployment is DeploymentDefinition<TDeployment> & ReleasesFields<TDeployment> {
+  return deployment.releases !== undefined;
 }

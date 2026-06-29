@@ -8,6 +8,7 @@ export const ValueAsset = {
   EUR: "EUR",
   GRT: "GRT",
   tBTC: "tBTC",
+  XAUt: "XAUt",
   UNKNOWN: "UNKNOWN",
 } as const;
 
@@ -40,6 +41,10 @@ export const valueAssetInfo: Record<ValueAssetType, { displayDecimals: number; s
     displayDecimals: 6,
     symbol: "tBTC",
   },
+  XAUt: {
+    displayDecimals: 6,
+    symbol: "XAUt",
+  },
   UNKNOWN: {
     displayDecimals: 6,
     symbol: "UNKNOWN",
@@ -55,6 +60,7 @@ export const valueAssetBytes32: { readonly [T in ValueAssetType]: Hex } = {
   [ValueAsset.EUR]: stringToHex("EUR", { size: 32 }),
   [ValueAsset.GRT]: stringToHex("GRT", { size: 32 }),
   [ValueAsset.tBTC]: stringToHex("tBTC", { size: 32 }),
+  [ValueAsset.XAUt]: stringToHex("XAUt", { size: 32 }),
   [ValueAsset.UNKNOWN]: stringToHex("UNKNOWN", { size: 32 }),
 };
 

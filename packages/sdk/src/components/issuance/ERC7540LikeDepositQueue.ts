@@ -99,9 +99,19 @@ export function removeDepositControllerFromInternalAllowlist(args: {
 
 export const DepositRestriction = {
   None: 0,
-  ControllerAllowlist: 1,
+  ControllerAllowlistInternal: 1,
+  ControllerAllowlistExternal: 2,
 } as const;
 export type DepositRestriction = (typeof DepositRestriction)[keyof typeof DepositRestriction];
+
+export function setDepositControllerExternalAllowlist(args: { queueAddress: Address; allowlistAddress: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: ERC7540LikeDepositQueueAbi,
+    functionName: "setDepositControllerExternalAllowlist",
+    args: [args.allowlistAddress],
+    address: args.queueAddress,
+  });
+}
 
 export function setDepositRestriction(args: { queueAddress: Address; depositRestriction: DepositRestriction }) {
   return new Viem.PopulatedTransaction({
@@ -201,5 +211,19 @@ export function isInDepositControllerInternalAllowlist(
     functionName: "isInDepositControllerInternalAllowlist",
     address: args.queueAddress,
     args: [args.controllerAddress],
+  });
+}
+
+export function getDepositControllerExternalAllowlist(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    queueAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ERC7540LikeDepositQueueAbi,
+    functionName: "getDepositControllerExternalAllowlist",
+    address: args.queueAddress,
   });
 }

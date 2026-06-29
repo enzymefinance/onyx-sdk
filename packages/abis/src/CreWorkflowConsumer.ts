@@ -71,6 +71,13 @@ export const CreWorkflowConsumerAbi = [
   },
   {
     type: "function",
+    name: "getLastNonce",
+    inputs: [],
+    outputs: [{ name: "lastNonce_", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
     name: "getLimitedAccessLimitedCallForwarder",
     inputs: [],
     outputs: [
@@ -158,6 +165,19 @@ export const CreWorkflowConsumerAbi = [
   },
   {
     type: "event",
+    name: "LastNonceSet",
+    inputs: [
+      {
+        name: "lastNonce",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
     name: "LimitedAccessLimitedCallForwarderSet",
     inputs: [
       {
@@ -191,6 +211,11 @@ export const CreWorkflowConsumerAbi = [
   },
   {
     type: "error",
+    name: "CreWorkflowConsumer__OnReport__InvalidNonce",
+    inputs: [],
+  },
+  {
+    type: "error",
     name: "CreWorkflowConsumer__OnReport__InvalidOnReportSender",
     inputs: [],
   },
@@ -207,6 +232,11 @@ export const CreWorkflowConsumerAbi = [
   {
     type: "error",
     name: "CreWorkflowConsumer__OnReport__InvalidWorkflowOwner",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "CreWorkflowConsumer__OnReport__ReportExpired",
     inputs: [],
   },
   {

@@ -22,14 +22,18 @@ export class EnvironmentGroup<TDeployment extends DeploymentType = DeploymentTyp
   public hasEnvironment(versionOrAddress: Address | Version): boolean;
   public hasEnvironment(versionOrAddress: Address | Version) {
     if (isVersion(versionOrAddress)) {
-      return !!this.deployment.releases[versionOrAddress];
+      return !!this.deployment.releases?.[versionOrAddress];
     }
 
-    return !!Object.values(this.deployment.releases).find((item) => item.contracts.GlobalProxy === versionOrAddress);
+    return !!Object.values(this.deployment.releases ?? {}).find(
+      (item) => item.contracts.GlobalProxy === versionOrAddress,
+    );
   }
 
   public getVersion(address: Address) {
-    const release = Object.values(this.deployment.releases).find((item) => item.contracts.GlobalProxy === address);
+    const release = Object.values(this.deployment.releases ?? {}).find(
+      (item) => item.contracts.GlobalProxy === address,
+    );
 
     if (!release) {
       throw new Error(`Invalid release address ${address} for deployment ${this.deployment.slug}`);
@@ -44,7 +48,7 @@ export class EnvironmentGroup<TDeployment extends DeploymentType = DeploymentTyp
   public getEnvironment(versionOrAddress: Address | Version) {
     const version = isVersion(versionOrAddress) ? versionOrAddress : this.getVersion(versionOrAddress);
 
-    if (!this.environments[version] && !!this.deployment.releases[version]) {
+    if (!this.environments[version] && !!this.deployment.releases?.[version]) {
       // biome-ignore lint/suspicious/noExplicitAny: needs refactoring
       this.environments[version] = new Environment(this.deployment, version) as any;
     }
@@ -102,7 +106,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     public readonly deployment: DeploymentDefinition<TDeployment>,
     public readonly version: TVersion,
   ) {
-    const release = this.deployment.releases[version];
+    const release = this.deployment.releases?.[version] as ReleaseDefinition<TVersion, TDeployment> | undefined;
 
     if (!release) {
       throw new Error(`Invalid release ${version} for ${deployment.slug} deployment`);

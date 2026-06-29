@@ -3,6 +3,12 @@ import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
 export default defineDeployment<typeof Deployment.ETHEREUM>({
+  ccipChainSelector: 5009297550715157269n,
+  externalContracts: {
+    ccipRouter: "0x80226fc0ee2b096224eeac085bb9a8cba1146f7d",
+    tokenAdminRegistry: "0xb22764f98dd05c789929716d677382df22c05cb6",
+    wrappedNative: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  },
   inception: 23324026,
   kind: Kind.LIVE,
   label: "Ethereum",
@@ -38,7 +44,7 @@ export default defineDeployment<typeof Deployment.ETHEREUM>({
         OwnableAddressList: "0x53b538aa0000757f6565668d413962cccc6eb0f9",
         SharesFactory: "0x03fbf254a0ed3b1d9c94eee5b39c7a11fd96eb06",
         Shares: "0x3f4c0276779e4488f937d5befa7841dac64a5ebf",
-        SharesDeployer: "0xba398cb26d647cd468438b4775ca3f8cc151f1ff",
+        SharesDeployer: "0xed1f930bc6c186c1c60722ad083d6843fe4a59bb",
         SharesOwnedAddressListFactory: "0x4d45f12e26a44e90deb78af3f84197b6faa66147",
         SharesOwnedAddressList: "0xfc72d85a6682e8f11076c8bbb3a0555976073f08",
         SyncDepositHandlerFactory: "0x5b74041a70c20b0e15c8e05a0b5ac5c0d4bc92bc",

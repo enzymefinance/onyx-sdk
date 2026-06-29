@@ -3,6 +3,12 @@ import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
 export default defineDeployment<typeof Deployment.BASE>({
+  ccipChainSelector: 15971525489660198786n,
+  externalContracts: {
+    ccipRouter: "0x881e3a65b4d4a04dd529061dd0071cf975f58bcd",
+    tokenAdminRegistry: "0x6f6c373d09c07425baae72317863d7f6bb731e37",
+    wrappedNative: "0x4200000000000000000000000000000000000006",
+  },
   inception: 35306000,
   kind: Kind.LIVE,
   label: "Base",
@@ -38,7 +44,7 @@ export default defineDeployment<typeof Deployment.BASE>({
         OwnableAddressList: "0x0a2db18093943a316adad1fbf804d898aa7fad92",
         SharesFactory: "0x5dd79d299e24e49fadac046728e80d1f7414d44c",
         Shares: "0x8c1d64562e30f3e306051adc401ec9823b0b30a2",
-        SharesDeployer: "0x89bb7ba548a92bbc4fc675a0222a405413f71302",
+        SharesDeployer: "0xd3d5d4b2d7d935039ad3357132902c62bf5901a8",
         SharesOwnedAddressListFactory: "0xc46b5522e6c4d0dee1daaab089806f77adf8fc91",
         SharesOwnedAddressList: "0xa9968ebb3175c01e4fe207adc7db4717318ccdba",
         SyncDepositHandlerFactory: "0x52b7961e5ca8788a997f68fb0925ad651a7d3bad",

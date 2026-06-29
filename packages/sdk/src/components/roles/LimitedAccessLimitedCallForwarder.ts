@@ -11,6 +11,13 @@ import {
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils";
 
+export type Call = { target: Address; data: Hex; value: bigint };
+
+export const executeCallsAbiParameter = getAbiItem({
+  abi: LimitedAccessLimitedCallForwarderAbi,
+  name: "executeCalls",
+});
+
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS
 //--------------------------------------------------------------------------------------------
@@ -51,15 +58,13 @@ export function removeCall(args: { forwarderAddress: Address; target: Address; s
   });
 }
 
-export function executeCalls(args: {
-  forwarderAddress: Address;
-  calls: { target: Address; data: Hex; value: bigint }[];
-}) {
+export function executeCalls(args: { forwarderAddress: Address; calls: Call[]; value?: bigint }) {
   return new Viem.PopulatedTransaction({
     abi: LimitedAccessLimitedCallForwarderAbi,
     functionName: "executeCalls",
     address: args.forwarderAddress,
     args: [args.calls],
+    value: args.value ?? 0n,
   });
 }
 
@@ -71,11 +76,8 @@ export function wrapTransaction(args: { forwarderAddress: Address; tx: Viem.Popu
   });
 }
 
-export function encodeAbiItemExecuteCalls(calls: { target: Address; data: Hex; value: bigint }[]) {
-  const abiItem = getAbiItem({
-    abi: LimitedAccessLimitedCallForwarderAbi,
-    name: "executeCalls",
-  });
+export function encodeAbiItemExecuteCalls(calls: Call[]) {
+  const abiItem = executeCallsAbiParameter;
 
   return encodeAbiParameters(abiItem.inputs, [calls]);
 }

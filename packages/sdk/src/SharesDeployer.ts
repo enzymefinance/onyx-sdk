@@ -161,7 +161,6 @@ export type PreMintConfig = {
 
 export type DeployConfig = {
   shares: SharesConfig;
-  initialOwner: Address;
   nominatedOwner: Address;
   admins: readonly Address[];
   transferValidator: TransferValidatorConfig;

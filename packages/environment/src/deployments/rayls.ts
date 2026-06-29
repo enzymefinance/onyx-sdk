@@ -33,7 +33,7 @@ export default defineDeployment<typeof Deployment.RAYLS>({
         OwnableAddressList: "0x6be76451c870294691cd14177a720a62c68ae99e",
         OwnableAddressListFactory: "0x91e49f9a4b1efbb0a8448c5bfcb42b48740fb12b",
         Shares: "0xb2316b7a1398c022f4f1fa44ef1a95256217d8fd",
-        SharesDeployer: "0x555945eb46c22fdd3ee616c2399ce9e663492313",
+        SharesDeployer: "0x05183632bc59e3073f17b994c314936eb56156e8",
         SharesFactory: "0x8dcc07926a6fb4ad719f4e089a5a7cdcecb5f4d6",
         SharesOwnedAddressList: "0x34983a2d4fcbd4afc72c07e8e7d5e2c58bbd381a",
         SharesOwnedAddressListFactory: "0x6ab3d13124ded464003867d0dfb5a9b4e25eb907",
