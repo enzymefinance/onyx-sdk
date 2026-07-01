@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-abis
 
+## 4.0.0
+
+### Major Changes
+
+- [#49](https://github.com/enzymefinance/onyx-sdk/pull/49) [`dbb112f`](https://github.com/enzymefinance/onyx-sdk/commit/dbb112f1911c715ea9ba0259e316e53856fb2e78) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add CCIP, and CRE workflow update
+
 ## 3.1.0
 
 ### Minor Changes
