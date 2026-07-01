@@ -1,4 +1,6 @@
+export * as AddressLists from "./AddressLists.js";
 export * as Asset from "./Asset.js";
+export * as CCIP from "./CCIP.js";
 export * as Components from "./Components.js";
 export * as Constants from "./Constants.js";
 export * as Factories from "./Factories.js";

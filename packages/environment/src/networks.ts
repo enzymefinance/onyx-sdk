@@ -1,6 +1,7 @@
 export enum Network {
   ARBITRUM = 42161,
   BASE = 8453,
+  BASE_SEPOLIA = 84532,
   ETHEREUM = 1,
   MEGAETH = 4326,
   PLUME = 98866,
@@ -11,6 +12,7 @@ export enum Network {
 export enum NetworkSlug {
   ARBITRUM = "arbitrum",
   BASE = "base",
+  BASE_SEPOLIA = "base-sepolia",
   ETHEREUM = "ethereum",
   MEGAETH = "megaeth",
   PLUME = "plume",
@@ -18,37 +20,31 @@ export enum NetworkSlug {
   SEPOLIA = "sepolia",
 }
 
-export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.ARBITRUM
-  ? NetworkSlug.ARBITRUM
-  : TNetwork extends Network.BASE
-    ? NetworkSlug.BASE
-    : TNetwork extends Network.ETHEREUM
-      ? NetworkSlug.ETHEREUM
-      : TNetwork extends Network.MEGAETH
-        ? NetworkSlug.MEGAETH
-        : TNetwork extends Network.PLUME
-          ? NetworkSlug.PLUME
-          : TNetwork extends Network.RAYLS
-            ? NetworkSlug.RAYLS
-            : TNetwork extends Network.SEPOLIA
-              ? NetworkSlug.SEPOLIA
-              : never;
+type SlugByNetworkMap = {
+  [Network.ARBITRUM]: NetworkSlug.ARBITRUM;
+  [Network.BASE]: NetworkSlug.BASE;
+  [Network.BASE_SEPOLIA]: NetworkSlug.BASE_SEPOLIA;
+  [Network.ETHEREUM]: NetworkSlug.ETHEREUM;
+  [Network.MEGAETH]: NetworkSlug.MEGAETH;
+  [Network.PLUME]: NetworkSlug.PLUME;
+  [Network.RAYLS]: NetworkSlug.RAYLS;
+  [Network.SEPOLIA]: NetworkSlug.SEPOLIA;
+};
 
-export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug extends NetworkSlug.ARBITRUM
-  ? Network.ARBITRUM
-  : TNetworkSlug extends NetworkSlug.BASE
-    ? Network.BASE
-    : TNetworkSlug extends NetworkSlug.ETHEREUM
-      ? Network.ETHEREUM
-      : TNetworkSlug extends NetworkSlug.MEGAETH
-        ? Network.MEGAETH
-        : TNetworkSlug extends NetworkSlug.PLUME
-          ? Network.PLUME
-          : TNetworkSlug extends NetworkSlug.RAYLS
-            ? Network.RAYLS
-            : TNetworkSlug extends NetworkSlug.SEPOLIA
-              ? Network.SEPOLIA
-              : never;
+type NetworkBySlugMap = {
+  [NetworkSlug.ARBITRUM]: Network.ARBITRUM;
+  [NetworkSlug.BASE]: Network.BASE;
+  [NetworkSlug.BASE_SEPOLIA]: Network.BASE_SEPOLIA;
+  [NetworkSlug.ETHEREUM]: Network.ETHEREUM;
+  [NetworkSlug.MEGAETH]: Network.MEGAETH;
+  [NetworkSlug.PLUME]: Network.PLUME;
+  [NetworkSlug.RAYLS]: Network.RAYLS;
+  [NetworkSlug.SEPOLIA]: Network.SEPOLIA;
+};
+
+export type SlugByNetwork<TNetwork extends Network> = SlugByNetworkMap[TNetwork];
+
+export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = NetworkBySlugMap[TNetworkSlug];
 
 export function getNetwork<TNetwork extends Network = Network>(network: TNetwork): NetworkDefinition<TNetwork>;
 export function getNetwork<TNetworkSlug extends NetworkSlug = NetworkSlug>(
@@ -105,6 +101,7 @@ export const slugByNetwork: {
 } = {
   [Network.ARBITRUM]: NetworkSlug.ARBITRUM,
   [Network.BASE]: NetworkSlug.BASE,
+  [Network.BASE_SEPOLIA]: NetworkSlug.BASE_SEPOLIA,
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM,
   [Network.MEGAETH]: NetworkSlug.MEGAETH,
   [Network.PLUME]: NetworkSlug.PLUME,
@@ -117,6 +114,7 @@ export const networkBySlug: {
 } = {
   [NetworkSlug.ARBITRUM]: Network.ARBITRUM,
   [NetworkSlug.BASE]: Network.BASE,
+  [NetworkSlug.BASE_SEPOLIA]: Network.BASE_SEPOLIA,
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM,
   [NetworkSlug.MEGAETH]: Network.MEGAETH,
   [NetworkSlug.PLUME]: Network.PLUME,
@@ -158,6 +156,24 @@ const base: NetworkDefinition<Network.BASE> = {
   id: Network.BASE,
   label: "Base",
   slug: NetworkSlug.BASE,
+};
+
+const baseSepolia: NetworkDefinition<Network.BASE_SEPOLIA> = {
+  currency: {
+    nativeToken: {
+      name: "Base Sepolia Ether",
+      symbol: "ETH",
+      decimals: 18,
+      network: Network.BASE_SEPOLIA,
+    },
+  },
+  explorer: {
+    label: "Base Sepolia BaseScan",
+    url: "https://sepolia.basescan.org/",
+  },
+  id: Network.BASE_SEPOLIA,
+  label: "Base Sepolia",
+  slug: NetworkSlug.BASE_SEPOLIA,
 };
 
 const megaeth: NetworkDefinition<Network.MEGAETH> = {
@@ -255,6 +271,7 @@ export const networks: {
 } = {
   [Network.ARBITRUM]: arbitrum,
   [Network.BASE]: base,
+  [Network.BASE_SEPOLIA]: baseSepolia,
   [Network.ETHEREUM]: mainnet,
   [Network.MEGAETH]: megaeth,
   [Network.PLUME]: plume,

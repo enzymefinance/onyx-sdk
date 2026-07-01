@@ -23,6 +23,7 @@ export interface CommonContracts {
   readonly ContinuousFlatRateManagementFeeTracker: Address;
   readonly ContinuousFlatRatePerformanceFeeTrackerFactory: Address;
   readonly ContinuousFlatRatePerformanceFeeTracker: Address;
+
   readonly ERC7540LikeDepositQueueFactory: Address;
   readonly ERC7540LikeDepositQueue: Address;
   readonly ERC7540LikeRedeemQueueFactory: Address;
@@ -63,6 +64,7 @@ type CCIPContracts = {
 type DeploymentContractsMap = {
   [Deployment.ETHEREUM]: CreWorkflowConsumerContracts & CCIPContracts;
   [Deployment.BASE]: CreWorkflowConsumerContracts & CCIPContracts;
+  [Deployment.BASE_SEPOLIA]: Record<never, never>;
   [Deployment.MEGAETH]: CreWorkflowConsumerContracts & CCIPContracts;
   [Deployment.SEPOLIA]: CreWorkflowConsumerContracts & CCIPContracts;
   [Deployment.ARBITRUM]: CreWorkflowConsumerContracts & CCIPContracts;

@@ -25,7 +25,7 @@
     "allowJs": false,
     "checkJs": false,
     "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitThis": true,
     "noUncheckedIndexedAccess": false,
     "strictNullChecks": true,

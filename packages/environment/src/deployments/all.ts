@@ -1,13 +1,14 @@
 import type { Address } from "viem";
 import { isVersion, Version } from "../contracts.js";
 import { Environment, EnvironmentGroup } from "../environment.js";
-import type { Network, NetworkSlug } from "../networks.js";
+import type { Network, NetworkSlug, SlugByNetwork } from "../networks.js";
 import { getNetwork, isNetworkIdentifier } from "../networks.js";
-import type { DeploymentDefinition, Release } from "../releases.js";
-import { Deployment, type DeploymentType, isDeployment, Kind } from "../releases.js";
+import type { DeploymentDefinition, DeploymentTypeWithRelease, NetworkWithRelease, Release } from "../releases.js";
+import { Deployment, type DeploymentType, isDeployment, isDeploymentWithRelease } from "../releases.js";
 import { isNonZeroAddress } from "../utils.js";
 import arbitrum from "./arbitrum.js";
 import base from "./base.js";
+import baseSepolia from "./base-sepolia.js";
 import ethereum from "./ethereum.js";
 import megaeth from "./megaeth.js";
 import plume from "./plume.js";
@@ -17,6 +18,7 @@ import sepolia from "./sepolia.js";
 export const deployments = {
   [Deployment.ARBITRUM]: arbitrum,
   [Deployment.BASE]: base,
+  [Deployment.BASE_SEPOLIA]: baseSepolia,
   [Deployment.ETHEREUM]: ethereum,
   [Deployment.MEGAETH]: megaeth,
   [Deployment.PLUME]: plume,
@@ -31,7 +33,7 @@ export function getEnvironmentGroup(deployment: DeploymentType) {
 export function getEnvironmentForRelease(release: Release) {
   const [deployment, version] = release.split(".");
 
-  if (isDeployment(deployment) && isVersion(version)) {
+  if (isDeploymentWithRelease(deployment) && isVersion(version)) {
     return getEnvironment(deployment, version);
   }
 
@@ -40,17 +42,20 @@ export function getEnvironmentForRelease(release: Release) {
 
 export function getEnvironment<
   TVersion extends Version = Version.ONE,
-  TDeployment extends DeploymentType = DeploymentType,
+  TDeployment extends DeploymentTypeWithRelease = DeploymentTypeWithRelease,
 >(deployment: TDeployment, version?: TVersion): Environment<TVersion, TDeployment>;
 export function getEnvironment<TVersion extends Version = Version.ONE>(
-  network: Network | NetworkSlug,
+  network: NetworkWithRelease | SlugByNetwork<NetworkWithRelease>,
   version?: TVersion,
 ): Environment<TVersion>;
-export function getEnvironment<TDeployment extends DeploymentType = DeploymentType>(
+export function getEnvironment<TDeployment extends DeploymentTypeWithRelease = DeploymentTypeWithRelease>(
   deployment: TDeployment,
   address?: Address,
 ): Environment<Version, TDeployment>;
-export function getEnvironment(network: Network | NetworkSlug, address?: Address): Environment;
+export function getEnvironment(
+  network: NetworkWithRelease | SlugByNetwork<NetworkWithRelease>,
+  address?: Address,
+): Environment;
 
 export function getEnvironment(
   deploymentOrNetwork: DeploymentType | Network | NetworkSlug,
@@ -62,8 +67,7 @@ export function getEnvironment(
     deployment = deployments[deploymentOrNetwork];
   } else if (isNetworkIdentifier(deploymentOrNetwork)) {
     const network = getNetwork(deploymentOrNetwork as Network);
-    const candidates = Object.values(deployments).filter((item) => item.kind === Kind.LIVE);
-    const found = candidates.find((item) => item.network === network.id);
+    const found = Object.values(deployments).find((item) => item.network === network.id);
 
     if (!found) {
       throw new Error(`Failed to find deployment for network ${network.slug}`);
@@ -75,13 +79,13 @@ export function getEnvironment(
   }
 
   if (isVersion(versionOrAddress)) {
-    const release = deployment.releases[versionOrAddress];
+    const release = deployment.releases?.[versionOrAddress];
 
     if (release) {
       return new Environment(deployment, release.version);
     }
   } else if (isNonZeroAddress(versionOrAddress)) {
-    const candidates = Object.values(deployment.releases);
+    const candidates = Object.values(deployment.releases ?? {});
     const version = candidates.find((item) => item.contracts.GlobalProxy === versionOrAddress)?.version;
 
     if (version !== undefined) {
@@ -91,8 +95,3 @@ export function getEnvironment(
 
   throw new Error(`Failed to find ${versionOrAddress} release on deployment ${deployment.slug}`);
 }
-
-/**
- * @deprecated Use the `getEnvironment` function.
- */
-export const getOfficialEnvironment = getEnvironment;

@@ -3,6 +3,12 @@ import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
 export default defineDeployment<typeof Deployment.PLUME>({
+  ccipChainSelector: 17912061998839310979n,
+  externalContracts: {
+    ccipRouter: "0x5c4f4622ad0ec4a47e04840db7e9eca8354109af",
+    tokenAdminRegistry: "0x01e5b2fac7156c54f034e1767f2799fdd41b8285",
+    wrappedNative: "0xea237441c92cae6fc17caaf9a7acb3f953be4bd1",
+  },
   inception: 28447435,
   kind: Kind.LIVE,
   label: "Plume",
@@ -36,7 +42,7 @@ export default defineDeployment<typeof Deployment.PLUME>({
         OwnableAddressList: "0x1ed9005b22719fdb2b81675d3c6444e3bea139d3",
         Shares: "0xbfadbc1107be7fea014e28756d5ec98e492db287",
         SharesFactory: "0x7b45838d3960d7eee333e5b28ce2f565f8c52534",
-        SharesDeployer: "0xe3e5d3cfad277e90772d38700169423b953d137f",
+        SharesDeployer: "0xec32f22fd3348377d34c6f78e72e0e3cef4eeb1c",
         SharesOwnedAddressListFactory: "0x41c20e67990d4872a8d18b88d48f281c980d5887",
         SharesOwnedAddressList: "0xf5906629925fc7cdef0d3b55cf7ee8f6b67ae1c9",
         SyncDepositHandler: "0x756a1c650c1f91c6359f814bd40774e108ebfe7f",

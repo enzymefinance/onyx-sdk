@@ -3,6 +3,12 @@ import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
 export default defineDeployment<typeof Deployment.MEGAETH>({
+  ccipChainSelector: 6093540873831549674n,
+  externalContracts: {
+    ccipRouter: "0xfa546248c54939aa6c48279cdc1eaf9a1125c411",
+    tokenAdminRegistry: "0xf4a170a36d4c656f614d44453f73308bdb275196",
+    wrappedNative: "0x776401b9bc8aae31a685731b7147d4445fd9fb19",
+  },
   inception: 12251855,
   kind: Kind.LIVE,
   label: "MegaETH",
@@ -38,7 +44,7 @@ export default defineDeployment<typeof Deployment.MEGAETH>({
         OwnableAddressList: "0x592a4935f7b8e95b513eafb9f87a380e0d9314e4",
         SharesFactory: "0x6cef034c88339da1a94145592f32d44592a1b100",
         Shares: "0xd2bdd90629351cc1cd4427917ae23f97fd9d9933",
-        SharesDeployer: "0x40ad9d6b2ba28f1c6d1ed1158403021f7264394d",
+        SharesDeployer: "0xc3e6d7f8982a3246bdab2cc1d6e360f12af716bb",
         SharesOwnedAddressListFactory: "0xb7460593bd222e24a2bf4393aa6416bd373995e0",
         SharesOwnedAddressList: "0x4baf8282571febdfd8768b475551ec14e144edb3",
         SyncDepositHandlerFactory: "0x03f7f3b8da875881206655d8099b9dacf721f1ef",

@@ -1,0 +1,60 @@
+export const CCIPRouterAbi = [
+  {
+    type: "function",
+    name: "getFee",
+    inputs: [
+      { name: "destinationChainSelector", type: "uint64", internalType: "uint64" },
+      {
+        name: "message",
+        type: "tuple",
+        internalType: "struct Client.EVM2AnyMessage",
+        components: [
+          { name: "receiver", type: "bytes", internalType: "bytes" },
+          { name: "data", type: "bytes", internalType: "bytes" },
+          {
+            name: "tokenAmounts",
+            type: "tuple[]",
+            internalType: "struct Client.EVMTokenAmount[]",
+            components: [
+              { name: "token", type: "address", internalType: "address" },
+              { name: "amount", type: "uint256", internalType: "uint256" },
+            ],
+          },
+          { name: "feeToken", type: "address", internalType: "address" },
+          { name: "extraArgs", type: "bytes", internalType: "bytes" },
+        ],
+      },
+    ],
+    outputs: [{ name: "fee", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "ccipSend",
+    inputs: [
+      { name: "destinationChainSelector", type: "uint64", internalType: "uint64" },
+      {
+        name: "message",
+        type: "tuple",
+        internalType: "struct Client.EVM2AnyMessage",
+        components: [
+          { name: "receiver", type: "bytes", internalType: "bytes" },
+          { name: "data", type: "bytes", internalType: "bytes" },
+          {
+            name: "tokenAmounts",
+            type: "tuple[]",
+            internalType: "struct Client.EVMTokenAmount[]",
+            components: [
+              { name: "token", type: "address", internalType: "address" },
+              { name: "amount", type: "uint256", internalType: "uint256" },
+            ],
+          },
+          { name: "feeToken", type: "address", internalType: "address" },
+          { name: "extraArgs", type: "bytes", internalType: "bytes" },
+        ],
+      },
+    ],
+    outputs: [{ name: "", type: "bytes32", internalType: "bytes32" }],
+    stateMutability: "payable",
+  },
+] as const;

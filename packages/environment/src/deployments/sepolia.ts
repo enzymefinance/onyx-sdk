@@ -3,6 +3,12 @@ import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
 export default defineDeployment<typeof Deployment.SEPOLIA>({
+  ccipChainSelector: 16015286601757825753n,
+  externalContracts: {
+    ccipRouter: "0x0bf3de8c5d3e8a2b34d2beeb17abfcebaf363a59",
+    wrappedNative: "0x097d90c9d3e0b50ca60e1ae45f6a81010f9fb534",
+    tokenAdminRegistry: "0x95f29fee11c5c55d26cccf1db6772de953b37b82",
+  },
   inception: 10567287,
   kind: Kind.TEST,
   label: "Sepolia Testnet",
@@ -38,7 +44,7 @@ export default defineDeployment<typeof Deployment.SEPOLIA>({
         OwnableAddressList: "0xf187a08dc97fd2c91c98e8b4df84462bd8cafdb4",
         SharesFactory: "0xa71f87b8991a72356240bd00e2d63fe0d4f4ab70",
         Shares: "0x3b52222d249d295cead26677812ce21cbdc9a539",
-        SharesDeployer: "0x9a8098bcabd8db9c0003ceff7ab5851f9604e8e6",
+        SharesDeployer: "0xa3ea356dc1ee5574f940b66548b5a41361a54c1b",
         SharesOwnedAddressListFactory: "0x3b8e4ceffd946d01d24d8a6d5312c2afb411ea30",
         SharesOwnedAddressList: "0xbb6db9ff61428f7d33531a31c141978ebaf43c7b",
         SyncDepositHandlerFactory: "0x394032bf40a98fff62e507cebb6d6b82b97d2ded",

@@ -3,6 +3,12 @@ import { Network } from "../networks.js";
 import { Deployment, defineDeployment, Kind, Status } from "../releases.js";
 
 export default defineDeployment<typeof Deployment.ARBITRUM>({
+  ccipChainSelector: 4949039107694359620n,
+  externalContracts: {
+    ccipRouter: "0x141fa059441e0ca23ce184b6a78bafd2a517dde8",
+    tokenAdminRegistry: "0x39ae1032cf4b334a1ed41cdd0833bdd7c7e7751e",
+    wrappedNative: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+  },
   inception: 377255746,
   kind: Kind.LIVE,
   label: "Arbitrum",
@@ -38,7 +44,7 @@ export default defineDeployment<typeof Deployment.ARBITRUM>({
         OwnableAddressList: "0x0eac0dd2133cc91658e94e93675afb20fb96c08e",
         SharesFactory: "0x1f3dee32af318d4ecaf18f1ddd901b606edb15f5",
         Shares: "0xa68ab79f8040a8c034921ca9d7e001130719b489",
-        SharesDeployer: "0xa02c3f552592b39364b0631337cde5c30af50d5e",
+        SharesDeployer: "0xec9e02b80ffb47ad177262f0e8cb540dc827832e",
         SharesOwnedAddressListFactory: "0xf9bf16764e967496ac9bd717574b942e318d3941",
         SharesOwnedAddressList: "0xb9927868738eba543cfc83b8e11504d763bee0ec",
         SyncDepositHandlerFactory: "0x38dc514ab06489583586f89939c123e7db80d2c8",

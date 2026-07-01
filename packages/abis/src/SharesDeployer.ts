@@ -135,7 +135,6 @@ export const SharesDeployerAbi = [
               { name: "valueAsset", type: "bytes32", internalType: "bytes32" },
             ],
           },
-          { name: "initialOwner", type: "address", internalType: "address" },
           { name: "nominatedOwner", type: "address", internalType: "address" },
           { name: "admins", type: "address[]", internalType: "address[]" },
           {
@@ -369,9 +368,9 @@ export const SharesDeployerAbi = [
   { type: "error", name: "SharesDeployer__ExternalListExistingCannotBeZero", inputs: [] },
   { type: "error", name: "SharesDeployer__ExternalListSourceNotAllowed", inputs: [] },
   { type: "error", name: "SharesDeployer__ExternalListSourceRequired", inputs: [] },
-  { type: "error", name: "SharesDeployer__InitialOwnerCannotBeZero", inputs: [] },
   { type: "error", name: "SharesDeployer__LinearCreditDebtTrackerRequiresValuationHandler", inputs: [] },
   { type: "error", name: "SharesDeployer__ManagementFeeRequiresFeeHandler", inputs: [] },
+  { type: "error", name: "SharesDeployer__NominatedOwnerCannotBeDeployer", inputs: [] },
   { type: "error", name: "SharesDeployer__NominatedOwnerCannotBeZero", inputs: [] },
   { type: "error", name: "SharesDeployer__OwnableAddressListOwnerCannotBeZero", inputs: [] },
   { type: "error", name: "SharesDeployer__PerformanceFeeRequiresFeeHandler", inputs: [] },

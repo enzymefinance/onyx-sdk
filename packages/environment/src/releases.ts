@@ -1,3 +1,4 @@
+import type { Address } from "viem";
 import type { VersionContracts } from "./contracts.js";
 import { isVersion, Version } from "./contracts.js";
 import type { Network } from "./networks.js";
@@ -11,6 +12,7 @@ export enum Status {
 export const Deployment = {
   ARBITRUM: "arbitrum",
   BASE: "base",
+  BASE_SEPOLIA: "base-sepolia",
   ETHEREUM: "ethereum",
   MEGAETH: "megaeth",
   PLUME: "plume",
@@ -24,20 +26,36 @@ export type DeploymentNetwork<TDeployment extends DeploymentType> = TDeployment 
   ? Network.ARBITRUM
   : TDeployment extends typeof Deployment.BASE
     ? Network.BASE
-    : TDeployment extends typeof Deployment.ETHEREUM
-      ? Network.ETHEREUM
-      : TDeployment extends typeof Deployment.MEGAETH
-        ? Network.MEGAETH
-        : TDeployment extends typeof Deployment.PLUME
-          ? Network.PLUME
-          : TDeployment extends typeof Deployment.RAYLS
-            ? Network.RAYLS
-            : TDeployment extends typeof Deployment.SEPOLIA
-              ? Network.SEPOLIA
-              : never;
+    : TDeployment extends typeof Deployment.BASE_SEPOLIA
+      ? Network.BASE_SEPOLIA
+      : TDeployment extends typeof Deployment.ETHEREUM
+        ? Network.ETHEREUM
+        : TDeployment extends typeof Deployment.MEGAETH
+          ? Network.MEGAETH
+          : TDeployment extends typeof Deployment.PLUME
+            ? Network.PLUME
+            : TDeployment extends typeof Deployment.RAYLS
+              ? Network.RAYLS
+              : TDeployment extends typeof Deployment.SEPOLIA
+                ? Network.SEPOLIA
+                : never;
 
 export function isDeployment(value: unknown): value is DeploymentType {
   return typeof value === "string" && Object.values<unknown>(Deployment).includes(value);
+}
+
+export const DeploymentWithRelease = {
+  [Deployment.ARBITRUM]: Deployment.ARBITRUM,
+  [Deployment.BASE]: Deployment.BASE,
+  [Deployment.ETHEREUM]: Deployment.ETHEREUM,
+  [Deployment.MEGAETH]: Deployment.MEGAETH,
+  [Deployment.PLUME]: Deployment.PLUME,
+  [Deployment.RAYLS]: Deployment.RAYLS,
+  [Deployment.SEPOLIA]: Deployment.SEPOLIA,
+} as const satisfies { [K in DeploymentTypeWithRelease]: K };
+
+export function isDeploymentWithRelease(value: unknown): value is DeploymentTypeWithRelease {
+  return isDeployment(value) && Object.keys(releases[value]).length > 0;
 }
 
 export function isRelease(value: unknown): value is Release {
@@ -84,7 +102,87 @@ export enum Kind {
   LIVE = "live",
 }
 
-export interface DeploymentDefinition<TDeployment extends DeploymentType> {
+type CcipFields = {
+  /**
+   * The CCIP chain selector for this network.
+   */
+  readonly ccipChainSelector: bigint;
+  /**
+   * External contracts (third-party) relevant to this deployment.
+   */
+  readonly externalContracts: {
+    /**
+     * The CCIP Router address for this network.
+     */
+    readonly ccipRouter: Address;
+    /**
+     * The wrapped native token (WETH/WPLUME/etc.) for this network. Used as the fee token
+     * for CCIP return messages so that excess can be refunded via `tokenAmounts`.
+     */
+    readonly wrappedNative: Address;
+    /**
+     * The CCIP TokenAdminRegistry address for this network. Used to resolve the source-chain
+     * ERC20 address for a given vault-chain asset when bridging deposits via CCIP.
+     */
+    readonly tokenAdminRegistry: Address;
+  };
+};
+
+type NoCcipFields = {
+  readonly ccipChainSelector?: never;
+  readonly externalContracts?: never;
+};
+
+type DeploymentCcipFieldsMap = {
+  [Deployment.ARBITRUM]: CcipFields;
+  [Deployment.BASE]: CcipFields;
+  [Deployment.BASE_SEPOLIA]: CcipFields;
+  [Deployment.ETHEREUM]: CcipFields;
+  [Deployment.MEGAETH]: CcipFields;
+  [Deployment.PLUME]: CcipFields;
+  [Deployment.SEPOLIA]: CcipFields;
+  [Deployment.RAYLS]: NoCcipFields;
+};
+
+export type DeploymentCcipFields<TDeployment extends DeploymentType> = DeploymentCcipFieldsMap[TDeployment];
+
+export type ReleasesFields<TDeployment extends DeploymentType = DeploymentType> = {
+  /**
+   * The block number at which the dispatcher contract was deployed.
+   */
+  readonly inception: number;
+  /**
+   * List of releases that belong to this deployment.
+   */
+  readonly releases: Partial<{
+    readonly [TVersion in Version]: ReleaseDefinition<TVersion, TDeployment>;
+  }>;
+};
+
+type NoReleasesFields = {
+  readonly inception?: never;
+  readonly releases?: never;
+};
+
+/**
+ * Per-deployment releases shape. A deployment either has contract releases (and therefore an
+ * inception block + release map) or it is CCIP-only (no contracts at all, e.g. Base Sepolia).
+ * Encoded as a distributive conditional so the generic relationship between `TDeployment` and
+ * the contracts inside `ReleaseDefinition` is preserved (a mapped/lookup type collapses the
+ * union and loses the per-deployment narrowing).
+ */
+export type DeploymentReleases<TDeployment extends DeploymentType> = TDeployment extends typeof Deployment.BASE_SEPOLIA
+  ? NoReleasesFields
+  : ReleasesFields<TDeployment>;
+
+/**
+ * Deployment slugs that have a contract release (i.e. exclude CCIP-only deployments).
+ */
+export type DeploymentTypeWithRelease = Exclude<DeploymentType, typeof Deployment.BASE_SEPOLIA>;
+
+export type NetworkWithRelease = DeploymentNetwork<DeploymentTypeWithRelease>;
+
+interface DeploymentDefinitionBase<TDeployment extends DeploymentType> {
   /**
    * The unique deployment identifier.
    */
@@ -101,17 +199,11 @@ export interface DeploymentDefinition<TDeployment extends DeploymentType> {
    * The human readable name of the deployment.
    */
   readonly label: string;
-  /**
-   * The block number at which the dispatcher contract was deployed.
-   */
-  readonly inception: number;
-  /**
-   * List of releases that belong to this deployment.
-   */
-  readonly releases: Partial<{
-    readonly [TVersion in Version]: ReleaseDefinition<TVersion, TDeployment>;
-  }>;
 }
+
+export type DeploymentDefinition<TDeployment extends DeploymentType> = DeploymentDefinitionBase<TDeployment> &
+  DeploymentReleases<TDeployment> &
+  DeploymentCcipFields<TDeployment>;
 
 export function defineDeployment<TDeployment extends DeploymentType>(deployment: DeploymentDefinition<TDeployment>) {
   return deployment;
@@ -128,6 +220,7 @@ export const releases = {
   [Deployment.BASE]: {
     [Version.ONE]: `${Deployment.BASE}.${Version.ONE}`,
   },
+  [Deployment.BASE_SEPOLIA]: {},
   [Deployment.ETHEREUM]: {
     [Version.ONE]: `${Deployment.ETHEREUM}.${Version.ONE}`,
   },
