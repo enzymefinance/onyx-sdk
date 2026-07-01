@@ -50,3 +50,19 @@ export function owner(
     address: args.listAddress,
   });
 }
+
+export function isAuth(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    listAddress: Address;
+    who: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: OwnableAddressListAbi,
+    functionName: "isAuth",
+    address: args.listAddress,
+    args: [args.who],
+  });
+}

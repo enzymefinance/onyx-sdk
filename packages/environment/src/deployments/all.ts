@@ -1,10 +1,10 @@
 import type { Address } from "viem";
 import { isVersion, Version } from "../contracts.js";
 import { Environment, EnvironmentGroup } from "../environment.js";
-import type { Network, NetworkSlug } from "../networks.js";
+import type { Network, NetworkSlug, SlugByNetwork } from "../networks.js";
 import { getNetwork, isNetworkIdentifier } from "../networks.js";
-import type { DeploymentDefinition, DeploymentTypeWithRelease, Release } from "../releases.js";
-import { Deployment, type DeploymentType, isDeployment, isDeploymentWithRelease, Kind } from "../releases.js";
+import type { DeploymentDefinition, DeploymentTypeWithRelease, NetworkWithRelease, Release } from "../releases.js";
+import { Deployment, type DeploymentType, isDeployment, isDeploymentWithRelease } from "../releases.js";
 import { isNonZeroAddress } from "../utils.js";
 import arbitrum from "./arbitrum.js";
 import base from "./base.js";
@@ -45,14 +45,17 @@ export function getEnvironment<
   TDeployment extends DeploymentTypeWithRelease = DeploymentTypeWithRelease,
 >(deployment: TDeployment, version?: TVersion): Environment<TVersion, TDeployment>;
 export function getEnvironment<TVersion extends Version = Version.ONE>(
-  network: Network | NetworkSlug,
+  network: NetworkWithRelease | SlugByNetwork<NetworkWithRelease>,
   version?: TVersion,
 ): Environment<TVersion>;
 export function getEnvironment<TDeployment extends DeploymentTypeWithRelease = DeploymentTypeWithRelease>(
   deployment: TDeployment,
   address?: Address,
 ): Environment<Version, TDeployment>;
-export function getEnvironment(network: Network | NetworkSlug, address?: Address): Environment;
+export function getEnvironment(
+  network: NetworkWithRelease | SlugByNetwork<NetworkWithRelease>,
+  address?: Address,
+): Environment;
 
 export function getEnvironment(
   deploymentOrNetwork: DeploymentType | Network | NetworkSlug,
@@ -64,8 +67,7 @@ export function getEnvironment(
     deployment = deployments[deploymentOrNetwork];
   } else if (isNetworkIdentifier(deploymentOrNetwork)) {
     const network = getNetwork(deploymentOrNetwork as Network);
-    const candidates = Object.values(deployments).filter((item) => item.kind === Kind.LIVE);
-    const found = candidates.find((item) => item.network === network.id);
+    const found = Object.values(deployments).find((item) => item.network === network.id);
 
     if (!found) {
       throw new Error(`Failed to find deployment for network ${network.slug}`);
@@ -93,8 +95,3 @@ export function getEnvironment(
 
   throw new Error(`Failed to find ${versionOrAddress} release on deployment ${deployment.slug}`);
 }
-
-/**
- * @deprecated Use the `getEnvironment` function.
- */
-export const getOfficialEnvironment = getEnvironment;

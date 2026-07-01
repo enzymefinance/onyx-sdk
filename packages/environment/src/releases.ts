@@ -180,6 +180,8 @@ export type DeploymentReleases<TDeployment extends DeploymentType> = TDeployment
  */
 export type DeploymentTypeWithRelease = Exclude<DeploymentType, typeof Deployment.BASE_SEPOLIA>;
 
+export type NetworkWithRelease = DeploymentNetwork<DeploymentTypeWithRelease>;
+
 interface DeploymentDefinitionBase<TDeployment extends DeploymentType> {
   /**
    * The unique deployment identifier.
