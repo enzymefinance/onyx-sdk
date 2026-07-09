@@ -1,6 +1,6 @@
 import * as path from "node:path";
-import type { ViteUserConfig } from "vitest/config";
 import tsconfigPaths from "vite-tsconfig-paths";
+import type { ViteUserConfig } from "vitest/config";
 
 const alias = (pkg: string) => {
   const legacyName = `@onyx/${pkg}`;
