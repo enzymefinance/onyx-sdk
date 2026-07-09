@@ -25,7 +25,7 @@ export default defineDeployment<typeof Deployment.ETHEREUM>({
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x5b1533b254052ea32303633bfd301dd2fa816b90",
         ContinuousFlatRatePerformanceFeeTracker: "0x925cf3261bc9e993073a8d896f60fe6b09840a13",
         CreWorkflowConsumerFactory: "0x160ebb3e23f23b62108da07169e46c4c4d4b714d",
-        CreWorkflowConsumer: "0xb8b0013c44cad02ee01ec3c8c618c7ca5d5ce091",
+        CreWorkflowConsumer: "0x9fafcb36165cc8a5d3c938d03d263bf4ae68b3ff",
         DepositorWalletFactory: "0x1e59d018f1493d270e026663607c188467d754b3",
         DepositorWallet: "0x274fece703809af5336d0578867cbe16f3c81d08",
         ERC7540LikeDepositQueueFactory: "0x01583dcda252b80724087e631681d4caf8cc21f3",

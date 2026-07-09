@@ -25,7 +25,7 @@ export default defineDeployment<typeof Deployment.ARBITRUM>({
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x73673ad39e391e708f8944608b03af8970c0343b",
         ContinuousFlatRatePerformanceFeeTracker: "0x67dd39db68618e32b801654006f133b6ead7116b",
         CreWorkflowConsumerFactory: "0xb1ac2d39c4eb290218b1fc28dbba30213edb7b36",
-        CreWorkflowConsumer: "0x8ce67f7cb781be504ed70f85eecbf82617261c40",
+        CreWorkflowConsumer: "0x3d81f3518e2c4f6f0c3d0aa42e460cee5b4e6e88",
         DepositorWalletFactory: "0xa008259d9304da4267a9108dacba2d5b22560f94",
         DepositorWallet: "0xf91e906062d6fb6c005368e9d962863db7561bc3",
         ERC7540LikeDepositQueueFactory: "0xdeabb9d2f30bec34ba75543656e4d197d06a51dc",

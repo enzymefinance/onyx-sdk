@@ -24,7 +24,7 @@ export default defineDeployment<typeof Deployment.MEGAETH>({
         ContinuousFlatRateManagementFeeTracker: "0xbe579b9515fac20cecb307d4f51e0ad83839cd11",
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x648bf367a28a7fc3af2ccd676108cd386015258d",
         ContinuousFlatRatePerformanceFeeTracker: "0x83e249d603459d2a926ee85d8ba8d0aeabe101f2",
-        CreWorkflowConsumerFactory: "0x3569297fe3dd2715e67c44b9e8320e06e8ff35cf",
+        CreWorkflowConsumerFactory: "0xeda1dde0edb7a8fd6a4d02be9b54b9477ec82f06",
         CreWorkflowConsumer: "0xcccee3084d491efb3fbc107bb28ed0316cebff11",
         DepositorWalletFactory: "0x524a6fe596efc78d86fb610641307d6a3a5db57d",
         DepositorWallet: "0x08cb94f7101f4205f5e8590518b65935abf490f8",
