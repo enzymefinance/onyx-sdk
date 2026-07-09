@@ -45,7 +45,7 @@ export default defineDeployment<typeof Deployment.RAYLS>({
       inception: 1142634,
       network: Network.RAYLS,
       slug: `${Deployment.RAYLS}.${Version.ONE}`,
-      status: Status.LIVE,
+      status: Status.PENDING,
       version: Version.ONE,
     },
   },
