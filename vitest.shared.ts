@@ -1,36 +1,30 @@
 import * as path from "node:path";
-import tsconfigPaths from "vite-tsconfig-paths";
 import type { ViteUserConfig } from "vitest/config";
 
 const alias = (pkg: string) => {
-  const legacyName = `@onyx/${pkg}`;
-  const scopedName = `@enzymefinance/onyx-${pkg}`;
-  const target = process.env.TEST_DIST !== undefined ? "dist/esm" : "src";
+  const name = `@onyx/${pkg}`;
+  const target = process.env.TEST_DIST !== undefined ? "dist/dist/esm" : "src";
   return {
-    [`${legacyName}/test`]: path.join(__dirname, "packages", pkg, "test", "setup.ts"),
-    [`${legacyName}`]: path.join(__dirname, "packages", pkg, target),
-    [`${scopedName}/test`]: path.join(__dirname, "packages", pkg, "test", "setup.ts"),
-    [`${scopedName}`]: path.join(__dirname, "packages", pkg, target),
+    [`${name}/test`]: path.join(__dirname, "packages", pkg, "test", "setup.js"),
+    [`${name}`]: path.join(__dirname, "packages", pkg, target),
   };
 };
 
 // This is a workaround, see https://github.com/vitest-dev/vitest/issues/4744
 const config: ViteUserConfig = {
-  plugins: [tsconfigPaths()],
   esbuild: {
     target: "es2020",
   },
-  resolve: {
+
+  test: {
+    testTimeout: 200_000,
+    include: ["test/**/*.test.ts"],
+    projects: ["./packages/sdk", "./packages/environment"],
     alias: {
       ...alias("abis"),
       ...alias("environment"),
       ...alias("sdk"),
     },
-  },
-
-  test: {
-    testTimeout: 200_000,
-    include: ["packages/*/test/**/*.test.ts"],
   },
 };
 
