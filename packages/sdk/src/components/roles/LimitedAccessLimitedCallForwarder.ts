@@ -73,6 +73,7 @@ export function wrapTransaction(args: { forwarderAddress: Address; tx: Viem.Popu
   return executeCalls({
     forwarderAddress: args.forwarderAddress,
     calls: [{ target: args.tx.params.address, data: callData, value: args.tx.params.value ?? 0n }],
+    value: args.tx.params.value ?? 0n,
   });
 }
 

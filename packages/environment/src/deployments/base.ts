@@ -25,7 +25,7 @@ export default defineDeployment<typeof Deployment.BASE>({
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x35755ca143ba395689f5da3d22f415fc07a62dd2",
         ContinuousFlatRatePerformanceFeeTracker: "0x9fc697499b31b9fdae9e873db693ec730a58ac67",
         CreWorkflowConsumerFactory: "0xbf542746820d9e78d2bf7d7c34483ee58dc313c9",
-        CreWorkflowConsumer: "0xcb363ebfae808fb7840dfe314926439006c168bf",
+        CreWorkflowConsumer: "0x7932a7326d6e7a0a759c42929dcb26342478247f",
         DepositorWalletFactory: "0x8ab3dfd6139ccb6d23559b5264a40b909d715180",
         DepositorWallet: "0x4535ea05a0ff7e71ad80780e306ac933e3a978a3",
         ERC7540LikeDepositQueueFactory: "0xdefad5119f7b8ef754ccb11a4cf4956a3ec3d643",
