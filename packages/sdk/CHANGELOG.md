@@ -1,5 +1,16 @@
 # @enzymefinance/onyx-sdk
 
+## 4.1.0
+
+### Minor Changes
+
+- [#52](https://github.com/enzymefinance/onyx-sdk/pull/52) [`1ab821d`](https://github.com/enzymefinance/onyx-sdk/commit/1ab821df549f7ceebf0e04532a23bb0f6e43b7ea) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - Change workflow addresses and add new methods
+
+### Patch Changes
+
+- Updated dependencies [[`1ab821d`](https://github.com/enzymefinance/onyx-sdk/commit/1ab821df549f7ceebf0e04532a23bb0f6e43b7ea)]:
+  - @enzymefinance/onyx-environment@4.1.0
+
 ## 4.0.0
 
 ### Major Changes

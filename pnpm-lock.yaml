@@ -74,7 +74,7 @@ importers:
         specifier: workspace:^4.0.0
         version: link:../abis/dist
       '@enzymefinance/onyx-environment':
-        specifier: workspace:^4.0.0
+        specifier: workspace:^4.1.0
         version: link:../environment/dist
       typescript:
         specifier: ^5.9.3
