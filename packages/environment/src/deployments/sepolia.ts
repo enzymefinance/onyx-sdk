@@ -25,7 +25,7 @@ export default defineDeployment<typeof Deployment.SEPOLIA>({
         ContinuousFlatRatePerformanceFeeTrackerFactory: "0x076af4ecae3d6a2eb281ab4f6c7a76ea45e8e4c5",
         ContinuousFlatRatePerformanceFeeTracker: "0xaffffdf0966f3d4eb3c5c5b77f343b28c0c4829c",
         CreWorkflowConsumerFactory: "0x2a189be4542d7fb3729f475e5c36f3d281e4d2d5",
-        CreWorkflowConsumer: "0xada9c71c1dcdee003322b75fc9b81b82a1274cee",
+        CreWorkflowConsumer: "0x5cf95d0d7b8b020666cf77b09a22c6da86ebae22",
         DepositorWalletFactory: "0xdfa63a80619fc780f5daafb4b34eecfe0194205d",
         DepositorWallet: "0xdd13ea978d0ac634fc59bdff05cbadc902247955",
         ERC7540LikeDepositQueueFactory: "0x1c7f48368e4dd42bd4d339e6fcce72a59eedbb0f",

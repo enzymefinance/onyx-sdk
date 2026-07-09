@@ -1,4 +1,5 @@
 export * as CreWorkflowConsumer from "./components/automations/CreWorkflowConsumer.js";
+export * as DepositorWallet from "./components/ccip/DepositorWallet.js";
 export * as WalletsManager from "./components/ccip/WalletsManager.js";
 export * as ContinuousFlatRateManagementFeeTracker from "./components/fees/ContinuousFlatRateManagementFeeTracker";
 export * as ContinuousFlatRatePerformanceFeeTracker from "./components/fees/ContinuousFlatRatePerformanceFeeTracker";

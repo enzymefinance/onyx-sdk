@@ -199,6 +199,23 @@ export function withdrawAssetTo(args: { sharesAddress: Address; assetAddress: Ad
     address: args.sharesAddress,
   });
 }
+
+export function encodeWithdrawAssetTo(args: { assetAddress: Address; to: Address; amount: bigint }): Hex {
+  return encodeFunctionData({
+    abi: SharesAbi,
+    functionName: "withdrawAssetTo",
+    args: [args.assetAddress, args.to, args.amount],
+  });
+}
+
+export function decodeWithdrawAssetTo(data: Hex) {
+  return decodeFunctionResult({
+    abi: SharesAbi,
+    functionName: "withdrawAssetTo",
+    data,
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------

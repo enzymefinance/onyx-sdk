@@ -1,5 +1,6 @@
 import { AccountERC20TrackerAbi } from "@enzymefinance/onyx-abis";
-import type { Address, Client } from "viem";
+import type { Address, Client, Hex } from "viem";
+import { decodeFunctionResult, encodeFunctionData } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils";
 
@@ -68,6 +69,22 @@ export function getAssets(
     abi: AccountERC20TrackerAbi,
     functionName: "getAssets",
     address: args.trackerAddress,
+  });
+}
+
+export function encodeGetAssets(): Hex {
+  return encodeFunctionData({
+    abi: AccountERC20TrackerAbi,
+    functionName: "getAssets",
+    args: [],
+  });
+}
+
+export function decodeGetAssets(data: Hex): readonly Address[] {
+  return decodeFunctionResult({
+    abi: AccountERC20TrackerAbi,
+    functionName: "getAssets",
+    data,
   });
 }
 
