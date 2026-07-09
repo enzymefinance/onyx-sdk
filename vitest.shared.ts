@@ -5,11 +5,11 @@ import type { ViteUserConfig } from "vitest/config";
 const alias = (pkg: string) => {
   const legacyName = `@onyx/${pkg}`;
   const scopedName = `@enzymefinance/onyx-${pkg}`;
-  const target = process.env.TEST_DIST !== undefined ? "dist/dist/esm" : "src";
+  const target = process.env.TEST_DIST !== undefined ? "dist/esm" : "src";
   return {
-    [`${legacyName}/test`]: path.join(__dirname, "packages", pkg, "test", "setup.js"),
+    [`${legacyName}/test`]: path.join(__dirname, "packages", pkg, "test", "setup.ts"),
     [`${legacyName}`]: path.join(__dirname, "packages", pkg, target),
-    [`${scopedName}/test`]: path.join(__dirname, "packages", pkg, "test", "setup.js"),
+    [`${scopedName}/test`]: path.join(__dirname, "packages", pkg, "test", "setup.ts"),
     [`${scopedName}`]: path.join(__dirname, "packages", pkg, target),
   };
 };
