@@ -3,7 +3,7 @@ export const a = 1;
 import { ERC7540LikeRedeemQueueAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../../Utils";
+import { Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS - DEPOSITOR

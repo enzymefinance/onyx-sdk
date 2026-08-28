@@ -1,5 +1,5 @@
 import type { Address } from "viem";
-import { Deployment, type DeploymentType } from "./releases";
+import { Deployment, type DeploymentType } from "./deployments/deployment.js";
 
 export enum Version {
   ONE = "one",

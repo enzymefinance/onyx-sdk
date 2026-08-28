@@ -4,8 +4,8 @@ import { encodeValueAsset } from "@enzymefinance/onyx-environment";
 import type { Address, Client, Hex } from "viem";
 import { decodeFunctionResult, encodeFunctionData } from "viem";
 import { readContract } from "viem/actions";
-import { deployProxy } from "./factories/BeaconFactory";
-import { Viem } from "./Utils";
+import { deployProxy } from "./factories/BeaconFactory.js";
+import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS

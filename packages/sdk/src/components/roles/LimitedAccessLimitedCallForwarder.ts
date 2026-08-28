@@ -9,7 +9,7 @@ import {
   type Hex,
 } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../../Utils";
+import { Viem } from "../../Utils.js";
 
 export type Call = { target: Address; data: Hex; value: bigint };
 

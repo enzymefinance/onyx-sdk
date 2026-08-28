@@ -1,26 +1,18 @@
 import type { Address } from "viem";
 import type { VersionContracts } from "./contracts.js";
 import { isVersion, Version } from "./contracts.js";
+import type { DeploymentType } from "./deployments/deployment.js";
+import { Deployment } from "./deployments/deployment.js";
 import type { Network } from "./networks.js";
+
+export type { DeploymentType } from "./deployments/deployment.js";
+export { Deployment } from "./deployments/deployment.js";
 
 export enum Status {
   LIVE = "live",
   PENDING = "pending",
   DEPRECATED = "deprecated",
 }
-
-export const Deployment = {
-  ARBITRUM: "arbitrum",
-  BASE: "base",
-  BASE_SEPOLIA: "base-sepolia",
-  ETHEREUM: "ethereum",
-  MEGAETH: "megaeth",
-  PLUME: "plume",
-  RAYLS: "rayls",
-  SEPOLIA: "sepolia",
-} as const;
-
-export type DeploymentType = (typeof Deployment)[keyof typeof Deployment];
 
 export type DeploymentNetwork<TDeployment extends DeploymentType> = TDeployment extends typeof Deployment.ARBITRUM
   ? Network.ARBITRUM

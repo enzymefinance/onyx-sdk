@@ -1,7 +1,7 @@
 import { SyncDepositHandlerAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client, Hex } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../../Utils";
+import { Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS - DEPOSITOR

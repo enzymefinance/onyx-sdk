@@ -5,6 +5,7 @@
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "build": "tsc --build tsconfig.build.json && pnpm run --recursive --filter \"./packages/*\" build",
+    "check:esm": "node ./scripts/check-esm-exports.mjs packages/sdk packages/environment",
     "release": "pnpm build && changeset publish",
     "test": "vitest",
     "test:coverage": "vitest --coverage",

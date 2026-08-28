@@ -42,6 +42,8 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Run build
         run: pnpm build
+      - name: Check built packages load under Node ESM and CJS
+        run: pnpm check:esm
 
   test:
     name: Test (${{ matrix.shard }})
