@@ -1,4 +1,4 @@
-import { VALUE_ASSET_UNIT } from "../Constants";
+import { VALUE_ASSET_UNIT } from "../Constants.js";
 
 export function absoluteValue(value: bigint) {
   return value < 0n ? -value : value;

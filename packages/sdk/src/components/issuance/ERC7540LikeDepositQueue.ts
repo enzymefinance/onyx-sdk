@@ -1,7 +1,7 @@
 import { ERC7540LikeDepositQueueAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client, Hex } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../../Utils";
+import { Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS - DEPOSITOR
@@ -122,6 +122,26 @@ export function setDepositRestriction(args: { queueAddress: Address; depositRest
   });
 }
 
+// Hooks
+
+export function setPreRequestDepositHook(args: { queueAddress: Address; hookAddress: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: ERC7540LikeDepositQueueAbi,
+    functionName: "setPreRequestDepositHook",
+    args: [args.hookAddress],
+    address: args.queueAddress,
+  });
+}
+
+export function setPostExecuteDepositRequestHook(args: { queueAddress: Address; hookAddress: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: ERC7540LikeDepositQueueAbi,
+    functionName: "setPostExecuteDepositRequestHook",
+    args: [args.hookAddress],
+    address: args.queueAddress,
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
@@ -224,6 +244,34 @@ export function getDepositControllerExternalAllowlist(
     ...Viem.extractBlockParameters(args),
     abi: ERC7540LikeDepositQueueAbi,
     functionName: "getDepositControllerExternalAllowlist",
+    address: args.queueAddress,
+  });
+}
+
+export function getPreRequestDepositHook(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    queueAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ERC7540LikeDepositQueueAbi,
+    functionName: "getPreRequestDepositHook",
+    address: args.queueAddress,
+  });
+}
+
+export function getPostExecuteDepositRequestHook(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    queueAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ERC7540LikeDepositQueueAbi,
+    functionName: "getPostExecuteDepositRequestHook",
     address: args.queueAddress,
   });
 }

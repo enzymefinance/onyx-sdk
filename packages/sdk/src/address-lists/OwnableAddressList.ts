@@ -1,7 +1,7 @@
 import { OwnableAddressListAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../Utils";
+import { Viem } from "../Utils.js";
 
 export function addToList(args: { listAddress: Address; addresses: readonly Address[] }) {
   return new Viem.PopulatedTransaction({

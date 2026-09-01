@@ -9,6 +9,7 @@ import { isNonZeroAddress } from "../utils.js";
 import arbitrum from "./arbitrum.js";
 import base from "./base.js";
 import baseSepolia from "./base-sepolia.js";
+import bsc from "./bsc.js";
 import ethereum from "./ethereum.js";
 import megaeth from "./megaeth.js";
 import plume from "./plume.js";
@@ -19,6 +20,7 @@ export const deployments = {
   [Deployment.ARBITRUM]: arbitrum,
   [Deployment.BASE]: base,
   [Deployment.BASE_SEPOLIA]: baseSepolia,
+  [Deployment.BSC]: bsc,
   [Deployment.ETHEREUM]: ethereum,
   [Deployment.MEGAETH]: megaeth,
   [Deployment.PLUME]: plume,

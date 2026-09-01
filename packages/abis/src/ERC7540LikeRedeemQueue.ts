@@ -1,17 +1,39 @@
 export const ERC7540LikeRedeemQueueAbi = [
-  { type: "constructor", inputs: [], stateMutability: "nonpayable" },
+  {
+    type: "constructor",
+    inputs: [],
+    stateMutability: "nonpayable",
+  },
   {
     type: "function",
     name: "asset",
     inputs: [],
-    outputs: [{ name: "asset_", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "asset_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "cancelRedeem",
-    inputs: [{ name: "_requestId", type: "uint256", internalType: "uint256" }],
-    outputs: [{ name: "shares_", type: "uint256", internalType: "uint256" }],
+    inputs: [
+      {
+        name: "_requestId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "shares_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
@@ -29,22 +51,66 @@ export const ERC7540LikeRedeemQueueAbi = [
   },
   {
     type: "function",
+    name: "getPostExecuteRedeemRequestHook",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getPreRequestRedeemHook",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
     name: "getRedeemLastId",
     inputs: [],
-    outputs: [{ name: "", type: "uint128", internalType: "uint128" }],
+    outputs: [
+      {
+        name: "",
+        type: "uint128",
+        internalType: "uint128",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getRedeemMinRequestDuration",
     inputs: [],
-    outputs: [{ name: "", type: "uint24", internalType: "uint24" }],
+    outputs: [
+      {
+        name: "",
+        type: "uint24",
+        internalType: "uint24",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getRedeemRequest",
-    inputs: [{ name: "_requestId", type: "uint256", internalType: "uint256" }],
+    inputs: [
+      {
+        name: "_requestId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     outputs: [
       {
         name: "",
@@ -75,17 +141,67 @@ export const ERC7540LikeRedeemQueueAbi = [
     type: "function",
     name: "requestRedeem",
     inputs: [
-      { name: "_shares", type: "uint256", internalType: "uint256" },
-      { name: "_controller", type: "address", internalType: "address" },
-      { name: "_owner", type: "address", internalType: "address" },
+      {
+        name: "_shares",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_controller",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_owner",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    outputs: [{ name: "requestId_", type: "uint256", internalType: "uint256" }],
+    outputs: [
+      {
+        name: "requestId_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "setAsset",
-    inputs: [{ name: "_asset", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setPostExecuteRedeemRequestHook",
+    inputs: [
+      {
+        name: "_postExecuteRedeemRequestHook",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setPreRequestRedeemHook",
+    inputs: [
+      {
+        name: "_preRequestRedeemHook",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -106,7 +222,13 @@ export const ERC7540LikeRedeemQueueAbi = [
     type: "function",
     name: "share",
     inputs: [],
-    outputs: [{ name: "share_", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "share_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
@@ -115,6 +237,32 @@ export const ERC7540LikeRedeemQueueAbi = [
     inputs: [
       {
         name: "asset",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PostExecuteRedeemRequestHookSet",
+    inputs: [
+      {
+        name: "hook",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PreRequestRedeemHookSet",
+    inputs: [
+      {
+        name: "hook",
         type: "address",
         indexed: false,
         internalType: "address",
@@ -290,8 +438,16 @@ export const ERC7540LikeRedeemQueueAbi = [
     type: "error",
     name: "SafeCastOverflowedUintDowncast",
     inputs: [
-      { name: "bits", type: "uint8", internalType: "uint8" },
-      { name: "value", type: "uint256", internalType: "uint256" },
+      {
+        name: "bits",
+        type: "uint8",
+        internalType: "uint8",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
   },
   {

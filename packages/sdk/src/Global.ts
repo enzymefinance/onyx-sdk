@@ -5,7 +5,7 @@
 import { GlobalAbi } from "@enzymefinance/onyx-abis";
 import { Address, Client } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "./Utils";
+import { Viem } from "./Utils.js";
 
 export function transferOwnership(args: { globalAddress: Address; newOwner: Address }) {
   return new Viem.PopulatedTransaction({

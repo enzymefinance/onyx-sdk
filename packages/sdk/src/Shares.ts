@@ -4,8 +4,8 @@ import { encodeValueAsset } from "@enzymefinance/onyx-environment";
 import type { Address, Client, Hex } from "viem";
 import { decodeFunctionResult, encodeFunctionData } from "viem";
 import { readContract } from "viem/actions";
-import { deployProxy } from "./factories/BeaconFactory";
-import { Viem } from "./Utils";
+import { deployProxy } from "./factories/BeaconFactory.js";
+import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS
@@ -102,6 +102,15 @@ export function mintFor(args: { sharesAddress: Address; to: Address; amount: big
     abi: SharesAbi,
     functionName: "mintFor",
     args: [args.to, args.amount],
+    address: args.sharesAddress,
+  });
+}
+
+export function burnFor(args: { sharesAddress: Address; from: Address; amount: bigint }) {
+  return new Viem.PopulatedTransaction({
+    abi: SharesAbi,
+    functionName: "burnFor",
+    args: [args.from, args.amount],
     address: args.sharesAddress,
   });
 }
@@ -347,6 +356,38 @@ export function isAdmin(
     functionName: "isAdmin",
     address: args.sharesAddress,
     args: [args.userAddress],
+  });
+}
+
+export function isDepositHandler(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    sharesAddress: Address;
+    address: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: SharesAbi,
+    functionName: "isDepositHandler",
+    address: args.sharesAddress,
+    args: [args.address],
+  });
+}
+
+export function isRedeemHandler(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    sharesAddress: Address;
+    address: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: SharesAbi,
+    functionName: "isRedeemHandler",
+    address: args.sharesAddress,
+    args: [args.address],
   });
 }
 

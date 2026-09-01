@@ -1,7 +1,7 @@
 import { SyncDepositHandlerAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client, Hex } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../../Utils";
+import { Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS - DEPOSITOR
@@ -47,6 +47,17 @@ export function setMaxSharePriceStaleness(args: { handlerAddress: Address; maxSt
   });
 }
 
+// Hooks
+
+export function setPostDepositHook(args: { handlerAddress: Address; hookAddress: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: SyncDepositHandlerAbi,
+    functionName: "setPostDepositHook",
+    address: args.handlerAddress,
+    args: [args.hookAddress],
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
@@ -89,6 +100,20 @@ export function getMaxSharePriceStaleness(
     ...Viem.extractBlockParameters(args),
     abi: SyncDepositHandlerAbi,
     functionName: "getMaxSharePriceStaleness",
+    address: args.handlerAddress,
+  });
+}
+
+export function getPostDepositHook(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    handlerAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: SyncDepositHandlerAbi,
+    functionName: "getPostDepositHook",
     address: args.handlerAddress,
   });
 }

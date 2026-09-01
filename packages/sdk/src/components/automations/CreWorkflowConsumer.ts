@@ -1,8 +1,8 @@
 import { CreWorkflowConsumerAbi } from "@enzymefinance/onyx-abis";
 import { type Address, type Client, encodeAbiParameters, type Hex } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../../Utils";
-import { type Call, executeCallsAbiParameter } from "../roles/LimitedAccessLimitedCallForwarder";
+import { Viem } from "../../Utils.js";
+import { type Call, executeCallsAbiParameter } from "../roles/LimitedAccessLimitedCallForwarder.js";
 
 //--------------------------------------------------------------------------------------------
 // TYPES
