@@ -1,7 +1,10 @@
 import type { Address } from "viem";
 import type { VersionContracts } from "./contracts.js";
 import { isVersion, Version } from "./contracts.js";
+import { Deployment, type DeploymentType } from "./deployments/deployment.js";
 import type { Network } from "./networks.js";
+
+export { Deployment, type DeploymentType } from "./deployments/deployment.js";
 
 export enum Status {
   LIVE = "live",
@@ -9,36 +12,25 @@ export enum Status {
   DEPRECATED = "deprecated",
 }
 
-export const Deployment = {
-  ARBITRUM: "arbitrum",
-  BASE: "base",
-  BASE_SEPOLIA: "base-sepolia",
-  ETHEREUM: "ethereum",
-  MEGAETH: "megaeth",
-  PLUME: "plume",
-  RAYLS: "rayls",
-  SEPOLIA: "sepolia",
-} as const;
-
-export type DeploymentType = (typeof Deployment)[keyof typeof Deployment];
-
 export type DeploymentNetwork<TDeployment extends DeploymentType> = TDeployment extends typeof Deployment.ARBITRUM
   ? Network.ARBITRUM
   : TDeployment extends typeof Deployment.BASE
     ? Network.BASE
     : TDeployment extends typeof Deployment.BASE_SEPOLIA
       ? Network.BASE_SEPOLIA
-      : TDeployment extends typeof Deployment.ETHEREUM
-        ? Network.ETHEREUM
-        : TDeployment extends typeof Deployment.MEGAETH
-          ? Network.MEGAETH
-          : TDeployment extends typeof Deployment.PLUME
-            ? Network.PLUME
-            : TDeployment extends typeof Deployment.RAYLS
-              ? Network.RAYLS
-              : TDeployment extends typeof Deployment.SEPOLIA
-                ? Network.SEPOLIA
-                : never;
+      : TDeployment extends typeof Deployment.BSC
+        ? Network.BSC
+        : TDeployment extends typeof Deployment.ETHEREUM
+          ? Network.ETHEREUM
+          : TDeployment extends typeof Deployment.MEGAETH
+            ? Network.MEGAETH
+            : TDeployment extends typeof Deployment.PLUME
+              ? Network.PLUME
+              : TDeployment extends typeof Deployment.RAYLS
+                ? Network.RAYLS
+                : TDeployment extends typeof Deployment.SEPOLIA
+                  ? Network.SEPOLIA
+                  : never;
 
 export function isDeployment(value: unknown): value is DeploymentType {
   return typeof value === "string" && Object.values<unknown>(Deployment).includes(value);
@@ -47,6 +39,7 @@ export function isDeployment(value: unknown): value is DeploymentType {
 export const DeploymentWithRelease = {
   [Deployment.ARBITRUM]: Deployment.ARBITRUM,
   [Deployment.BASE]: Deployment.BASE,
+  [Deployment.BSC]: Deployment.BSC,
   [Deployment.ETHEREUM]: Deployment.ETHEREUM,
   [Deployment.MEGAETH]: Deployment.MEGAETH,
   [Deployment.PLUME]: Deployment.PLUME,
@@ -137,6 +130,7 @@ type DeploymentCcipFieldsMap = {
   [Deployment.ARBITRUM]: CcipFields;
   [Deployment.BASE]: CcipFields;
   [Deployment.BASE_SEPOLIA]: CcipFields;
+  [Deployment.BSC]: NoCcipFields;
   [Deployment.ETHEREUM]: CcipFields;
   [Deployment.MEGAETH]: CcipFields;
   [Deployment.PLUME]: CcipFields;
@@ -152,6 +146,10 @@ export type ReleasesFields<TDeployment extends DeploymentType = DeploymentType> 
    */
   readonly inception: number;
   /**
+   * The owner address
+   */
+  readonly owner: Address;
+  /**
    * List of releases that belong to this deployment.
    */
   readonly releases: Partial<{
@@ -161,6 +159,7 @@ export type ReleasesFields<TDeployment extends DeploymentType = DeploymentType> 
 
 type NoReleasesFields = {
   readonly inception?: never;
+  readonly owner?: never;
   readonly releases?: never;
 };
 
@@ -221,6 +220,9 @@ export const releases = {
     [Version.ONE]: `${Deployment.BASE}.${Version.ONE}`,
   },
   [Deployment.BASE_SEPOLIA]: {},
+  [Deployment.BSC]: {
+    [Version.ONE]: `${Deployment.BSC}.${Version.ONE}`,
+  },
   [Deployment.ETHEREUM]: {
     [Version.ONE]: `${Deployment.ETHEREUM}.${Version.ONE}`,
   },

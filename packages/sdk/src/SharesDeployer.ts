@@ -10,8 +10,16 @@ export const TransferValidatorSource = {
   None: 0,
   Existing: 1,
   DeployAddressLists: 2,
+  DeployChainlinkAce: 3,
 } as const;
 export type TransferValidatorSource = (typeof TransferValidatorSource)[keyof typeof TransferValidatorSource];
+
+export const HookSource = {
+  None: 0,
+  Existing: 1,
+  DeployChainlinkAce: 2,
+} as const;
+export type HookSource = (typeof HookSource)[keyof typeof HookSource];
 
 export const ExternalListSource = {
   None: 0,
@@ -64,11 +72,18 @@ export type AddressListsValidatorListConfig = {
   sharedAddressListIndex: bigint;
 };
 
+export type HookConfig = {
+  source: number;
+  existingHook: Address;
+  policyEngine: Address;
+};
+
 export type TransferValidatorConfig = {
   source: number;
   existing: Address;
   recipientList: AddressListsValidatorListConfig;
   senderList: AddressListsValidatorListConfig;
+  chainlinkAcePolicyEngine: Address;
 };
 
 export type FeeHandlerConfig = {
@@ -121,6 +136,8 @@ export type QueueDepositHandlerConfig = {
   externalListExisting: Address;
   sharedAddressListIndex: bigint;
   allowedDepositors: readonly Address[];
+  preRequestDepositHook: HookConfig;
+  postExecuteDepositRequestHook: HookConfig;
 };
 
 export type SyncDepositHandlerConfig = {
@@ -129,11 +146,24 @@ export type SyncDepositHandlerConfig = {
   depositorAllowlistSource: number;
   depositorAllowlistExisting: Address;
   sharedAddressListIndex: bigint;
+  postDepositHook: HookConfig;
 };
 
 export type RedeemHandlerConfig = {
   asset: Address;
   minRequestDuration: number;
+  preRequestRedeemHook: HookConfig;
+  postExecuteRedeemRequestHook: HookConfig;
+};
+
+export type SharesMintHandlerConfig = {
+  deploy: boolean;
+  preMintHook: HookConfig;
+};
+
+export type SharesBurnHandlerConfig = {
+  deploy: boolean;
+  preBurnHook: HookConfig;
 };
 
 export type ComponentsConfig = {
@@ -146,6 +176,8 @@ export type ComponentsConfig = {
   queueDepositHandlers: readonly QueueDepositHandlerConfig[];
   syncDepositHandlers: readonly SyncDepositHandlerConfig[];
   redeemHandlers: readonly RedeemHandlerConfig[];
+  sharesMintHandler: SharesMintHandlerConfig;
+  sharesBurnHandler: SharesBurnHandlerConfig;
 };
 
 export type PreMintRecipient = {

@@ -2,6 +2,7 @@ export enum Network {
   ARBITRUM = 42161,
   BASE = 8453,
   BASE_SEPOLIA = 84532,
+  BSC = 56,
   ETHEREUM = 1,
   MEGAETH = 4326,
   PLUME = 98866,
@@ -13,6 +14,7 @@ export enum NetworkSlug {
   ARBITRUM = "arbitrum",
   BASE = "base",
   BASE_SEPOLIA = "base-sepolia",
+  BSC = "bsc",
   ETHEREUM = "ethereum",
   MEGAETH = "megaeth",
   PLUME = "plume",
@@ -24,6 +26,7 @@ type SlugByNetworkMap = {
   [Network.ARBITRUM]: NetworkSlug.ARBITRUM;
   [Network.BASE]: NetworkSlug.BASE;
   [Network.BASE_SEPOLIA]: NetworkSlug.BASE_SEPOLIA;
+  [Network.BSC]: NetworkSlug.BSC;
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM;
   [Network.MEGAETH]: NetworkSlug.MEGAETH;
   [Network.PLUME]: NetworkSlug.PLUME;
@@ -35,6 +38,7 @@ type NetworkBySlugMap = {
   [NetworkSlug.ARBITRUM]: Network.ARBITRUM;
   [NetworkSlug.BASE]: Network.BASE;
   [NetworkSlug.BASE_SEPOLIA]: Network.BASE_SEPOLIA;
+  [NetworkSlug.BSC]: Network.BSC;
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM;
   [NetworkSlug.MEGAETH]: Network.MEGAETH;
   [NetworkSlug.PLUME]: Network.PLUME;
@@ -102,6 +106,7 @@ export const slugByNetwork: {
   [Network.ARBITRUM]: NetworkSlug.ARBITRUM,
   [Network.BASE]: NetworkSlug.BASE,
   [Network.BASE_SEPOLIA]: NetworkSlug.BASE_SEPOLIA,
+  [Network.BSC]: NetworkSlug.BSC,
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM,
   [Network.MEGAETH]: NetworkSlug.MEGAETH,
   [Network.PLUME]: NetworkSlug.PLUME,
@@ -115,6 +120,7 @@ export const networkBySlug: {
   [NetworkSlug.ARBITRUM]: Network.ARBITRUM,
   [NetworkSlug.BASE]: Network.BASE,
   [NetworkSlug.BASE_SEPOLIA]: Network.BASE_SEPOLIA,
+  [NetworkSlug.BSC]: Network.BSC,
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM,
   [NetworkSlug.MEGAETH]: Network.MEGAETH,
   [NetworkSlug.PLUME]: Network.PLUME,
@@ -266,12 +272,31 @@ const rayls: NetworkDefinition<Network.RAYLS> = {
   slug: NetworkSlug.RAYLS,
 };
 
+const bsc: NetworkDefinition<Network.BSC> = {
+  currency: {
+    nativeToken: {
+      name: "BNB",
+      symbol: "BNB",
+      decimals: 18,
+      network: Network.BSC,
+    },
+  },
+  explorer: {
+    label: "BscScan",
+    url: "https://bscscan.com/",
+  },
+  id: Network.BSC,
+  label: "BNB Smart Chain",
+  slug: NetworkSlug.BSC,
+};
+
 export const networks: {
   readonly [TNetwork in Network]: NetworkDefinition<TNetwork>;
 } = {
   [Network.ARBITRUM]: arbitrum,
   [Network.BASE]: base,
   [Network.BASE_SEPOLIA]: baseSepolia,
+  [Network.BSC]: bsc,
   [Network.ETHEREUM]: mainnet,
   [Network.MEGAETH]: megaeth,
   [Network.PLUME]: plume,

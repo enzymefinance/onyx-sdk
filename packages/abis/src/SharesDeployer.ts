@@ -7,19 +7,121 @@ export const SharesDeployerAbi = [
         type: "tuple",
         internalType: "struct SharesDeployer.Factories",
         components: [
-          { name: "sharesFactory", type: "address", internalType: "address" },
-          { name: "feeHandlerFactory", type: "address", internalType: "address" },
-          { name: "valuationHandlerFactory", type: "address", internalType: "address" },
-          { name: "managementFeeTrackerFactory", type: "address", internalType: "address" },
-          { name: "performanceFeeTrackerFactory", type: "address", internalType: "address" },
-          { name: "accountERC20TrackerFactory", type: "address", internalType: "address" },
-          { name: "linearCreditDebtTrackerFactory", type: "address", internalType: "address" },
-          { name: "depositQueueFactory", type: "address", internalType: "address" },
-          { name: "syncDepositHandlerFactory", type: "address", internalType: "address" },
-          { name: "redeemQueueFactory", type: "address", internalType: "address" },
-          { name: "sharesOwnedAddressListFactory", type: "address", internalType: "address" },
-          { name: "ownableAddressListFactory", type: "address", internalType: "address" },
-          { name: "addressListsSharesTransferValidatorFactory", type: "address", internalType: "address" },
+          {
+            name: "sharesFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "feeHandlerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "valuationHandlerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "managementFeeTrackerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "performanceFeeTrackerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "accountERC20TrackerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "linearCreditDebtTrackerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "depositQueueFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "syncDepositHandlerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "redeemQueueFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "sharesOwnedAddressListFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "ownableAddressListFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "addressListsSharesTransferValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "sharesMintHandlerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "sharesBurnHandlerFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceDepositQueuePreRequestValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceDepositQueuePostExecuteValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceRedeemQueuePreRequestValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceRedeemQueuePostExecuteValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceSyncDepositPostDepositValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceMintPreMintValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceBurnPreBurnValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "aceSharesTransferValidatorFactory",
+            type: "address",
+            internalType: "address",
+          },
         ],
       },
     ],
@@ -35,6 +137,62 @@ export const SharesDeployerAbi = [
   {
     type: "function",
     name: "ADDRESS_LISTS_SHARES_TRANSFER_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_BURN_PRE_BURN_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_DEPOSIT_QUEUE_POST_EXECUTE_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_DEPOSIT_QUEUE_PRE_REQUEST_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_MINT_PRE_MINT_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_REDEEM_QUEUE_POST_EXECUTE_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_REDEEM_QUEUE_PRE_REQUEST_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_SHARES_TRANSFER_VALIDATOR_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "CHAINLINK_ACE_SYNC_DEPOSIT_POST_DEPOSIT_VALIDATOR_FACTORY",
     inputs: [],
     outputs: [{ name: "", type: "address", internalType: "address" }],
     stateMutability: "view",
@@ -90,7 +248,21 @@ export const SharesDeployerAbi = [
   },
   {
     type: "function",
+    name: "SHARES_BURN_HANDLER_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
     name: "SHARES_FACTORY",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "SHARES_MINT_HANDLER_FACTORY",
     inputs: [],
     outputs: [{ name: "", type: "address", internalType: "address" }],
     stateMutability: "view",
@@ -131,19 +303,43 @@ export const SharesDeployerAbi = [
             internalType: "struct SharesDeployer.SharesConfig",
             components: [
               { name: "name", type: "string", internalType: "string" },
-              { name: "symbol", type: "string", internalType: "string" },
-              { name: "valueAsset", type: "bytes32", internalType: "bytes32" },
+              {
+                name: "symbol",
+                type: "string",
+                internalType: "string",
+              },
+              {
+                name: "valueAsset",
+                type: "bytes32",
+                internalType: "bytes32",
+              },
             ],
           },
-          { name: "nominatedOwner", type: "address", internalType: "address" },
-          { name: "admins", type: "address[]", internalType: "address[]" },
+          {
+            name: "nominatedOwner",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "admins",
+            type: "address[]",
+            internalType: "address[]",
+          },
           {
             name: "transferValidator",
             type: "tuple",
             internalType: "struct SharesDeployer.TransferValidatorConfig",
             components: [
-              { name: "source", type: "uint8", internalType: "enum SharesDeployer.TransferValidatorSource" },
-              { name: "existing", type: "address", internalType: "address" },
+              {
+                name: "source",
+                type: "uint8",
+                internalType: "enum SharesDeployer.TransferValidatorSource",
+              },
+              {
+                name: "existing",
+                type: "address",
+                internalType: "address",
+              },
               {
                 name: "recipientList",
                 type: "tuple",
@@ -154,9 +350,21 @@ export const SharesDeployerAbi = [
                     type: "uint8",
                     internalType: "enum AddressListsSharesTransferValidator.ListType",
                   },
-                  { name: "externalListSource", type: "uint8", internalType: "enum SharesDeployer.ExternalListSource" },
-                  { name: "externalListExisting", type: "address", internalType: "address" },
-                  { name: "sharedAddressListIndex", type: "uint256", internalType: "uint256" },
+                  {
+                    name: "externalListSource",
+                    type: "uint8",
+                    internalType: "enum SharesDeployer.ExternalListSource",
+                  },
+                  {
+                    name: "externalListExisting",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "sharedAddressListIndex",
+                    type: "uint256",
+                    internalType: "uint256",
+                  },
                 ],
               },
               {
@@ -169,10 +377,27 @@ export const SharesDeployerAbi = [
                     type: "uint8",
                     internalType: "enum AddressListsSharesTransferValidator.ListType",
                   },
-                  { name: "externalListSource", type: "uint8", internalType: "enum SharesDeployer.ExternalListSource" },
-                  { name: "externalListExisting", type: "address", internalType: "address" },
-                  { name: "sharedAddressListIndex", type: "uint256", internalType: "uint256" },
+                  {
+                    name: "externalListSource",
+                    type: "uint8",
+                    internalType: "enum SharesDeployer.ExternalListSource",
+                  },
+                  {
+                    name: "externalListExisting",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "sharedAddressListIndex",
+                    type: "uint256",
+                    internalType: "uint256",
+                  },
                 ],
+              },
+              {
+                name: "chainlinkAcePolicyEngine",
+                type: "address",
+                internalType: "address",
               },
             ],
           },
@@ -186,12 +411,36 @@ export const SharesDeployerAbi = [
                 type: "tuple",
                 internalType: "struct SharesDeployer.FeeHandlerConfig",
                 components: [
-                  { name: "deploy", type: "bool", internalType: "bool" },
-                  { name: "feeAsset", type: "address", internalType: "address" },
-                  { name: "entranceFeeBps", type: "uint16", internalType: "uint16" },
-                  { name: "entranceFeeRecipient", type: "address", internalType: "address" },
-                  { name: "exitFeeBps", type: "uint16", internalType: "uint16" },
-                  { name: "exitFeeRecipient", type: "address", internalType: "address" },
+                  {
+                    name: "deploy",
+                    type: "bool",
+                    internalType: "bool",
+                  },
+                  {
+                    name: "feeAsset",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "entranceFeeBps",
+                    type: "uint16",
+                    internalType: "uint16",
+                  },
+                  {
+                    name: "entranceFeeRecipient",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "exitFeeBps",
+                    type: "uint16",
+                    internalType: "uint16",
+                  },
+                  {
+                    name: "exitFeeRecipient",
+                    type: "address",
+                    internalType: "address",
+                  },
                 ],
               },
               {
@@ -199,9 +448,21 @@ export const SharesDeployerAbi = [
                 type: "tuple",
                 internalType: "struct SharesDeployer.ManagementFeeConfig",
                 components: [
-                  { name: "deploy", type: "bool", internalType: "bool" },
-                  { name: "feeBps", type: "uint16", internalType: "uint16" },
-                  { name: "recipient", type: "address", internalType: "address" },
+                  {
+                    name: "deploy",
+                    type: "bool",
+                    internalType: "bool",
+                  },
+                  {
+                    name: "feeBps",
+                    type: "uint16",
+                    internalType: "uint16",
+                  },
+                  {
+                    name: "recipient",
+                    type: "address",
+                    internalType: "address",
+                  },
                 ],
               },
               {
@@ -209,10 +470,26 @@ export const SharesDeployerAbi = [
                 type: "tuple",
                 internalType: "struct SharesDeployer.PerformanceFeeConfig",
                 components: [
-                  { name: "deploy", type: "bool", internalType: "bool" },
-                  { name: "feeBps", type: "uint16", internalType: "uint16" },
-                  { name: "hurdleRateBps", type: "int16", internalType: "int16" },
-                  { name: "recipient", type: "address", internalType: "address" },
+                  {
+                    name: "deploy",
+                    type: "bool",
+                    internalType: "bool",
+                  },
+                  {
+                    name: "feeBps",
+                    type: "uint16",
+                    internalType: "uint16",
+                  },
+                  {
+                    name: "hurdleRateBps",
+                    type: "int16",
+                    internalType: "int16",
+                  },
+                  {
+                    name: "recipient",
+                    type: "address",
+                    internalType: "address",
+                  },
                 ],
               },
               {
@@ -220,15 +497,31 @@ export const SharesDeployerAbi = [
                 type: "tuple",
                 internalType: "struct SharesDeployer.ValuationHandlerConfig",
                 components: [
-                  { name: "deploy", type: "bool", internalType: "bool" },
+                  {
+                    name: "deploy",
+                    type: "bool",
+                    internalType: "bool",
+                  },
                   {
                     name: "assetRates",
                     type: "tuple[]",
                     internalType: "struct ValuationHandler.AssetRateInput[]",
                     components: [
-                      { name: "asset", type: "address", internalType: "address" },
-                      { name: "rate", type: "uint128", internalType: "uint128" },
-                      { name: "expiry", type: "uint40", internalType: "uint40" },
+                      {
+                        name: "asset",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "rate",
+                        type: "uint128",
+                        internalType: "uint128",
+                      },
+                      {
+                        name: "expiry",
+                        type: "uint40",
+                        internalType: "uint40",
+                      },
                     ],
                   },
                 ],
@@ -238,8 +531,16 @@ export const SharesDeployerAbi = [
                 type: "tuple",
                 internalType: "struct SharesDeployer.AccountERC20TrackerConfig",
                 components: [
-                  { name: "deploy", type: "bool", internalType: "bool" },
-                  { name: "assets", type: "address[]", internalType: "address[]" },
+                  {
+                    name: "deploy",
+                    type: "bool",
+                    internalType: "bool",
+                  },
+                  {
+                    name: "assets",
+                    type: "address[]",
+                    internalType: "address[]",
+                  },
                 ],
               },
               {
@@ -253,17 +554,85 @@ export const SharesDeployerAbi = [
                 type: "tuple[]",
                 internalType: "struct SharesDeployer.QueueDepositHandlerConfig[]",
                 components: [
-                  { name: "asset", type: "address", internalType: "address" },
-                  { name: "minRequestDuration", type: "uint24", internalType: "uint24" },
+                  {
+                    name: "asset",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "minRequestDuration",
+                    type: "uint24",
+                    internalType: "uint24",
+                  },
                   {
                     name: "restriction",
                     type: "uint8",
                     internalType: "enum ERC7540LikeDepositQueue.DepositRestriction",
                   },
-                  { name: "externalListSource", type: "uint8", internalType: "enum SharesDeployer.ExternalListSource" },
-                  { name: "externalListExisting", type: "address", internalType: "address" },
-                  { name: "sharedAddressListIndex", type: "uint256", internalType: "uint256" },
-                  { name: "allowedDepositors", type: "address[]", internalType: "address[]" },
+                  {
+                    name: "externalListSource",
+                    type: "uint8",
+                    internalType: "enum SharesDeployer.ExternalListSource",
+                  },
+                  {
+                    name: "externalListExisting",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "sharedAddressListIndex",
+                    type: "uint256",
+                    internalType: "uint256",
+                  },
+                  {
+                    name: "allowedDepositors",
+                    type: "address[]",
+                    internalType: "address[]",
+                  },
+                  {
+                    name: "preRequestDepositHook",
+                    type: "tuple",
+                    internalType: "struct SharesDeployer.HookConfig",
+                    components: [
+                      {
+                        name: "source",
+                        type: "uint8",
+                        internalType: "enum SharesDeployer.HookSource",
+                      },
+                      {
+                        name: "existingHook",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "policyEngine",
+                        type: "address",
+                        internalType: "address",
+                      },
+                    ],
+                  },
+                  {
+                    name: "postExecuteDepositRequestHook",
+                    type: "tuple",
+                    internalType: "struct SharesDeployer.HookConfig",
+                    components: [
+                      {
+                        name: "source",
+                        type: "uint8",
+                        internalType: "enum SharesDeployer.HookSource",
+                      },
+                      {
+                        name: "existingHook",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "policyEngine",
+                        type: "address",
+                        internalType: "address",
+                      },
+                    ],
+                  },
                 ],
               },
               {
@@ -271,15 +640,53 @@ export const SharesDeployerAbi = [
                 type: "tuple[]",
                 internalType: "struct SharesDeployer.SyncDepositHandlerConfig[]",
                 components: [
-                  { name: "asset", type: "address", internalType: "address" },
-                  { name: "maxSharePriceStaleness", type: "uint24", internalType: "uint24" },
+                  {
+                    name: "asset",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "maxSharePriceStaleness",
+                    type: "uint24",
+                    internalType: "uint24",
+                  },
                   {
                     name: "depositorAllowlistSource",
                     type: "uint8",
                     internalType: "enum SharesDeployer.ExternalListSource",
                   },
-                  { name: "depositorAllowlistExisting", type: "address", internalType: "address" },
-                  { name: "sharedAddressListIndex", type: "uint256", internalType: "uint256" },
+                  {
+                    name: "depositorAllowlistExisting",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "sharedAddressListIndex",
+                    type: "uint256",
+                    internalType: "uint256",
+                  },
+                  {
+                    name: "postDepositHook",
+                    type: "tuple",
+                    internalType: "struct SharesDeployer.HookConfig",
+                    components: [
+                      {
+                        name: "source",
+                        type: "uint8",
+                        internalType: "enum SharesDeployer.HookSource",
+                      },
+                      {
+                        name: "existingHook",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "policyEngine",
+                        type: "address",
+                        internalType: "address",
+                      },
+                    ],
+                  },
                 ],
               },
               {
@@ -287,8 +694,128 @@ export const SharesDeployerAbi = [
                 type: "tuple[]",
                 internalType: "struct SharesDeployer.RedeemHandlerConfig[]",
                 components: [
-                  { name: "asset", type: "address", internalType: "address" },
-                  { name: "minRequestDuration", type: "uint24", internalType: "uint24" },
+                  {
+                    name: "asset",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "minRequestDuration",
+                    type: "uint24",
+                    internalType: "uint24",
+                  },
+                  {
+                    name: "preRequestRedeemHook",
+                    type: "tuple",
+                    internalType: "struct SharesDeployer.HookConfig",
+                    components: [
+                      {
+                        name: "source",
+                        type: "uint8",
+                        internalType: "enum SharesDeployer.HookSource",
+                      },
+                      {
+                        name: "existingHook",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "policyEngine",
+                        type: "address",
+                        internalType: "address",
+                      },
+                    ],
+                  },
+                  {
+                    name: "postExecuteRedeemRequestHook",
+                    type: "tuple",
+                    internalType: "struct SharesDeployer.HookConfig",
+                    components: [
+                      {
+                        name: "source",
+                        type: "uint8",
+                        internalType: "enum SharesDeployer.HookSource",
+                      },
+                      {
+                        name: "existingHook",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "policyEngine",
+                        type: "address",
+                        internalType: "address",
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "sharesMintHandler",
+                type: "tuple",
+                internalType: "struct SharesDeployer.SharesMintHandlerConfig",
+                components: [
+                  {
+                    name: "deploy",
+                    type: "bool",
+                    internalType: "bool",
+                  },
+                  {
+                    name: "preMintHook",
+                    type: "tuple",
+                    internalType: "struct SharesDeployer.HookConfig",
+                    components: [
+                      {
+                        name: "source",
+                        type: "uint8",
+                        internalType: "enum SharesDeployer.HookSource",
+                      },
+                      {
+                        name: "existingHook",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "policyEngine",
+                        type: "address",
+                        internalType: "address",
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "sharesBurnHandler",
+                type: "tuple",
+                internalType: "struct SharesDeployer.SharesBurnHandlerConfig",
+                components: [
+                  {
+                    name: "deploy",
+                    type: "bool",
+                    internalType: "bool",
+                  },
+                  {
+                    name: "preBurnHook",
+                    type: "tuple",
+                    internalType: "struct SharesDeployer.HookConfig",
+                    components: [
+                      {
+                        name: "source",
+                        type: "uint8",
+                        internalType: "enum SharesDeployer.HookSource",
+                      },
+                      {
+                        name: "existingHook",
+                        type: "address",
+                        internalType: "address",
+                      },
+                      {
+                        name: "policyEngine",
+                        type: "address",
+                        internalType: "address",
+                      },
+                    ],
+                  },
                 ],
               },
             ],
@@ -299,14 +826,26 @@ export const SharesDeployerAbi = [
             internalType: "struct SharesDeployer.PreMintConfig",
             components: [
               { name: "enabled", type: "bool", internalType: "bool" },
-              { name: "untrackedPositionsValue", type: "int256", internalType: "int256" },
+              {
+                name: "untrackedPositionsValue",
+                type: "int256",
+                internalType: "int256",
+              },
               {
                 name: "recipients",
                 type: "tuple[]",
                 internalType: "struct SharesDeployer.PreMintRecipient[]",
                 components: [
-                  { name: "to", type: "address", internalType: "address" },
-                  { name: "amount", type: "uint256", internalType: "uint256" },
+                  {
+                    name: "to",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "amount",
+                    type: "uint256",
+                    internalType: "uint256",
+                  },
                 ],
               },
             ],
@@ -316,9 +855,21 @@ export const SharesDeployerAbi = [
             type: "tuple[]",
             internalType: "struct SharesDeployer.SharedAddressListDefinition[]",
             components: [
-              { name: "kind", type: "uint8", internalType: "enum SharesDeployer.SharedAddressListKind" },
-              { name: "ownableListOwner", type: "address", internalType: "address" },
-              { name: "seededAddresses", type: "address[]", internalType: "address[]" },
+              {
+                name: "kind",
+                type: "uint8",
+                internalType: "enum SharesDeployer.SharedAddressListKind",
+              },
+              {
+                name: "ownableListOwner",
+                type: "address",
+                internalType: "address",
+              },
+              {
+                name: "seededAddresses",
+                type: "address[]",
+                internalType: "address[]",
+              },
             ],
           },
         ],
@@ -338,24 +889,134 @@ export const SharesDeployerAbi = [
         internalType: "struct SharesDeployer.Deployed",
         components: [
           { name: "shares", type: "address", internalType: "address" },
-          { name: "feeHandler", type: "address", internalType: "address" },
-          { name: "valuationHandler", type: "address", internalType: "address" },
-          { name: "managementFeeTracker", type: "address", internalType: "address" },
-          { name: "performanceFeeTracker", type: "address", internalType: "address" },
-          { name: "accountERC20Tracker", type: "address", internalType: "address" },
-          { name: "linearCreditDebtTracker", type: "address", internalType: "address" },
-          { name: "queueDepositHandlers", type: "address[]", internalType: "address[]" },
-          { name: "queueDepositHandlerAllowlists", type: "address[]", internalType: "address[]" },
-          { name: "syncDepositHandlers", type: "address[]", internalType: "address[]" },
-          { name: "syncDepositHandlerAllowlists", type: "address[]", internalType: "address[]" },
-          { name: "redeemHandlers", type: "address[]", internalType: "address[]" },
-          { name: "transferValidator", type: "address", internalType: "address" },
-          { name: "transferValidatorRecipientList", type: "address", internalType: "address" },
-          { name: "transferValidatorSenderList", type: "address", internalType: "address" },
-          { name: "sharedAddressLists", type: "address[]", internalType: "address[]" },
+          {
+            name: "feeHandler",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "valuationHandler",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "managementFeeTracker",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "performanceFeeTracker",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "accountERC20Tracker",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "linearCreditDebtTracker",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "queueDepositHandlers",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "queueDepositHandlerAllowlists",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "queueDepositHandlerPreRequestHooks",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "queueDepositHandlerPostExecuteHooks",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "syncDepositHandlers",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "syncDepositHandlerAllowlists",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "syncDepositHandlerPostDepositHooks",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "redeemHandlers",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "redeemHandlerPreRequestHooks",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "redeemHandlerPostExecuteHooks",
+            type: "address[]",
+            internalType: "address[]",
+          },
+          {
+            name: "sharesMintHandler",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "sharesMintHandlerPreMintHook",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "sharesBurnHandler",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "sharesBurnHandlerPreBurnHook",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "transferValidator",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "transferValidatorRecipientList",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "transferValidatorSenderList",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "sharedAddressLists",
+            type: "address[]",
+            internalType: "address[]",
+          },
         ],
       },
-      { name: "nominatedOwner", type: "address", indexed: false, internalType: "address" },
+      {
+        name: "nominatedOwner",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
     ],
     anonymous: false,
   },
@@ -364,19 +1025,94 @@ export const SharesDeployerAbi = [
     name: "SafeERC20FailedOperation",
     inputs: [{ name: "token", type: "address", internalType: "address" }],
   },
-  { type: "error", name: "SharesDeployer__AccountERC20TrackerRequiresValuationHandler", inputs: [] },
-  { type: "error", name: "SharesDeployer__ExternalListExistingCannotBeZero", inputs: [] },
-  { type: "error", name: "SharesDeployer__ExternalListSourceNotAllowed", inputs: [] },
-  { type: "error", name: "SharesDeployer__ExternalListSourceRequired", inputs: [] },
-  { type: "error", name: "SharesDeployer__LinearCreditDebtTrackerRequiresValuationHandler", inputs: [] },
-  { type: "error", name: "SharesDeployer__ManagementFeeRequiresFeeHandler", inputs: [] },
-  { type: "error", name: "SharesDeployer__NominatedOwnerCannotBeDeployer", inputs: [] },
-  { type: "error", name: "SharesDeployer__NominatedOwnerCannotBeZero", inputs: [] },
-  { type: "error", name: "SharesDeployer__OwnableAddressListOwnerCannotBeZero", inputs: [] },
-  { type: "error", name: "SharesDeployer__PerformanceFeeRequiresFeeHandler", inputs: [] },
-  { type: "error", name: "SharesDeployer__PreMintRequiresValuationHandler", inputs: [] },
-  { type: "error", name: "SharesDeployer__SeedNotAllowedForExternalList", inputs: [] },
-  { type: "error", name: "SharesDeployer__SeedNotAllowedWithoutAllowlist", inputs: [] },
-  { type: "error", name: "SharesDeployer__SharedAddressListIndexOutOfBounds", inputs: [] },
-  { type: "error", name: "SharesDeployer__TransferValidatorExistingCannotBeZero", inputs: [] },
+  {
+    type: "error",
+    name: "SharesDeployer__AccountERC20TrackerRequiresValuationHandler",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__ExternalListExistingCannotBeZero",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__ExternalListSourceNotAllowed",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__ExternalListSourceRequired",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__HookExistingCannotBeZero",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__HookNotAllowedWithoutHandler",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__LinearCreditDebtTrackerRequiresValuationHandler",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__ManagementFeeRequiresFeeHandler",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__NominatedOwnerCannotBeDeployer",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__NominatedOwnerCannotBeZero",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__OwnableAddressListOwnerCannotBeZero",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__PerformanceFeeRequiresFeeHandler",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__PolicyEngineCannotBeZero",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__PreMintRequiresValuationHandler",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__SeedNotAllowedForExternalList",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__SeedNotAllowedWithoutAllowlist",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__SharedAddressListIndexOutOfBounds",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "SharesDeployer__TransferValidatorExistingCannotBeZero",
+    inputs: [],
+  },
 ] as const;

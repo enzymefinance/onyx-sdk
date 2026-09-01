@@ -1,5 +1,9 @@
 export const SharesAbi = [
-  { type: "constructor", inputs: [], stateMutability: "nonpayable" },
+  {
+    type: "constructor",
+    inputs: [],
+    stateMutability: "nonpayable",
+  },
   {
     type: "function",
     name: "acceptOwnership",
@@ -10,21 +14,39 @@ export const SharesAbi = [
   {
     type: "function",
     name: "addAdmin",
-    inputs: [{ name: "_admin", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_admin",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "addDepositHandler",
-    inputs: [{ name: "_handler", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_handler",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "addRedeemHandler",
-    inputs: [{ name: "_handler", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_handler",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -32,28 +54,64 @@ export const SharesAbi = [
     type: "function",
     name: "allowance",
     inputs: [
-      { name: "owner", type: "address", internalType: "address" },
-      { name: "spender", type: "address", internalType: "address" },
+      {
+        name: "owner",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "approve",
     inputs: [
-      { name: "spender", type: "address", internalType: "address" },
-      { name: "value", type: "uint256", internalType: "uint256" },
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "authTransfer",
     inputs: [
-      { name: "_to", type: "address", internalType: "address" },
-      { name: "_amount", type: "uint256", internalType: "uint256" },
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -62,9 +120,21 @@ export const SharesAbi = [
     type: "function",
     name: "authTransferFrom",
     inputs: [
-      { name: "_from", type: "address", internalType: "address" },
-      { name: "_to", type: "address", internalType: "address" },
-      { name: "_amount", type: "uint256", internalType: "uint256" },
+      {
+        name: "_from",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -72,15 +142,31 @@ export const SharesAbi = [
   {
     type: "function",
     name: "balanceOf",
-    inputs: [{ name: "account", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    inputs: [
+      {
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "burnFor",
     inputs: [
-      { name: "_from", type: "address", internalType: "address" },
+      {
+        name: "_from",
+        type: "address",
+        internalType: "address",
+      },
       {
         name: "_sharesAmount",
         type: "uint256",
@@ -94,45 +180,91 @@ export const SharesAbi = [
     type: "function",
     name: "decimals",
     inputs: [],
-    outputs: [{ name: "", type: "uint8", internalType: "uint8" }],
+    outputs: [
+      {
+        name: "",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getFeeHandler",
     inputs: [],
-    outputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getSharesTransferValidator",
     inputs: [],
-    outputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getValuationHandler",
     inputs: [],
-    outputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getValueAsset",
     inputs: [],
-    outputs: [{ name: "", type: "bytes32", internalType: "bytes32" }],
+    outputs: [
+      {
+        name: "",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "init",
     inputs: [
-      { name: "_owner", type: "address", internalType: "address" },
-      { name: "_name", type: "string", internalType: "string" },
-      { name: "_symbol", type: "string", internalType: "string" },
-      { name: "_valueAsset", type: "bytes32", internalType: "bytes32" },
+      {
+        name: "_owner",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_name",
+        type: "string",
+        internalType: "string",
+      },
+      {
+        name: "_symbol",
+        type: "string",
+        internalType: "string",
+      },
+      {
+        name: "_valueAsset",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -140,36 +272,88 @@ export const SharesAbi = [
   {
     type: "function",
     name: "isAdmin",
-    inputs: [{ name: "_who", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    inputs: [
+      {
+        name: "_who",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "isAdminOrOwner",
-    inputs: [{ name: "_who", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    inputs: [
+      {
+        name: "_who",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "isDepositHandler",
-    inputs: [{ name: "_who", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    inputs: [
+      {
+        name: "_who",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "isRedeemHandler",
-    inputs: [{ name: "_who", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    inputs: [
+      {
+        name: "_who",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "mintFor",
     inputs: [
-      { name: "_to", type: "address", internalType: "address" },
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
       {
         name: "_sharesAmount",
         type: "uint256",
@@ -183,41 +367,77 @@ export const SharesAbi = [
     type: "function",
     name: "name",
     inputs: [],
-    outputs: [{ name: "", type: "string", internalType: "string" }],
+    outputs: [
+      {
+        name: "",
+        type: "string",
+        internalType: "string",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "owner",
     inputs: [],
-    outputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "pendingOwner",
     inputs: [],
-    outputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "removeAdmin",
-    inputs: [{ name: "_admin", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_admin",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "removeDepositHandler",
-    inputs: [{ name: "_handler", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_handler",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "removeRedeemHandler",
-    inputs: [{ name: "_handler", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_handler",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -231,7 +451,13 @@ export const SharesAbi = [
   {
     type: "function",
     name: "setFeeHandler",
-    inputs: [{ name: "_feeHandler", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_feeHandler",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -266,8 +492,16 @@ export const SharesAbi = [
     name: "sharePrice",
     inputs: [],
     outputs: [
-      { name: "price_", type: "uint256", internalType: "uint256" },
-      { name: "timestamp_", type: "uint256", internalType: "uint256" },
+      {
+        name: "price_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "timestamp_",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
     stateMutability: "view",
   },
@@ -276,8 +510,16 @@ export const SharesAbi = [
     name: "shareValue",
     inputs: [],
     outputs: [
-      { name: "value_", type: "uint256", internalType: "uint256" },
-      { name: "timestamp_", type: "uint256", internalType: "uint256" },
+      {
+        name: "value_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "timestamp_",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
     stateMutability: "view",
   },
@@ -285,41 +527,91 @@ export const SharesAbi = [
     type: "function",
     name: "symbol",
     inputs: [],
-    outputs: [{ name: "", type: "string", internalType: "string" }],
+    outputs: [
+      {
+        name: "",
+        type: "string",
+        internalType: "string",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "totalSupply",
     inputs: [],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "transfer",
     inputs: [
-      { name: "_to", type: "address", internalType: "address" },
-      { name: "_amount", type: "uint256", internalType: "uint256" },
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "transferFrom",
     inputs: [
-      { name: "_from", type: "address", internalType: "address" },
-      { name: "_to", type: "address", internalType: "address" },
-      { name: "_amount", type: "uint256", internalType: "uint256" },
+      {
+        name: "_from",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "transferOwnership",
-    inputs: [{ name: "newOwner", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "newOwner",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -327,9 +619,21 @@ export const SharesAbi = [
     type: "function",
     name: "withdrawAssetTo",
     inputs: [
-      { name: "_asset", type: "address", internalType: "address" },
-      { name: "_to", type: "address", internalType: "address" },
-      { name: "_amount", type: "uint256", internalType: "uint256" },
+      {
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -600,58 +904,136 @@ export const SharesAbi = [
     type: "error",
     name: "ERC20InsufficientAllowance",
     inputs: [
-      { name: "spender", type: "address", internalType: "address" },
-      { name: "allowance", type: "uint256", internalType: "uint256" },
-      { name: "needed", type: "uint256", internalType: "uint256" },
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "allowance",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "needed",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
   },
   {
     type: "error",
     name: "ERC20InsufficientBalance",
     inputs: [
-      { name: "sender", type: "address", internalType: "address" },
-      { name: "balance", type: "uint256", internalType: "uint256" },
-      { name: "needed", type: "uint256", internalType: "uint256" },
+      {
+        name: "sender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "balance",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "needed",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
   },
   {
     type: "error",
     name: "ERC20InvalidApprover",
-    inputs: [{ name: "approver", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "approver",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
   {
     type: "error",
     name: "ERC20InvalidReceiver",
-    inputs: [{ name: "receiver", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "receiver",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
   {
     type: "error",
     name: "ERC20InvalidSender",
-    inputs: [{ name: "sender", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
   {
     type: "error",
     name: "ERC20InvalidSpender",
-    inputs: [{ name: "spender", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
-  { type: "error", name: "InvalidInitialization", inputs: [] },
-  { type: "error", name: "NotInitializing", inputs: [] },
+  {
+    type: "error",
+    name: "InvalidInitialization",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "NotInitializing",
+    inputs: [],
+  },
   {
     type: "error",
     name: "OwnableInvalidOwner",
-    inputs: [{ name: "owner", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
   {
     type: "error",
     name: "OwnableUnauthorizedAccount",
-    inputs: [{ name: "account", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
   {
     type: "error",
     name: "SafeERC20FailedOperation",
-    inputs: [{ name: "token", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "token",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
-  { type: "error", name: "Shares__AddAdmin__AlreadyAdded", inputs: [] },
+  {
+    type: "error",
+    name: "Shares__AddAdmin__AlreadyAdded",
+    inputs: [],
+  },
   {
     type: "error",
     name: "Shares__AddAllowedHolder__AlreadyAdded",
@@ -677,8 +1059,16 @@ export const SharesAbi = [
     name: "Shares__GetDepositAssetsDest__NotSet",
     inputs: [],
   },
-  { type: "error", name: "Shares__Init__EmptyName", inputs: [] },
-  { type: "error", name: "Shares__Init__EmptySymbol", inputs: [] },
+  {
+    type: "error",
+    name: "Shares__Init__EmptyName",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "Shares__Init__EmptySymbol",
+    inputs: [],
+  },
   {
     type: "error",
     name: "Shares__OnlyAdminOrOwner__Unauthorized",
@@ -719,7 +1109,11 @@ export const SharesAbi = [
     name: "Shares__RemoveRedeemHandler__AlreadyRemoved",
     inputs: [],
   },
-  { type: "error", name: "Shares__SetValueAsset__Empty", inputs: [] },
+  {
+    type: "error",
+    name: "Shares__SetValueAsset__Empty",
+    inputs: [],
+  },
   {
     type: "error",
     name: "Shares__ValidateTransferRecipient__NotAllowed",

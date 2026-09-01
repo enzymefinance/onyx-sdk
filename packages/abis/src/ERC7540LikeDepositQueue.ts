@@ -1,9 +1,19 @@
 export const ERC7540LikeDepositQueueAbi = [
-  { type: "constructor", inputs: [], stateMutability: "nonpayable" },
+  {
+    type: "constructor",
+    inputs: [],
+    stateMutability: "nonpayable",
+  },
   {
     type: "function",
     name: "addDepositControllerToInternalAllowlist",
-    inputs: [{ name: "_controller", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_controller",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -11,14 +21,32 @@ export const ERC7540LikeDepositQueueAbi = [
     type: "function",
     name: "asset",
     inputs: [],
-    outputs: [{ name: "asset_", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "asset_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "cancelDeposit",
-    inputs: [{ name: "_requestId", type: "uint256", internalType: "uint256" }],
-    outputs: [{ name: "assets_", type: "uint256", internalType: "uint256" }],
+    inputs: [
+      {
+        name: "_requestId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "assets_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
@@ -51,20 +79,38 @@ export const ERC7540LikeDepositQueueAbi = [
     type: "function",
     name: "getDepositLastId",
     inputs: [],
-    outputs: [{ name: "requestId_", type: "uint256", internalType: "uint256" }],
+    outputs: [
+      {
+        name: "requestId_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getDepositMinRequestDuration",
     inputs: [],
-    outputs: [{ name: "", type: "uint24", internalType: "uint24" }],
+    outputs: [
+      {
+        name: "",
+        type: "uint24",
+        internalType: "uint24",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "getDepositRequest",
-    inputs: [{ name: "_requestId", type: "uint256", internalType: "uint256" }],
+    inputs: [
+      {
+        name: "_requestId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     outputs: [
       {
         name: "",
@@ -106,15 +152,59 @@ export const ERC7540LikeDepositQueueAbi = [
   },
   {
     type: "function",
+    name: "getPostExecuteDepositRequestHook",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getPreRequestDepositHook",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
     name: "isInDepositControllerInternalAllowlist",
-    inputs: [{ name: "_who", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    inputs: [
+      {
+        name: "_who",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "removeDepositControllerFromInternalAllowlist",
-    inputs: [{ name: "_controller", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_controller",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -122,36 +212,88 @@ export const ERC7540LikeDepositQueueAbi = [
     type: "function",
     name: "requestDeposit",
     inputs: [
-      { name: "_assets", type: "uint256", internalType: "uint256" },
-      { name: "_controller", type: "address", internalType: "address" },
-      { name: "_owner", type: "address", internalType: "address" },
+      {
+        name: "_assets",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_controller",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_owner",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    outputs: [{ name: "requestId_", type: "uint256", internalType: "uint256" }],
+    outputs: [
+      {
+        name: "requestId_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "requestDepositReferred",
     inputs: [
-      { name: "_assets", type: "uint256", internalType: "uint256" },
-      { name: "_controller", type: "address", internalType: "address" },
-      { name: "_owner", type: "address", internalType: "address" },
-      { name: "_referrer", type: "bytes32", internalType: "bytes32" },
+      {
+        name: "_assets",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_controller",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_owner",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_referrer",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
     ],
-    outputs: [{ name: "requestId_", type: "uint256", internalType: "uint256" }],
+    outputs: [
+      {
+        name: "requestId_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "setAsset",
-    inputs: [{ name: "_asset", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "setDepositControllerExternalAllowlist",
-    inputs: [{ name: "_allowlist", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "_allowlist",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -183,9 +325,41 @@ export const ERC7540LikeDepositQueueAbi = [
   },
   {
     type: "function",
+    name: "setPostExecuteDepositRequestHook",
+    inputs: [
+      {
+        name: "_postExecuteDepositRequestHook",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setPreRequestDepositHook",
+    inputs: [
+      {
+        name: "_preRequestDepositHook",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
     name: "share",
     inputs: [],
-    outputs: [{ name: "share_", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "share_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     stateMutability: "view",
   },
   {
@@ -386,6 +560,32 @@ export const ERC7540LikeDepositQueueAbi = [
     anonymous: false,
   },
   {
+    type: "event",
+    name: "PostExecuteDepositRequestHookSet",
+    inputs: [
+      {
+        name: "hook",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PreRequestDepositHookSet",
+    inputs: [
+      {
+        name: "hook",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
     type: "error",
     name: "ComponentHelpersMixin__OnlyAdminOrOwner__Unauthorized",
     inputs: [],
@@ -439,14 +639,28 @@ export const ERC7540LikeDepositQueueAbi = [
     type: "error",
     name: "SafeCastOverflowedUintDowncast",
     inputs: [
-      { name: "bits", type: "uint8", internalType: "uint8" },
-      { name: "value", type: "uint256", internalType: "uint256" },
+      {
+        name: "bits",
+        type: "uint8",
+        internalType: "uint8",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
   },
   {
     type: "error",
     name: "SafeERC20FailedOperation",
-    inputs: [{ name: "token", type: "address", internalType: "address" }],
+    inputs: [
+      {
+        name: "token",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
   {
     type: "error",

@@ -1,9 +1,7 @@
-export const a = 1;
-
 import { ERC7540LikeRedeemQueueAbi } from "@enzymefinance/onyx-abis";
 import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../../Utils";
+import { Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS - DEPOSITOR
@@ -55,6 +53,26 @@ export function executeRedeemRequests(args: { queueAddress: Address; requestIds:
     functionName: "executeRedeemRequests",
     address: args.queueAddress,
     args: [args.requestIds],
+  });
+}
+
+// Hooks
+
+export function setPreRequestRedeemHook(args: { queueAddress: Address; hookAddress: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: ERC7540LikeRedeemQueueAbi,
+    functionName: "setPreRequestRedeemHook",
+    args: [args.hookAddress],
+    address: args.queueAddress,
+  });
+}
+
+export function setPostExecuteRedeemRequestHook(args: { queueAddress: Address; hookAddress: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: ERC7540LikeRedeemQueueAbi,
+    functionName: "setPostExecuteRedeemRequestHook",
+    args: [args.hookAddress],
+    address: args.queueAddress,
   });
 }
 
@@ -116,6 +134,34 @@ export function getAsset(
     ...Viem.extractBlockParameters(args),
     abi: ERC7540LikeRedeemQueueAbi,
     functionName: "asset",
+    address: args.queueAddress,
+  });
+}
+
+export function getPreRequestRedeemHook(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    queueAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ERC7540LikeRedeemQueueAbi,
+    functionName: "getPreRequestRedeemHook",
+    address: args.queueAddress,
+  });
+}
+
+export function getPostExecuteRedeemRequestHook(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    queueAddress: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ERC7540LikeRedeemQueueAbi,
+    functionName: "getPostExecuteRedeemRequestHook",
     address: args.queueAddress,
   });
 }

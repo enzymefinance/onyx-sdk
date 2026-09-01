@@ -1,5 +1,5 @@
 import type { Address } from "viem";
-import { Deployment, type DeploymentType } from "./releases";
+import { Deployment, type DeploymentType } from "./deployments/deployment.js";
 
 export enum Version {
   ONE = "one",
@@ -40,7 +40,11 @@ export interface CommonContracts {
   readonly OwnableAddressList: Address;
   readonly SharesFactory: Address;
   readonly Shares: Address;
+  readonly SharesBurnHandlerFactory: Address;
+  readonly SharesBurnHandler: Address;
   readonly SharesDeployer: Address;
+  readonly SharesMintHandlerFactory: Address;
+  readonly SharesMintHandler: Address;
   readonly SharesOwnedAddressListFactory: Address;
   readonly SharesOwnedAddressList: Address;
   readonly SyncDepositHandlerFactory: Address;
@@ -54,6 +58,33 @@ type CreWorkflowConsumerContracts = {
   readonly CreWorkflowConsumer: Address;
 };
 
+type ChainlinkAceContracts = {
+  readonly ChainlinkAcePreRequestDepositValidatorFactory: Address;
+  readonly ChainlinkAcePreRequestDepositValidator: Address;
+  readonly ChainlinkAcePostExecuteDepositRequestValidatorFactory: Address;
+  readonly ChainlinkAcePostExecuteDepositRequestValidator: Address;
+  readonly ChainlinkAcePreRequestRedeemValidatorFactory: Address;
+  readonly ChainlinkAcePreRequestRedeemValidator: Address;
+  readonly ChainlinkAcePostExecuteRedeemRequestValidatorFactory: Address;
+  readonly ChainlinkAcePostExecuteRedeemRequestValidator: Address;
+  readonly ChainlinkAcePostDepositValidatorFactory: Address;
+  readonly ChainlinkAcePostDepositValidator: Address;
+  readonly ChainlinkAcePreMintValidatorFactory: Address;
+  readonly ChainlinkAcePreMintValidator: Address;
+  readonly ChainlinkAcePreBurnValidatorFactory: Address;
+  readonly ChainlinkAcePreBurnValidator: Address;
+  readonly ChainlinkAceSharesTransferValidatorFactory: Address;
+  readonly ChainlinkAceSharesTransferValidator: Address;
+  readonly ChainlinkAceERC7540LikeDepositQueuePreRequestDepositExtractor: Address;
+  readonly ChainlinkAceERC7540LikeDepositQueuePostExecuteDepositRequestExtractor: Address;
+  readonly ChainlinkAceERC7540LikeRedeemQueuePreRequestRedeemExtractor: Address;
+  readonly ChainlinkAceERC7540LikeRedeemQueuePostExecuteRedeemRequestExtractor: Address;
+  readonly ChainlinkAceSyncDepositHandlerPostDepositExtractor: Address;
+  readonly ChainlinkAceSharesMintHandlerPreMintExtractor: Address;
+  readonly ChainlinkAceSharesBurnHandlerPreBurnExtractor: Address;
+  readonly ChainlinkAceSharesTransferExtractor: Address;
+};
+
 type CCIPContracts = {
   readonly DepositorWallet: Address;
   readonly DepositorWalletFactory: Address;
@@ -62,14 +93,15 @@ type CCIPContracts = {
 };
 
 type DeploymentContractsMap = {
-  [Deployment.ETHEREUM]: CreWorkflowConsumerContracts & CCIPContracts;
-  [Deployment.BASE]: CreWorkflowConsumerContracts & CCIPContracts;
+  [Deployment.ETHEREUM]: CreWorkflowConsumerContracts & CCIPContracts & ChainlinkAceContracts;
+  [Deployment.BASE]: CreWorkflowConsumerContracts & CCIPContracts & ChainlinkAceContracts;
   [Deployment.BASE_SEPOLIA]: Record<never, never>;
-  [Deployment.MEGAETH]: CreWorkflowConsumerContracts & CCIPContracts;
-  [Deployment.SEPOLIA]: CreWorkflowConsumerContracts & CCIPContracts;
-  [Deployment.ARBITRUM]: CreWorkflowConsumerContracts & CCIPContracts;
-  [Deployment.PLUME]: CCIPContracts;
-  [Deployment.RAYLS]: Record<never, never>;
+  [Deployment.BSC]: CreWorkflowConsumerContracts & ChainlinkAceContracts;
+  [Deployment.MEGAETH]: CreWorkflowConsumerContracts & CCIPContracts & ChainlinkAceContracts;
+  [Deployment.SEPOLIA]: CreWorkflowConsumerContracts & CCIPContracts & ChainlinkAceContracts;
+  [Deployment.ARBITRUM]: CreWorkflowConsumerContracts & CCIPContracts & ChainlinkAceContracts;
+  [Deployment.PLUME]: CCIPContracts & ChainlinkAceContracts;
+  [Deployment.RAYLS]: ChainlinkAceContracts;
 };
 
 export type DeploymentContracts<TDeployment extends DeploymentType> = DeploymentContractsMap[TDeployment];
