@@ -1,5 +1,11 @@
 # @enzymefinance/onyx-environment
 
+## 5.0.0
+
+### Major Changes
+
+- [#57](https://github.com/enzymefinance/onyx-sdk/pull/57) [`eefdfd4`](https://github.com/enzymefinance/onyx-sdk/commit/eefdfd4b8af4d5c052c6ba107839a2e33f7919da) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Chainlink ACE, and bsc
+
 ## 4.1.0
 
 ### Minor Changes
