@@ -7,7 +7,7 @@ export default defineDeployment<typeof Deployment.MEGAETH>({
   externalContracts: {
     ccipRouter: "0xfa546248c54939aa6c48279cdc1eaf9a1125c411",
     tokenAdminRegistry: "0xf4a170a36d4c656f614d44453f73308bdb275196",
-    wrappedNative: "0x776401b9bc8aae31a685731b7147d4445fd9fb19",
+    wrappedNative: "0x4200000000000000000000000000000000000006",
   },
   inception: 12251855,
   kind: Kind.LIVE,

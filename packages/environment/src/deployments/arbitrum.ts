@@ -62,7 +62,7 @@ export default defineDeployment<typeof Deployment.ARBITRUM>({
         FeeHandlerFactory: "0x2a8f4e57655946e30cc54b101b8c942d1cf6c52b",
         FeeHandler: "0xf3b69f059e9a130b172592eb87bf632d3a88bb97",
         GlobalProxy: "0x83398d18ea22c5e85b009496bf2a521cb9c84be6",
-        Global: "0x1e3d1f3f3a5e2e4f3c2e8f0f4c6f4e8f0f4c6f4e",
+        Global: "0x162e062a02cca01d8e2ce4adfd7fc9e291eacb5f",
         LimitedAccessLimitedCallForwarderFactory: "0x330b9b3875ab5df556a150268d115204c193b956",
         LimitedAccessLimitedCallForwarder: "0xff0342b66feb8a9e4c463d32c3bacc5bcbfeaf79",
         LinearCreditDebtTrackerFactory: "0xe15c7f82db7880a7beb87be99c1f24c3ac5da6e1",
